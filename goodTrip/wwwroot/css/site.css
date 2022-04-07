@@ -88,18 +88,34 @@ html {
 
 .logoimg img {
     width: 100%;
+    margin:0;
+    padding: 0;
 }
 .logoicon img {
-    width: 50%;
+    display: block;
+    margin: 0% 70%;
+    width: 35%;
 }
 
 .logoicon img{
 }
 
+.profile {
+    display: flex;
+    color: white;
+}
 .profile div {
-    vertical-align: bottom;
+    text-align: left;   
+    margin: auto;
 }
 
 header {
     background: #8643D6;
+}
+.goodtriptext {
+    display: flex;
+}
+.goodtriptext p {
+    margin: auto 0;
+    color: white;
 }
