@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Данила\\Desktop\\goodtrip\\goodTrip\\goodTrip\\goodTrip.csproj": {}
+    "C:\\Users\\Saimon\\goodtrip\\goodTrip\\goodTrip.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Данила\\Desktop\\goodtrip\\goodTrip\\goodTrip\\goodTrip.csproj": {
+    "C:\\Users\\Saimon\\goodtrip\\goodTrip\\goodTrip.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Данила\\Desktop\\goodtrip\\goodTrip\\goodTrip\\goodTrip.csproj",
+        "projectUniqueName": "C:\\Users\\Saimon\\goodtrip\\goodTrip\\goodTrip.csproj",
         "projectName": "goodTrip",
-        "projectPath": "C:\\Users\\Данила\\Desktop\\goodtrip\\goodTrip\\goodTrip\\goodTrip.csproj",
-        "packagesPath": "C:\\Users\\Данила\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Данила\\Desktop\\goodtrip\\goodTrip\\goodTrip\\obj\\",
+        "projectPath": "C:\\Users\\Saimon\\goodtrip\\goodTrip\\goodTrip.csproj",
+        "packagesPath": "C:\\Users\\Saimon\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Saimon\\goodtrip\\goodTrip\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Данила\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Saimon\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -61,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
