@@ -80,42 +80,27 @@ select {
 
 
 
-html {
-    width: 100%;
-}
-
-
-
-.logoimg img {
-    width: 100%;
-    margin:0;
-    padding: 0;
-}
-.logoicon img {
-    display: block;
-    margin: 0% 70%;
-    width: 35%;
-}
-
-.logoicon img{
-}
-
-.profile {
-    display: flex;
+header {
+    font-family: 'K2D', sans-serif;
+    background: #8643D6;
     color: white;
 }
-.profile div {
-    text-align: left;   
-    margin: auto;
+.container {
+    max-width: 100%;
+    width: 100%;
 }
-
-header {
-    background: #8643D6;
+.goodtrip {
+    float: left;
+    display: flex;
 }
 .goodtriptext {
-    display: flex;
-}
-.goodtriptext p {
+    float: left;
+    font-size: 48px;
     margin: auto 0;
-    color: white;
+    padding-bottom: 15%;
+}
+
+.logo {
+    padding: 5%;
+    max-width: 70%;
 }
