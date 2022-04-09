@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "GLNKLeXfn+/oHMM8y+UuJh2ntsyV+md0TAdrZoKD03o=",
+  "Hash": "4AopIaDNLbc2UMrvUeAwF1+kWE5rupOc4EoxvamNnPo=",
   "Source": "goodTrip",
   "BasePath": "_content/goodTrip",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\Данила\\Desktop\\goodtrip\\goodTrip\\goodTrip\\wwwroot\\images\\goodtripLogo.svg",
+      "SourceId": "goodTrip",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Данила\\Desktop\\goodtrip\\goodTrip\\goodTrip\\wwwroot\\",
+      "BasePath": "_content/goodTrip",
+      "RelativePath": "images/goodtripLogo.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\goodtripLogo.svg"
     },
     {
       "Identity": "C:\\Users\\Данила\\Desktop\\goodtrip\\goodTrip\\goodTrip\\wwwroot\\images\\logo.png",

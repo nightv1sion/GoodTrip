@@ -45,9 +45,6 @@ ol[class] {
 }
 
 /* Ёлементы a, у которых нет класса, сбрасываем до дефолтных стилей */
-a:not([class]) {
-    text-decoration-skip-ink: auto;
-}
 
 /* ”прощаем работу с изображени€ми */
 img {
@@ -77,45 +74,32 @@ select {
         scroll-behavior: auto !important;
     }
 }
-
-
-
-html {
-    width: 100%;
+a {
+    color: white;
+    text-decoration: none;
 }
 
 
-
-.logoimg img {
-    width: 100%;
-    margin:0;
-    padding: 0;
-}
-.logoicon img {
-    display: block;
-    margin: 0% 70%;
-    width: 35%;
-}
-
-.logoicon img{
-}
-
-.profile {
-    display: flex;
+header {
+    font-family: 'K2D', sans-serif;
+    background: #8643D6;
     color: white;
 }
-.profile div {
-    text-align: left;   
+
+.goodtriptext {
+    font-size: 24px;
     margin: auto;
 }
 
-header {
-    background: #8643D6;
+.logo {
+    padding: 0;
+    max-width: 70%;
 }
-.goodtriptext {
-    display: flex;
+
+.profilelink {
+    
+    font-size: 24px;
 }
-.goodtriptext p {
-    margin: auto 0;
-    color: white;
+.profilelink a {
+    margin: auto;
 }
