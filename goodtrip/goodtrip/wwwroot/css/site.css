@@ -112,20 +112,10 @@ header {
     display: flex;
     align-items: center
 }
-<<<<<<< HEAD
 
 .show-btn {
     background: none;
     padding: 0px;
-=======
-.goodtripname p {
-    padding-bottom: 12%;
-}
-
-.profile {
-    display: flex;
-    align-items: center;
->>>>>>> cf0600ccf9965960d15da37f4761992dbb744939
     font-size: 24px;
     font-weight: 500;
     color: white;
@@ -133,7 +123,7 @@ header {
     display: flex;
     align-items: center
 }
-<<<<<<< HEAD
+
 .container {
     position: absolute;
     top: 50%;
@@ -262,11 +252,10 @@ form .signup-link {
         form .signup-link a:hover {
             text-decoration: underline;
         }
-=======
+
 .profile a {
     text-decoration-line: none;
     text-decoration-color: none;
     color: white;
 }
 
->>>>>>> cf0600ccf9965960d15da37f4761992dbb744939
