@@ -76,6 +76,10 @@ select {
         scroll-behavior: auto !important;
     }
 }
+p {
+    margin: 0;
+    padding: 0;
+}
 
 html {
   font-size: 14px;
@@ -101,10 +105,18 @@ header {
     
 }
 .goodtripname {
-    font-size: 24px;
+    display: flex;
+    align-items: center;
+    font-size: 36px;
     color: white;
 }
+.goodtripname p {
+    padding-bottom: 12%;
+}
+
 .profile {
+    display: flex;
+    align-items: center;
     font-size: 24px;
     color: white;
     
@@ -114,3 +126,4 @@ header {
     text-decoration-color: none;
     color: white;
 }
+
