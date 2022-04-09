@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/goodtrip.styles.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=K2D&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -14,6 +17,15 @@
             <div class = "row">
                 <div class = "col-1 logo">
                     <img src = "images/goodtripLogo.svg" />
+                </div>
+                <div class = "col-1 goodtripname">
+                    <p>goodtrip</p>
+                </div>
+                <div class = "col-9">
+
+                </div>
+                <div class = "col-1 profile">
+                    <a asp-controller = "profile">Profile</a>
                 </div>
             </div>
         </div>

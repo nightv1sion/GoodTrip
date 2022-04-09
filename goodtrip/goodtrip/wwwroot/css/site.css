@@ -97,4 +97,20 @@ body {
 }
 header {
     background-color: #8643D6;
+    font-family: 'K2D', sans-serif;
+    
+}
+.goodtripname {
+    font-size: 24px;
+    color: white;
+}
+.profile {
+    font-size: 24px;
+    color: white;
+    
+}
+.profile a {
+    text-decoration-line: none;
+    text-decoration-color: none;
+    color: white;
 }
