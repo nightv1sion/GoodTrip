@@ -97,5 +97,9 @@ header {
 }
 
 .profilelink {
+    
     font-size: 24px;
+}
+.profilelink a {
+    margin: auto;
 }
