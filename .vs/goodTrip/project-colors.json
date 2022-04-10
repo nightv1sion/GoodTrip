@@ -1,15 +1,10 @@
 {
   "Version": 1,
   "ProjectMap": {
-    "cd13e39e-3c56-4cb9-9f68-1462a2fa1040": {
-      "ProjectGuid": "cd13e39e-3c56-4cb9-9f68-1462a2fa1040",
-      "DisplayName": "goodTrip",
+    "9f05b403-5dc4-4572-b3ee-09c1aa144173": {
+      "ProjectGuid": "9f05b403-5dc4-4572-b3ee-09c1aa144173",
+      "DisplayName": "goodtrip",
       "ColorIndex": 0
-    },
-    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
-      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
-      "DisplayName": "Miscellaneous Files",
-      "ColorIndex": -1
     }
   },
   "NextColorIndex": 1
