@@ -124,7 +124,7 @@ header {
     align-items: center
 }
 
-.container {
+.profileform {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -135,7 +135,7 @@ input[type="checkbox"] {
     display: none;
 }
 
-.container {
+.profileform {
     display: none;
     background: #fff;
     width: 410px;
@@ -143,11 +143,11 @@ input[type="checkbox"] {
     box-shadow: 0 0 8px rgba(0,0,0,0.1);
 }
 
-#show:checked ~ .container {
+#show:checked ~ .profileform {
     display: block;
 }
 
-.container .close-btn {
+.profileform .close-btn {
     position: absolute;
     right: 20px;
     top: 15px;
@@ -155,21 +155,21 @@ input[type="checkbox"] {
     cursor: pointer;
 }
 
-    .container .close-btn:hover {
+    .profileform .close-btn:hover {
         color: #3498db;
     }
 
-.container .text {
+.profileform .text {
     font-size: 35px;
     font-weight: 600;
     text-align: center;
 }
 
-.container form {
+.profileform form {
     margin-top: -20px;
 }
 
-    .container form .data {
+    .profileform form .data {
         height: 45px;
         width: 100%;
         margin: 40px 0;
@@ -258,4 +258,3 @@ form .signup-link {
     text-decoration-color: none;
     color: white;
 }
-
