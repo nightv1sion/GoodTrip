@@ -1,0 +1,19 @@
+﻿.searchcont {
+    display: flex;
+    align-items: center;
+    background-color: #8643D6;
+    font-family: 'K2D', sans-serif;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.searchlabel {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    line-height: normal;
+}

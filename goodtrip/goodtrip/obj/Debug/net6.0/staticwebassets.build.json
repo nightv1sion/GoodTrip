@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "dZZ2sDa4d4/7UB6s/G/E5nPAHd0o7e5vX52ZTVpgAmA=",
+  "Hash": "xG7loJKDsJmuPHRAKrITp2l6F5efI6gYbWCeNhqzd04=",
   "Source": "goodtrip",
   "BasePath": "_content/goodtrip",
   "Mode": "Default",
@@ -49,6 +49,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Saimon\\goodtrip\\goodtrip\\goodtrip\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\goodtrip.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\Saimon\\goodtrip\\goodtrip\\goodtrip\\wwwroot\\css\\home.css",
+      "SourceId": "goodtrip",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Saimon\\goodtrip\\goodtrip\\goodtrip\\wwwroot\\",
+      "BasePath": "_content/goodtrip",
+      "RelativePath": "css/home.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\home.css"
+    },
+    {
+      "Identity": "C:\\Users\\Saimon\\goodtrip\\goodtrip\\goodtrip\\wwwroot\\css\\reset.css",
+      "SourceId": "goodtrip",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Saimon\\goodtrip\\goodtrip\\goodtrip\\wwwroot\\",
+      "BasePath": "_content/goodtrip",
+      "RelativePath": "css/reset.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\reset.css"
     },
     {
       "Identity": "C:\\Users\\Saimon\\goodtrip\\goodtrip\\goodtrip\\wwwroot\\css\\site.css",
