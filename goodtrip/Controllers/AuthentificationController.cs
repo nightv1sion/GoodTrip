@@ -15,14 +15,43 @@ namespace goodtrip.Controllers
         [HttpPost]
         public IActionResult Check(User user)
         {
-            if(_dbContext.Users.ToList<User>().Find(u => u.LoginName == user.LoginName) != null)
+            User finded_user = _dbContext.Users.ToList<User>().Find(u => u.LoginName == user.LoginName);
+            if (ModelState.IsValid != true)     
             {
-                if (_dbContext.Users.ToList<User>().Find(u => u.Password == user.Password) != null)
+                return View("Home/Index", user);
+            }
+            if(finded_user != null)
+            {
+                if(finded_user.Password == user.Password)
                 {
-                    return RedirectToAction("Index", "Home");
+                    // action
+                }
+                else
+                {
+                    ModelState.AddModelError("Authentification", "Login or password is wrong!");
+                    return View("/../../Home/Index/", user);
                 }
             }
-            return NotFound();
+            return RedirectToAction("Index", "Home", null);
+        }
+        [HttpGet]
+        public IActionResult Create() => View();
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                user.Id = Guid.NewGuid();
+                _dbContext.Users.Add(user);
+                _dbContext.SaveChanges();
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View(user);
+            }
         }
     }
 }
