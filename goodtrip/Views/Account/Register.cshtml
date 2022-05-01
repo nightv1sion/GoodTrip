@@ -1,25 +1,22 @@
-﻿@model User
+﻿@model goodtrip.Models.RegisterUser
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = null;
 }
 
-<form method = "post" asp-action = "Create">
+<form method = "post" asp-action = "Register">
     <div asp-validation-summary="All" class = "text-danger"></div>
     <div class = "data">
-        <label asp-for = "UserName"></label>
-        <input asp-for = "UserName">
-    </div>
-
-    <div class = "data">
-        <label asp-for = "LoginName"></label>
-        <input asp-for = "LoginName">
+        <label asp-for = "Email"></label>
+        <input asp-for = "Email">
     </div>
 
     <div class = "data">
         <label asp-for = "Password"></label>
         <input asp-for = "Password">
     </div>
+    <label asp-for="PasswordConfirm"></label><br />
+    <input asp-for="PasswordConfirm" />
     
     <button type = "submit">SIGN UP</button>
 </form>
