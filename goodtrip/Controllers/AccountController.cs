@@ -54,7 +54,7 @@ namespace goodtrip.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = new User() { Email = registerUser.Email, UserName = registerUser.Email, Password = registerUser.Password };
+                User user = new User() { Email = registerUser.Email, UserName = registerUser.Email, Password = registerUser.Password, Profile = new UserProfile()};
                 var result = await _userManager.CreateAsync(user, registerUser.Password);
                 if (result.Succeeded)
                 {
@@ -75,11 +75,7 @@ namespace goodtrip.Controllers
             
             return View("Register", registerUser);
         }
-        [HttpGet]
-        public IActionResult Login(string? returnUrl = null)
-        {
-            return View(new LoginUser { ReturnUrl = returnUrl });
-        }
+        
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -106,8 +102,6 @@ namespace goodtrip.Controllers
             }
             return View(loginUser);
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();

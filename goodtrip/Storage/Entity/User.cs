@@ -4,9 +4,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace goodtrip.Storage.Entity
 {
-    public class User : IdentityUser
+    public class User : IdentityUser<Guid>
     {
-        public Guid Id { get; set; }
         [BindProperty]
         [Required(ErrorMessage = "Email is required")]
         public string Email { get; set; }
@@ -14,5 +13,7 @@ namespace goodtrip.Storage.Entity
         [Display(Name = "Password")]
         [Required(ErrorMessage = "Password is required")]
         public string Password { get; set; }
+        [Required]
+        public UserProfile Profile { get; set; }
     }
 }
