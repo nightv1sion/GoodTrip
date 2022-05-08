@@ -12,18 +12,7 @@ a {
   color: white;
 }
 
-a {
-    text-decoration: none;
-    text-decoration-color: none;
-    color: white;
-    font-size: 16px;
-}
 
-a:hover {
-    text-decoration: none;
-    text-decoration-color: none;
-    color: white;
-}
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;
