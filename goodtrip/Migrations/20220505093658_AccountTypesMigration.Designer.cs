@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using goodtrip.Storage;
 
@@ -11,9 +12,10 @@ using goodtrip.Storage;
 namespace goodtrip.Migrations
 {
     [DbContext(typeof(GoodTripContext))]
-    partial class GoodTripContextModelSnapshot : ModelSnapshot
+    [Migration("20220505093658_AccountTypesMigration")]
+    partial class AccountTypesMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -102,14 +104,7 @@ namespace goodtrip.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("BirthDay")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Gender")
+                    b.Property<int?>("Age")
                         .HasColumnType("int");
 
                     b.Property<string>("LastName")
@@ -117,15 +112,6 @@ namespace goodtrip.Migrations
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Nationality")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PassportNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("PassportValidityPeriod")
-                        .HasColumnType("datetime2");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
@@ -135,9 +121,7 @@ namespace goodtrip.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("UserProfile");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("UserProfile");
+                    b.ToTable("UserProfiles");
                 });
 
             modelBuilder.Entity("goodtrip.Storage.Entity.UserRole", b =>
@@ -269,20 +253,6 @@ namespace goodtrip.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("goodtrip.Storage.Entity.UserCustomerProfile", b =>
-                {
-                    b.HasBaseType("goodtrip.Storage.Entity.UserProfile");
-
-                    b.HasDiscriminator().HasValue("UserCustomerProfile");
-                });
-
-            modelBuilder.Entity("goodtrip.Storage.Entity.UserOperatorProfile", b =>
-                {
-                    b.HasBaseType("goodtrip.Storage.Entity.UserProfile");
-
-                    b.HasDiscriminator().HasValue("UserOperatorProfile");
                 });
 
             modelBuilder.Entity("goodtrip.Storage.Entity.UserProfile", b =>

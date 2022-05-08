@@ -1,0 +1,59 @@
+﻿body {
+    font-family: 'K2D', sans-serif;
+}
+.LoginText {
+    font-family: 'K2D', sans-serif;
+    font-size: 48px;
+    color: #AFA5BA;
+}
+
+.LineInHeader {
+    color: #8643D6;
+    width: 80%;
+    margin: auto;
+}
+.ContInputs input {
+    margin: auto;
+    margin-top: 1%;
+    width: 15%;
+}
+.inputs button {
+    margin-top: 1%;
+}
+.center {
+    text-align: center;
+    font-size: 24px;
+    
+}
+.center button {
+    padding: 0 3%;
+    background-color: rgba(154, 110, 246, 0.35);
+    border: 1px solid #8643D6;
+    border-radius: 5px;
+}
+.text-danger {
+    padding: 0;
+    margin: 0;
+}
+a{
+    text-decoration: none;
+    text-decoration-color: none;
+    color: #8643D6;
+    font-size: 16px;
+}
+a::hover{
+    text-decoration: none;
+    text-decoration-color: none;
+}
+.AccountType {
+    text-align: start;
+    margin: auto;
+    width: 15%;
+}
+.AccountType p {
+    font-weight: bold;
+    margin: 3% 0 2% 0;
+}
+.AccountType input:checked::after {
+    background-color: purple;
+}

@@ -35,14 +35,15 @@
                 <div class = "col-1">
                     @if(username != null)
                     {
-                        <a asp-controller = "Profile" asp-action = "CustomerChange">Profile @username</a>
+                        <a asp-controller = "Profile" asp-action = "Index">Profile @username</a>
                     }
                     else
                     {
-                        <input type="checkbox" id="show">
-                        <label for="show" class="show-btn">Profile @username </label>
+                        <a asp-controller = "Account" asp-action = "Login">Profile</a>
+                        @*<input type="checkbox" id="show">
+                        <label for="show" class="show-btn">Profile @username </label>*@
                     }
-                    <div class="container profileform">
+                    @*<div class="container profileform">
                     <label for="show" class="close-btn fas fa-times" title="close"></label>
                     <div class="text">
                         Login Form
@@ -53,7 +54,7 @@
                             @*.profileform {
                                 display: block;
                                 position: absolute;
-                            }*@
+                            }
                         </style>
                     }
                     <form asp-controller = "Home" asp-action="Login" method = "post" asp-route-returnUrl="@Model?.ReturnUrl">
@@ -77,7 +78,7 @@
                         <div class="signup-link">
                             Not a member? <a asp-controller = "Account" asp-action = "Register">Signup now</a>
                         </div>
-                    </form>
+                    </form>*@
                     
                 </div>
                 </div>

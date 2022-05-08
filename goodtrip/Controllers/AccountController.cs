@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using goodtrip.Storage.Enums;
 
 namespace goodtrip.Controllers
 {
@@ -13,14 +14,16 @@ namespace goodtrip.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        private readonly RoleManager<UserRole> _roleManager;
         private GoodTripContext _dbContext { get; set; }
 
-        public AccountController(GoodTripContext context, UserManager<User> userManager, SignInManager<User> signInManager)
+        public AccountController(GoodTripContext context, UserManager<User> userManager, SignInManager<User> signInManager, RoleManager<UserRole> roleManager)
 
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _dbContext = context;
+            _roleManager = roleManager;
         }
         [HttpPost]
         public IActionResult Check(User user)
@@ -45,8 +48,9 @@ namespace goodtrip.Controllers
             return RedirectToAction("Index", "Home", null);
         }
         [HttpGet]
-        public IActionResult Register()
+        public async Task<IActionResult> Register()
         {
+            await SeedData();
             return View();
         }
         [HttpPost]
@@ -54,14 +58,18 @@ namespace goodtrip.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = new User() { Email = registerUser.Email, UserName = registerUser.Email, Password = registerUser.Password, Profile = new UserProfile()};
+                User user = new User() { Email = registerUser.Email, UserName = registerUser.Email, 
+                    Password = registerUser.Password, Profile = registerUser.AccountType == "Operator" ? new UserOperatorProfile() : new UserCustomerProfile()};
+                user.AccountType = registerUser.AccountType == "Operator" ? AccountType.Operator : AccountType.Customer;
                 var result = await _userManager.CreateAsync(user, registerUser.Password);
+                await _userManager.AddToRoleAsync(user, registerUser.AccountType);
                 if (result.Succeeded)
                 {
-                    var claims = new List<Claim> { new Claim(ClaimTypes.Name, registerUser.Email) };
-                    ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, "Cookies");
+                    /*var claims = new List<Claim> { new Claim(ClaimsIdentity.DefaultNameClaimType, "name"),
+                                                   new Claim(ClaimsIdentity.DefaultRoleClaimType, registerUser.AccountType) };
+                    ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);*/
                     await _signInManager.SignInAsync(user, null);
-                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
+                    //await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -76,6 +84,11 @@ namespace goodtrip.Controllers
             return View("Register", registerUser);
         }
         
+        [HttpGet]
+        public async Task<IActionResult> Login()
+        {
+            return View();
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -106,6 +119,18 @@ namespace goodtrip.Controllers
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+        private async Task SeedData()
+        {
+            string[] rolenames = { "Admin", "Operator", "Customer" };
+            foreach (var rolename in rolenames)
+            {
+                var roleExist = await _roleManager.RoleExistsAsync(rolename);
+                if (!roleExist)
+                {
+                    var roleResult = await _roleManager.CreateAsync(new UserRole(rolename));
+                }
+            }
         }
     }
 }

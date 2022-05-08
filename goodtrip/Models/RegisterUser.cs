@@ -6,12 +6,16 @@ namespace goodtrip.Models
     {
         [Required]
         public string Email { get; set; }
-        [Required]
         [DataType(DataType.Password)]
-        public string Password { get; set; }
         [Required]
+        public string Password { get; set; }
+        [Display(Name = "Repeat Password")]
         [Compare("Password", ErrorMessage = "Passwords don`t match")]
         [DataType(DataType.Password)]
         public string PasswordConfirm { get; set; }
+        [Required(ErrorMessage = "Type of account is required")]
+        public string AccountType { get; set; }
     }
+
+    
 }

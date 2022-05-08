@@ -1,0 +1,126 @@
+﻿body {
+    font-family: 'K2D', sans-serif;
+}
+a{
+    text-decoration: none;
+    text-decoration-color: none;
+    color: black;
+    font-size: 16px;
+}
+
+a:hover {
+    text-decoration: none;
+    text-decoration-color: none;
+    color: black;
+}
+.CustomerProfile {
+    font-family: 'K2D', sans-serif;
+    font-size: 48px;
+    color: #AFA5BA;
+}
+.LineInHeader {
+    color: #8643D6;
+    width: 80%;
+    margin: auto;
+}
+.ContInputs input{
+    margin: auto;
+    margin-top: 1%;
+    width: 30%;
+}
+
+.Nationality select {
+    margin: auto;
+    width: 30%;
+}
+
+.inputs button {
+    margin-top: 1%;
+}
+
+.center {
+    text-align: center;
+    font-size: 24px;
+}
+
+.center button {
+    padding: 0 3%;
+    background-color: rgba(154, 110, 246, 0.35);
+    border: 1px solid #8643D6;
+    border-radius: 5px;
+}
+
+.text-danger {
+    padding: 0;
+    margin: 0;
+}
+.Gender  {
+    width: 30%;
+    margin: auto;
+}
+.PassInfo {
+    width:30%;
+    margin: auto;
+}
+.PassInfo input {
+    margin-top: 2%;
+}
+.PassInfo p {
+    margin: 0;
+    font-weight: bold;
+    font-size: 24px;
+}
+#passvalperiod{
+    margin-top: 3%;
+}
+.Nationality {
+    margin-top: 1%;
+}
+.PassInfo {
+    margin-top: 3%;
+}
+.sidebarSquare {
+    margin: auto;
+    width: 50%;
+    margin-top: 5%;
+    margin-right: 11%;
+    border: 1px solid #8643D6;
+    border-radius: 32px;
+}
+.sidebarSquare div {
+    margin-left: 10%;
+    margin-right: 3%;
+
+}
+
+.sidebar a {
+    margin-left: 5%;
+}
+.Documents a {
+}
+.Settings {
+    margin-top: 10%;
+}
+.Something {
+    margin-bottom: 35%;
+}
+.sidebarSquare a {
+    font-size: 18px;
+}
+
+.LogoutButton {
+    text-align: center;
+    width: 35%;
+    margin: auto;
+    margin-top: 3%;
+    margin-left: 25.5%;
+    padding: 0 3%;
+    background-color: rgba(154, 110, 246, 0.35);
+    border: 1px solid #8643D6;
+    border-radius: 5px;
+}
+
+.logoutlink {
+    color: black;
+    font-size: 24px;
+}

@@ -1,0 +1,83 @@
+﻿@model goodtrip.Models.DocumentsModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/profile.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=K2D&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<header>
+    <div class = "container-fluid">
+        <p class = "text-center CustomerProfile">Operator Profile</p>
+    </div>
+    <hr class="LineInHeader"align = "center">
+</header>
+<body>
+    <div class="container-fluid">
+        <div class = "row">
+            <div class="sidebar col-3 containter-fluid">
+                <div class="sidebarSquare">
+                    <div class="Settings">
+                        <a asp-action="OperatorChangeSettings">Settings</a>
+                    </div>
+                    <div class="Documents">
+                        <a style = "background-color: rgba(154,110,246,7%); color: #8643D6;">Documents</a>
+                    </div>
+                    <div class="BussinessInfo">
+                        <a asp-action="OperatorChangeBussinessInfo">Bussiness info</a>
+                    </div>
+                    <div class="Something">
+                        <a asp-action="OperatorChangeSomething">Something</a>
+                    </div>
+                </div>
+            </div>
+            <div class = "docInfo col-6">
+                 <div class = "container-fluid">
+                    <form method = "post" asp-action = "OperatorChangeDocuments">
+                        <div class = "inputs">
+                            <div asp-validation-summary="All" class = "text-center text-danger"></div>
+                            <div class = "ContInputs">
+                                <input asp-for = "Name" type="text" placeholder = "Name" class = "form-control">
+                                <input asp-for = "LastName" type = "text" placeholder = "Last name" class = "form-control">
+                                <input asp-for = "BirthDay" placeholder = "Birthday" class = "form-control">
+                            </div>
+                            <div class = "Nationality">
+                                <select class="form-select" aria-label="Пример выбора по умолчанию" asp-for = "Nationality">
+                                  <option selected>Nationality</option>
+                                  <option value="Russia">Russia</option>
+                                  <option value="England">England</option>
+                                </select>
+                            </div>
+                            <div class = "Gender">
+                                    <input asp-for = "Gender" type="radio" value = "male" id = "male"/>
+                                    <label asp-for = "Gender" id="labelmale">male</label>
+                                    <input asp-for = "Gender" type="radio" value = "female" id = "female"/>
+                                    <label asp-for = "Gender">female</label>
+                            </div>
+                            <div class = "PassInfo">
+                                <p>Passport Information</p>
+                                <input asp-for = "PassNumber" type="text" placeholder = "Number of document" class = "form-control"/>
+                                <input asp-for = "PassValidityPeriod" placeholder = "Validity period" class = "form-control" id="passvalperiod"/>
+                            </div>
+                            <div class = "center">
+                                <button type = "submit">SAVE</button>
+                            </div>
+                        </div>
+                </form>
+            </div>
+            </div>
+            <div class = "logoutbar col-3">
+                <div class = "LogoutButton">
+                    <a asp-controller="Account" asp-action="Logout" class="logoutlink">LOG OUT</a> 
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</body>
+

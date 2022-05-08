@@ -104,6 +104,10 @@ header {
     font-family: 'K2D', sans-serif;
     
 }
+header hr {
+    color: aqua;
+    width: 100px;
+}
 .goodtripname {
     display: flex;
     align-items: center;
@@ -253,8 +257,16 @@ form .signup-link {
             text-decoration: underline;
         }
 
-.profile a {
-    text-decoration-line: none;
+
+a {
+    text-decoration: none;
+    text-decoration-color: none;
+    color: white;
+    font-size: 16px;
+}
+
+a:hover {
+    text-decoration: none;
     text-decoration-color: none;
     color: white;
 }
