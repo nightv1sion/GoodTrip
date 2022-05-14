@@ -12,5 +12,8 @@ namespace goodtrip.Storage.Entity
         public int Nights { get; set; }
         public int MaxTourists { get; set; }
 
+        public int Duration { get; set; }
+
+
     }
 }

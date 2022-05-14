@@ -12,7 +12,12 @@ namespace goodtrip.Storage
         public DbSet<UserCustomerProfile> UserCustomerProfiles { get; set; }
         public DbSet<Tour> Tours { get; set; }
 
-        public DbSet<Transportation> Transportations { get; set; }
+        public DbSet<Flight> Flights { get; set; }
+
+        public DbSet<Excurtion> Excurtions { get; set; }
+
+        public DbSet<Review> Reviews { get; set; }
+
 
         public GoodTripContext(DbContextOptions<GoodTripContext> options) : base(options)
         {
