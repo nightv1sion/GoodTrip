@@ -12,8 +12,8 @@ using goodtrip.Storage;
 namespace goodtrip.Migrations
 {
     [DbContext(typeof(GoodTripContext))]
-    [Migration("20220502150729_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20220514155254_FixTryyy")]
+    partial class FixTryyy
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,6 +24,214 @@ namespace goodtrip.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("goodtrip.Storage.Entity.Excurtion", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Duration")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Feeding")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Language")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MaxAmountOfVisitors")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Place")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime>("TimeDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("TourID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TourID");
+
+                    b.ToTable("Excurtions");
+                });
+
+            modelBuilder.Entity("goodtrip.Storage.Entity.Flight", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ArrivalAirport")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ArrivalCity")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ArrivalTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Aviacompany")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DepartureAirport")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DepartureCity")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DepartureTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<double>("MaxBaggageWeight")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Plane")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("TourId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TourId")
+                        .IsUnique();
+
+                    b.ToTable("Flights");
+                });
+
+            modelBuilder.Entity("goodtrip.Storage.Entity.Hotel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Food")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("FreeRooms")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsWifi")
+                        .HasColumnType("bit");
+
+                    b.Property<double>("Mark")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Rooms")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("TourId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("TypeOfFood")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TourId")
+                        .IsUnique();
+
+                    b.ToTable("Hotel");
+                });
+
+            modelBuilder.Entity("goodtrip.Storage.Entity.Review", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Mark")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("TourId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TourId");
+
+                    b.ToTable("Reviews");
+                });
+
+            modelBuilder.Entity("goodtrip.Storage.Entity.Tour", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Duration")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MaxTourists")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tours");
+                });
+
             modelBuilder.Entity("goodtrip.Storage.Entity.User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -31,6 +239,9 @@ namespace goodtrip.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AccountType")
                         .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -101,26 +312,48 @@ namespace goodtrip.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("Age")
+                    b.Property<DateTime>("BirthDay")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Gender")
                         .HasColumnType("int");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Nationality")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PassportNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("PassportValidityPeriod")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("TourID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("UserProfileId");
 
+                    b.HasIndex("TourID")
+                        .IsUnique();
+
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("UserProfiles");
+                    b.ToTable("UserProfile");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("UserProfile");
                 });
 
             modelBuilder.Entity("goodtrip.Storage.Entity.UserRole", b =>
@@ -254,13 +487,79 @@ namespace goodtrip.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("goodtrip.Storage.Entity.UserCustomerProfile", b =>
+                {
+                    b.HasBaseType("goodtrip.Storage.Entity.UserProfile");
+
+                    b.HasDiscriminator().HasValue("UserCustomerProfile");
+                });
+
+            modelBuilder.Entity("goodtrip.Storage.Entity.UserOperatorProfile", b =>
+                {
+                    b.HasBaseType("goodtrip.Storage.Entity.UserProfile");
+
+                    b.HasDiscriminator().HasValue("UserOperatorProfile");
+                });
+
+            modelBuilder.Entity("goodtrip.Storage.Entity.Excurtion", b =>
+                {
+                    b.HasOne("goodtrip.Storage.Entity.Tour", "Tour")
+                        .WithMany("Excurtion")
+                        .HasForeignKey("TourID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tour");
+                });
+
+            modelBuilder.Entity("goodtrip.Storage.Entity.Flight", b =>
+                {
+                    b.HasOne("goodtrip.Storage.Entity.Tour", "Tour")
+                        .WithOne("FlightTo")
+                        .HasForeignKey("goodtrip.Storage.Entity.Flight", "TourId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tour");
+                });
+
+            modelBuilder.Entity("goodtrip.Storage.Entity.Hotel", b =>
+                {
+                    b.HasOne("goodtrip.Storage.Entity.Tour", "Tour")
+                        .WithOne("Hotel")
+                        .HasForeignKey("goodtrip.Storage.Entity.Hotel", "TourId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tour");
+                });
+
+            modelBuilder.Entity("goodtrip.Storage.Entity.Review", b =>
+                {
+                    b.HasOne("goodtrip.Storage.Entity.Tour", "Tour")
+                        .WithMany("Review")
+                        .HasForeignKey("TourId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tour");
+                });
+
             modelBuilder.Entity("goodtrip.Storage.Entity.UserProfile", b =>
                 {
+                    b.HasOne("goodtrip.Storage.Entity.Tour", "Tour")
+                        .WithOne("TourOperator")
+                        .HasForeignKey("goodtrip.Storage.Entity.UserProfile", "TourID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("goodtrip.Storage.Entity.User", "User")
                         .WithOne("Profile")
                         .HasForeignKey("goodtrip.Storage.Entity.UserProfile", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Tour");
 
                     b.Navigation("User");
                 });
@@ -313,6 +612,22 @@ namespace goodtrip.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("goodtrip.Storage.Entity.Tour", b =>
+                {
+                    b.Navigation("Excurtion");
+
+                    b.Navigation("FlightTo")
+                        .IsRequired();
+
+                    b.Navigation("Hotel")
+                        .IsRequired();
+
+                    b.Navigation("Review");
+
+                    b.Navigation("TourOperator")
                         .IsRequired();
                 });
 

@@ -4,7 +4,7 @@
 
 namespace goodtrip.Migrations
 {
-    public partial class mig1 : Migration
+    public partial class FixTry232131232 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

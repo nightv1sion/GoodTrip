@@ -6,23 +6,26 @@ namespace goodtrip.Storage.Entity
     {
         [Key]
         public Guid Id { get; set; }
-        public List<DepartureCity> DepartureCities { get; set; } = new();
-        public string ArrivalCity { get; set; }
-        public List<Date> Dates { get; set; } = new();
-        public int Nights { get; set; }
+        public string City { get; set; }
+
+        public string Country { get; set; }
+        public DateTime Date { get; set; }
         public int MaxTourists { get; set; }
 
+        public double Price { get; set; }
         public int Duration { get; set; }
 
-        public Flight FlightTo { get; set; }
+        public List<Flight> FlightToAndBack { get; set; }
 
-        public Flight FlightBack { get; set; }
+       // public Flight FlightBack { get; set; }
 
         public Hotel Hotel { get; set; }
 
         public List<Excurtion> Excurtion { get; set; }
 
         public List<Review> Review { get; set; }
+
+        public UserProfile TourOperator { get; set; }
 
     }
 }
