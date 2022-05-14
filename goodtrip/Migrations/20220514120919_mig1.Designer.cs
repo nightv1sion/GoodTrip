@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using goodtrip.Storage;
 
@@ -11,9 +12,10 @@ using goodtrip.Storage;
 namespace goodtrip.Migrations
 {
     [DbContext(typeof(GoodTripContext))]
-    partial class GoodTripContextModelSnapshot : ModelSnapshot
+    [Migration("20220514120919_mig1")]
+    partial class mig1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -80,28 +82,6 @@ namespace goodtrip.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Tours");
-                });
-
-            modelBuilder.Entity("goodtrip.Storage.Entity.Transportation", b =>
-                {
-                    b.Property<Guid>("TransportationId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("AeroportName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CompanyName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("TransportationId");
-
-                    b.ToTable("Transportations");
                 });
 
             modelBuilder.Entity("goodtrip.Storage.Entity.User", b =>
