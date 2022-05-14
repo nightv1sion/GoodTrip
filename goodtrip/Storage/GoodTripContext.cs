@@ -10,6 +10,7 @@ namespace goodtrip.Storage
         public DbSet<User> Users { get; set; }
         public DbSet<UserOperatorProfile> UserOperatorProfiles { get; set; }
         public DbSet<UserCustomerProfile> UserCustomerProfiles { get; set; }
+        public DbSet<Tour> Tours { get; set; }
 
         public GoodTripContext(DbContextOptions<GoodTripContext> options) : base(options)
         {
@@ -23,7 +24,6 @@ namespace goodtrip.Storage
                 .WithOne(p => p.User)
                 .HasForeignKey<UserProfile>(p => p.UserId);
 
-            //builder.Entity<IdentityUserLogin<string>>().HasNoKey();
         }
     }
 }

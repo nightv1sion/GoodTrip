@@ -23,39 +23,9 @@ namespace goodtrip.Controllers
             
         }
 
-        public IActionResult Index(LoginUser? loginUser = null)
+        public IActionResult Index()
         {
-            if(loginUser != null)
-            {
-                return View(loginUser);
-            }
             return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginUser loginUser)
-        {
-            if (ModelState.IsValid)
-            {
-                var result = await _signInManager.PasswordSignInAsync(loginUser.Email, loginUser.Password, loginUser.RememberMe, false);
-                if (result.Succeeded)
-                {
-                    var claims = new List<Claim> { new Claim(ClaimTypes.Name, loginUser.Email) };
-                    ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, "Cookies");
-                    User user = _dbContext.Users.FirstOrDefault(u => u.Email == loginUser.Email);
-                    if(user != null)
-                    {
-                        await _signInManager.SignInAsync(user, null);
-                        await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
-                    }
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Email or password is incorrect");
-                }
-            }
-            return View("Index", loginUser);
         }
 
 

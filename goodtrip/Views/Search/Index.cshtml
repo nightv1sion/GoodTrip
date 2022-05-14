@@ -1,0 +1,23 @@
+﻿@model goodtrip.Models.SearchModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+
+<form method = "post">
+    <input asp-for="PlaceFrom" placeholder = "FROM" />
+    <input asp-for="PlaceTo" placeholder = "TO" />
+    <input asp-for="When" placeholder = "WHEN" />
+    <input asp-for="Nights" placeholder = "NIGHTS" />
+    <input asp-for="Tourists" placeholder = "TOURISTS" />
+    <button type="submit">SEARCH</button>
+</form>
+@if(Model.Tours!=null){
+    @foreach(var tour in Model.Tours){
+    <div>
+        <p>@Model.PlaceFrom -> @tour.ArrivalCity</p>
+        <p>Nights: @tour.Nights</p>
+    </div>
+    <br />
+}
+}

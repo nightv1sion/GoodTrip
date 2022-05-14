@@ -48,3 +48,45 @@ button.accept-policy {
   white-space: nowrap;
   line-height: 60px;
 }
+header .container-fluid {
+    background-color: rgba(154,110,246,50%);
+}
+.logo {
+    width: 70%;
+    margin: 3%;
+}
+.search {
+    text-align: center;
+    padding-top: 2%;
+}
+.search form {
+     margin-top: 50%;
+}
+.profile {
+    text-align: center;
+    width: 50%;
+    margin: auto;
+    margin-top: 15%;
+    margin-left: 25.5%;
+    padding: 0 3%;
+    background-color: rgba(154, 110, 246, 0.35);
+    border: 1px solid #8643D6;
+    border-radius: 5px;
+    font-size: 24px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+.profile a {
+    color: black;
+}
+.profilebutton {
+}
+.btnsearch button {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    padding: 0.5% 1.5%;
+    background-color: rgba(154, 110, 246, 0.35);
+    border: 1px solid #8643D6;
+    border-radius: 5px;
+    font-size: 24px;
+}
