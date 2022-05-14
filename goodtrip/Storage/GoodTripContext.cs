@@ -30,7 +30,10 @@ namespace goodtrip.Storage
                 .HasOne(u => u.Profile)
                 .WithOne(p => p.User)
                 .HasForeignKey<UserProfile>(p => p.UserId);
-
+            builder.Entity<Tour>()
+                .HasOne(t => t.FlightBack)
+                .WithOne(f => f.Tour)
+                .HasForeignKey<Flight>(c => c.TourID);
         }
     }
 }

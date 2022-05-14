@@ -13,5 +13,10 @@
         public bool IsWifi { get; set; }
         public string Food { get; set; }
         public string TypeOfFood { get; set; }
+
+        public Guid TourId { get; set; }
+
+        public Tour Tour { get; set; }
+
     }
 }
