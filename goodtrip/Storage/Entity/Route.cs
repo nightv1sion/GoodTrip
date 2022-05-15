@@ -12,7 +12,6 @@ namespace goodtrip.Storage.Entity
         public string ArrivalCity { get; set; }
         public string ArrivalAirport { get; set; }
         public DateTime ArrivalTime { get; set; }
-        public double Price { get; set; }
         public Flight Flight { get; set; }
         public Guid FlightId { get; set; }
     }
