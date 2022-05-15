@@ -257,6 +257,9 @@ namespace goodtrip.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("ArrivalTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("DepartureAirport")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -264,6 +267,9 @@ namespace goodtrip.Migrations
                     b.Property<string>("DepartureCity")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DepartureTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<double>("Distance")
                         .HasColumnType("float");
