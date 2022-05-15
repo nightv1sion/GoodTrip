@@ -15,7 +15,6 @@ namespace goodtrip.Storage.Entity
         public double Price { get; set; }
         public int Duration { get; set; }
         public List<Excurtion> Excurtion { get; set; }
-        public List<Flight> FlightToAndBack { get; set; }
         public Hotel Hotel { get; set; }
         public List<Review> Review { get; set; }
         public string TourOperator { get; set; }
