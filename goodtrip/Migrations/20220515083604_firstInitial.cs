@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace goodtrip.Migrations
 {
-    public partial class FixTry11 : Migration
+    public partial class firstInitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -187,21 +187,48 @@ namespace goodtrip.Migrations
                     Feeding = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TourID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    TourId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Excurtions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Excurtions_Tours_TourID",
-                        column: x => x.TourID,
+                        name: "FK_Excurtions_Tours_TourId",
+                        column: x => x.TourId,
                         principalTable: "Tours",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Hotel",
+                name: "Flights",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Aviacompany = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DepartureTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ArrivalTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DepartureCity = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ArrivalCity = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Plane = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MaxBaggageWeight = table.Column<double>(type: "float", nullable: false),
+                    DepartureAirport = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ArrivalAirport = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TourId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Flights", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Flights_Tours_TourId",
+                        column: x => x.TourId,
+                        principalTable: "Tours",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Hotels",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -219,9 +246,9 @@ namespace goodtrip.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Hotel", x => x.Id);
+                    table.PrimaryKey("PK_Hotels", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Hotel_Tours_TourId",
+                        name: "FK_Hotels_Tours_TourId",
                         column: x => x.TourId,
                         principalTable: "Tours",
                         principalColumn: "Id",
@@ -322,13 +349,18 @@ namespace goodtrip.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Excurtions_TourID",
+                name: "IX_Excurtions_TourId",
                 table: "Excurtions",
-                column: "TourID");
+                column: "TourId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Hotel_TourId",
-                table: "Hotel",
+                name: "IX_Flights_TourId",
+                table: "Flights",
+                column: "TourId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Hotels_TourId",
+                table: "Hotels",
                 column: "TourId",
                 unique: true);
 
@@ -371,7 +403,10 @@ namespace goodtrip.Migrations
                 name: "Excurtions");
 
             migrationBuilder.DropTable(
-                name: "Hotel");
+                name: "Flights");
+
+            migrationBuilder.DropTable(
+                name: "Hotels");
 
             migrationBuilder.DropTable(
                 name: "Reviews");

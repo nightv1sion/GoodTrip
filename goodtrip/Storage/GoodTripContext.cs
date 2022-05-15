@@ -14,6 +14,8 @@ namespace goodtrip.Storage
 
         public DbSet<Flight> Flights { get; set; }
 
+        public DbSet<Hotel> Hotels { get; set; }
+
         public DbSet<Excurtion> Excurtions { get; set; }
 
         public DbSet<Review> Reviews { get; set; }
