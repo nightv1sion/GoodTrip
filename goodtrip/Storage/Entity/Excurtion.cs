@@ -15,9 +15,8 @@ namespace goodtrip.Storage.Entity
         public string Feeding { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-
+        public List<ImageExcurtion> Images { get; set; }
         public Guid TourId { get; set; }
         public Tour Tour { get; set; }
-
     }
 }

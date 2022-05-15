@@ -172,6 +172,59 @@ namespace goodtrip.Migrations
                     b.ToTable("Hotel");
                 });
 
+            modelBuilder.Entity("goodtrip.Storage.Entity.ImageExcurtion", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("ExcurtionId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("HotelId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<byte[]>("ImageData")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("ImageTitle")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ExcurtionId");
+
+                    b.HasIndex("HotelId");
+
+                    b.ToTable("ImageExcurtion");
+                });
+
+            modelBuilder.Entity("goodtrip.Storage.Entity.ImageHotel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("HotelId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<byte[]>("ImageData")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("ImageTitle")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HotelId");
+
+                    b.ToTable("ImageHotel");
+                });
+
             modelBuilder.Entity("goodtrip.Storage.Entity.Review", b =>
                 {
                     b.Property<Guid>("Id")
@@ -531,6 +584,32 @@ namespace goodtrip.Migrations
                     b.Navigation("Tour");
                 });
 
+            modelBuilder.Entity("goodtrip.Storage.Entity.ImageExcurtion", b =>
+                {
+                    b.HasOne("goodtrip.Storage.Entity.Excurtion", null)
+                        .WithMany("Images")
+                        .HasForeignKey("ExcurtionId");
+
+                    b.HasOne("goodtrip.Storage.Entity.Hotel", "Hotel")
+                        .WithMany()
+                        .HasForeignKey("HotelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Hotel");
+                });
+
+            modelBuilder.Entity("goodtrip.Storage.Entity.ImageHotel", b =>
+                {
+                    b.HasOne("goodtrip.Storage.Entity.Hotel", "Hotel")
+                        .WithMany("Images")
+                        .HasForeignKey("HotelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Hotel");
+                });
+
             modelBuilder.Entity("goodtrip.Storage.Entity.Review", b =>
                 {
                     b.HasOne("goodtrip.Storage.Entity.Tour", "Tour")
@@ -610,6 +689,16 @@ namespace goodtrip.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("goodtrip.Storage.Entity.Excurtion", b =>
+                {
+                    b.Navigation("Images");
+                });
+
+            modelBuilder.Entity("goodtrip.Storage.Entity.Hotel", b =>
+                {
+                    b.Navigation("Images");
                 });
 
             modelBuilder.Entity("goodtrip.Storage.Entity.Tour", b =>
