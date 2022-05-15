@@ -7,8 +7,6 @@ namespace goodtrip.Storage.Entity
     {
         [Key]
         public Guid Id { get; set; }
-        [Column(TypeName = "varchar")]
-        [MaxLength]
         public string Text { get; set; }
         public int Mark { get; set; }
         public DateTime Created { get; set; }

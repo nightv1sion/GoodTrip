@@ -13,7 +13,7 @@ namespace goodtrip.Storage.Entity
         public DateTime TimeDate { get; set; }
         public int MaxAmountOfVisitors { get; set; }
         public string Language { get; set; }
-        public string Feeding { get; set; }
+        public bool Feeding { get; set; }
         public string Name { get; set; }
         [Column(TypeName = "varchar")]
         [MaxLength]
