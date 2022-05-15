@@ -22,11 +22,12 @@ namespace goodtrip.Controllers
             _dbContext = dbContext;
             //SeedData();
             //SeedData1();
+            //SeedData2();
         }
 
         public IActionResult Index()
         {
-            /* ImageExcurtion img = _dbContext.ImageExcurtion.First();
+            /*ImageExcurtion img = _dbContext.ImageExcurtion.First();
             string imageBase64Data =
             Convert.ToBase64String(img.ImageData);
             string imageDataURL =
@@ -53,6 +54,8 @@ namespace goodtrip.Controllers
                 Country = "USA",
                 Description = "SuperDescription",
                 Duration = 7,
+                StartDate = new DateTime(2022, 5, 18),
+                EndDate = new DateTime(2022, 5, 25),
                 MaxTourists = 5,
                 TourOperator = "PETYA",
             };
@@ -72,7 +75,7 @@ namespace goodtrip.Controllers
                 Tour = tour,
                 TourId = tour.Id,
             };
-            FileStream file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\hotelLAX.jpg", FileMode.Open);
+            FileStream file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\hotelLAX.jpg", FileMode.Open);
             List<ImageHotel> hotelimages = new List<ImageHotel>();
             MemoryStream ms = new MemoryStream();
             file.CopyTo(ms);
@@ -118,6 +121,8 @@ namespace goodtrip.Controllers
                 Country = "USA",
                 Description = "You will meet New-York and get to know a lot of about this amazing city",
                 Duration = 6,
+                StartDate = new DateTime(2022, 5, 20),
+                EndDate = new DateTime(2022, 5, 26),
                 MaxTourists = 4,
                 TourOperator = "AmericanToursFE",
             };
@@ -183,6 +188,8 @@ namespace goodtrip.Controllers
                 Country = "USA",
                 Description = "We offer a guaranteed tour to Las Vegas for 4 days, with accommodation in the center of the Strip in hotel. During the tour you will learn all about Las Vegas, its main attractions and the best casinos. If you wish, you can go on an excursion to Death Valley or Hoover Dam.",
                 Duration = 4,
+                StartDate = new DateTime(2022, 5, 28),
+                EndDate = new DateTime(2022, 6, 02),
                 MaxTourists = 3,
                 TourOperator = "AmericanToursFE",
             };
@@ -211,19 +218,35 @@ namespace goodtrip.Controllers
             );
             hotel.Images = hotelimages;
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\Harra2.jpg", FileMode.Open);
+            ms = new MemoryStream();
+            file.CopyTo(ms);
+            hotelimages.Add(
+                new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
+            );
+            hotel.Images = hotelimages;
+            file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\Harra3.jpg", FileMode.Open);
+            ms = new MemoryStream();
+            file.CopyTo(ms);
+            hotelimages.Add(
+                new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
+            );
+            hotel.Images = hotelimages;
+            file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
             Excurtion excurtion = new Excurtion()
             {
                 Id = Guid.NewGuid(),
                 Name = "Evening Las-Vegas",
-                Description = "Morning trip to NW",
-                Duration = 8,
+                Description = "Evening excursion in LV to see lost of sights",
+                Duration = 4,
                 Language = "English",
-                MaxAmountOfVisitors = 25,
-                Place = "Niaghara Waterfall",
+                MaxAmountOfVisitors = 12,
+                Place = "Center of Las-Vegas",
                 Tour = tour,
                 TourId = tour.Id
             };
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\NigWat.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\EVex.jpg", FileMode.Open);
             List<ImageExcurtion> excurtionimages = new List<ImageExcurtion>();
             ms = new MemoryStream();
             file.CopyTo(ms);
@@ -232,9 +255,31 @@ namespace goodtrip.Controllers
             );
             excurtion.Images = excurtionimages;
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
+            Excurtion excurtion2 = new Excurtion()
+            {
+                Id = Guid.NewGuid(),
+                Name = "To the Grand Canyon",
+                Description = "Enjoy 6 hours at the Grand Canyon, compared to 3 hours offered by other companies. West Rim includes Eagle Point & Guano Point. Photo stop at the Hoover Dam Bypass",
+                Duration = 6,
+                Language = "English",
+                MaxAmountOfVisitors = 8,
+                Place = "Grand Canyon",
+                Tour = tour,
+                TourId = tour.Id
+            };
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\GCex.jpg", FileMode.Open);
+            List<ImageExcurtion> excurtionimages2 = new List<ImageExcurtion>();
+            ms = new MemoryStream();
+            file.CopyTo(ms);
+            excurtionimages.Add(
+                new ImageExcurtion() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Excurtion = excurtion2, ExcurtionId = excurtion2.Id }
+            );
+            excurtion2.Images = excurtionimages2;
+            file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
             tour.Hotel = hotel;
             tour.Excurtion = new List<Excurtion>();
             tour.Excurtion.Add(excurtion);
+            tour.Excurtion.Add(excurtion2);
             _dbContext.Tours.Add(tour);
             _dbContext.SaveChanges();
         }
