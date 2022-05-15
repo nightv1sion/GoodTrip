@@ -53,6 +53,7 @@ namespace goodtrip.Controllers
                 Country = "USA",
                 Description = "SuperDescription",
                 Duration = 7,
+                ArrivalDate = new DateTime(2022,05,20)
                 MaxTourists = 5,
                 TourOperator = "PETYA",
             };
