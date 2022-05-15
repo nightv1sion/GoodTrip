@@ -9,6 +9,8 @@ namespace goodtrip.Storage.Entity
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string City { get; set; }
+        public DateTime ArrivalDate { get; set; }
+        public DateTime DepartureDate { get; set; }
         public string Country { get; set; }
         [Column(TypeName = "nvarchar(4000)")]
         public string Description { get; set; }

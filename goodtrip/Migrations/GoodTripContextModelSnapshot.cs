@@ -50,12 +50,6 @@ namespace goodtrip.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
-
-                    b.Property<DateTime>("TimeDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<Guid>("TourId")
                         .HasColumnType("uniqueidentifier");
 
@@ -86,7 +80,7 @@ namespace goodtrip.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(500)");
+                        .HasColumnType("nvarchar(4000)");
 
                     b.Property<bool>("Feeding")
                         .HasColumnType("bit");
@@ -198,6 +192,9 @@ namespace goodtrip.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<DateTime>("ArrivalDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("City")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -205,6 +202,9 @@ namespace goodtrip.Migrations
                     b.Property<string>("Country")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DepartureDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .IsRequired()

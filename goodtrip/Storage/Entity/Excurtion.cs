@@ -7,15 +7,14 @@ namespace goodtrip.Storage.Entity
     {
         [Key]
         public Guid Id { get; set; }
-        public double Price { get; set; }
         public int Duration { get; set; }
         public string Place { get; set; }
-        public DateTime TimeDate { get; set; }
         public int MaxAmountOfVisitors { get; set; }
         public string Language { get; set; }
         public string Name { get; set; }
         [Column(TypeName = "nvarchar(4000)")]
         public string Description { get; set; }
+        [Column(TypeName = "nvarchar(4000)")]
         public List<ImageExcurtion> Images { get; set; }
         public Guid TourId { get; set; }
         public Tour Tour { get; set; }
