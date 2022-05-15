@@ -14,7 +14,6 @@ namespace goodtrip.Storage.Entity
         public string Name { get; set; }
         [Column(TypeName = "nvarchar(4000)")]
         public string Description { get; set; }
-        [Column(TypeName = "nvarchar(4000)")]
         public List<ImageExcurtion> Images { get; set; }
         public Guid TourId { get; set; }
         public Tour Tour { get; set; }

@@ -19,6 +19,7 @@ namespace goodtrip
                 TourOperator = "AmericanToursFE",
                 StartDate = new DateTime(2022, 05, 25),
                 EndDate = new DateTime(2022, 06, 20),
+                Price = 5000
             };
             Hotel hotel = new Hotel()
             {
@@ -100,6 +101,7 @@ namespace goodtrip
                 TourOperator = "AmericanToursFE",
                 StartDate = new DateTime(2022, 05, 31),
                 EndDate = new DateTime(2022, 08, 15),
+                Price = 3500
             };
             Hotel hotel = new Hotel()
             {
@@ -194,6 +196,7 @@ namespace goodtrip
                 TourOperator = "AmericanToursFE",
                 StartDate = new DateTime(2022, 05, 17),
                 EndDate = new DateTime(2022, 06, 20),
+                Price = 4700
             };
             Hotel hotel = new Hotel()
             {
@@ -276,6 +279,7 @@ namespace goodtrip
                 TourOperator = "AmericanToursFE",
                 StartDate = new DateTime(2022, 06, 02),
                 EndDate = new DateTime(2022, 07, 15),
+                Price = 7500
             };
             Hotel hotel = new Hotel()
             {
@@ -357,6 +361,7 @@ namespace goodtrip
                 TourOperator = "AmericanToursFE",
                 StartDate = new DateTime(2022, 05, 25),
                 EndDate = new DateTime(2022, 06, 15),
+                Price = 8500
             };
             Hotel hotel = new Hotel()
             {
