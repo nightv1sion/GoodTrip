@@ -9,9 +9,7 @@ namespace goodtrip.Storage.Entity
         public string Text { get; set; }
         public int Mark { get; set; }
         public DateTime Created { get; set; }
-        
         public Guid TourId { get; set; }
-
         public Tour Tour { get; set; }
     }
 }

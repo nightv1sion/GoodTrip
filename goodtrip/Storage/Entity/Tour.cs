@@ -13,14 +13,11 @@ namespace goodtrip.Storage.Entity
         public int MaxTourists { get; set; }
 
         public int Duration { get; set; }
+        public List<Excurtion> Excurtion { get; set; }
 
-        public Flight FlightTo { get; set; }
-
-        public Flight FlightBack { get; set; }
+        public List<Flight> Flights { get; set; }
 
         public Hotel Hotel { get; set; }
-
-        public List<Excurtion> Excurtion { get; set; }
 
         public List<Review> Review { get; set; }
 

@@ -15,9 +15,6 @@ namespace goodtrip.Storage.Entity
         public double MaxBaggageWeight { get; set; }
         public string DepartureAirport { get; set; }
         public string ArrivalAirport { get; set; }
-
-        public Guid TourID { get; set; }
-
         public Tour Tour { get; set; }
     }
 }

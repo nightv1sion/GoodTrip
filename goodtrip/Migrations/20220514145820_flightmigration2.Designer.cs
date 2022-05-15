@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using goodtrip.Storage;
 
@@ -11,9 +12,10 @@ using goodtrip.Storage;
 namespace goodtrip.Migrations
 {
     [DbContext(typeof(GoodTripContext))]
-    partial class GoodTripContextModelSnapshot : ModelSnapshot
+    [Migration("20220514145820_flightmigration2")]
+    partial class flightmigration2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -99,12 +101,12 @@ namespace goodtrip.Migrations
                     b.Property<DateTime>("TimeDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("TourId")
+                    b.Property<Guid>("TourID")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TourId");
+                    b.HasIndex("TourID");
 
                     b.ToTable("Excurtions");
                 });
@@ -148,12 +150,12 @@ namespace goodtrip.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("TourId")
+                    b.Property<Guid>("TourID")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("FlightId");
 
-                    b.HasIndex("TourId");
+                    b.HasIndex("TourID");
 
                     b.ToTable("Flights");
                 });
@@ -542,7 +544,7 @@ namespace goodtrip.Migrations
                 {
                     b.HasOne("goodtrip.Storage.Entity.Tour", "Tour")
                         .WithMany("Excurtion")
-                        .HasForeignKey("TourId")
+                        .HasForeignKey("TourID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -553,7 +555,7 @@ namespace goodtrip.Migrations
                 {
                     b.HasOne("goodtrip.Storage.Entity.Tour", "Tour")
                         .WithMany("Flights")
-                        .HasForeignKey("TourId")
+                        .HasForeignKey("TourID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
