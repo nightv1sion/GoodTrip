@@ -18,7 +18,7 @@ namespace goodtrip.Storage.Entity
         public int Rooms { get; set; }
         public int FreeRooms { get; set; }
         public bool IsWifi { get; set; }
-        public string Food { get; set; }
+        public string Feeding { get; set; }
         public string TypeOfFood { get; set; }
         public List<ImageHotel> Images { get; set; }
         public Guid TourId { get; set; }
