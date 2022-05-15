@@ -35,7 +35,7 @@ namespace goodtrip.Controllers
             foreach(var excurtion in tour.Excurtion)
             {
                 if(excurtion.Images.Count != 0)
-                {
+        {
                     excurtionPhotos.Add(string.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(excurtion.Images[0]?.ImageData)));
                 }
             }

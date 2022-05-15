@@ -3,6 +3,16 @@
 @{
     Layout = null;
 }
+<head>
+    <link rel="stylesheet" href="~/css/reset.css" asp-append-version="true" />
+     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=K2D&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="~/css/reset.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Search.css" asp-append-version="true" />
+</head>
 
 <form method = "post">
     <input asp-for="Place" placeholder = "FROM" />
@@ -11,14 +21,24 @@
 
     <button type="submit">SEARCH</button>
 </form>
-
+<body style = "background-color: #E2D3FF">
 @if(Model.Tours != null){
     @foreach(var tour in Model.Tours){
         <div class = "tour">
+            <div class = "SearchImage">
             <img src = "@tour.ImageDataUrl">
-            <p>@tour.Name</p>
-            <p>@tour.Description</p>
-            <p>@tour.Price</p>
+            </div>
+            <div class = "NameTour">
+                            <p>@tour.Name</p>
+            </div>
+            <div class = "DescriptionTour">
+                   <p>@tour.Description</p>
+            </div>
+            <div class = "PriceTour">
+                  <p>@tour.Price$</p>
+            </div>
         </div>
     }
 }
+
+</body>

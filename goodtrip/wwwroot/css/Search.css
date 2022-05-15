@@ -1,0 +1,40 @@
+﻿.Tour {
+    margin:auto;
+    background-color: #ffffff;
+    font-family: K2D;
+    border:outset #808080;
+    border-radius: 30px;
+    padding: 20px 40px;
+    width:30%;
+    min-height: 15%;
+    margin-bottom:1%;
+}
+
+.SearchImage {
+    width: 200px;
+    height: 100px;
+}
+
+.SearchImage img {
+        width: 100%;
+        height: 100%;
+    }
+
+.NameTour {
+    margin: -100px 20px 50px 210px;
+    font-size: 14px;
+}
+
+.DescriptionTour {
+    /*margin: -50px 0px 50px 210px;*/
+    margin: -50px 20px 50px 210px;
+    /*padding: 20px 0px 20% 210px;*/
+    font-size: 12px;
+}
+
+.PriceTour {
+    background-color: #baf783;
+    border-radius: 30px;
+    margin-left: 87%;
+    font-size: 18px;
+}

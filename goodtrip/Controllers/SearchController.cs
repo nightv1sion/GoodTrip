@@ -17,18 +17,18 @@ namespace goodtrip.Controllers
         public IActionResult Index(SearchModel searchModel)
         {
             List<TourModel> searchedTours  = new List<TourModel>();
-            foreach(var tour in _context.Tours.Include(t => t.Excurtion).ToList())
+            foreach(var tour in _context.Tours.Include(t => t.Hotel).ToList())
             {
-                foreach(var excurtion in tour.Excurtion)
-                {
-                    excurtion.Images = _context.ImagesExcurtion.Where(i => i.ExcurtionId == excurtion.Id).ToList<ImageExcurtion>();
-                }
+                var hotel = tour.Hotel;
+                    hotel.Images = _context.ImagesHotel.Where(i => i.HotelId == hotel.Id).ToList<ImageHotel>();
+
                 TourModel model = new TourModel()
                 {
                     Name = tour.Name,
                     Description = tour.Description,
                     Id = tour.Id,
-                    ImageDataUrl = tour.Excurtion[0].Images.Count!=0 ? string.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(tour.Excurtion[0]?.Images[0]?.ImageData)) : null
+                    Price = tour.Price,
+                    ImageDataUrl = tour.Hotel.Images.Count!=0 ? string.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(tour.Hotel?.Images[0]?.ImageData)) : null
                 };
                 searchedTours.Add(model);
             }
