@@ -32,11 +32,9 @@
                 <div class="col-8">
                     <div class="search">
                         <form method = "post" asp-controller="Search" asp-action="Index">
-                            <input asp-for="PlaceFrom" placeholder = "FROM" />
-                            <input asp-for="PlaceTo" placeholder = "TO" />
-                            <input asp-for="When" type="date" placeholder = "WHEN" />
-                            <input asp-for="Nights" placeholder = "NIGHTS" />
-                            <input asp-for="Tourists" placeholder = "TOURISTS" />
+                            <input asp-for="Place" placeholder = "FROM" />
+                            <input asp-for="DateOfStart" placeholder = "Date of start" />
+                            <input asp-for="DateOfEnd" placeholder = "Date of end" />
                             <div class="btnsearch">
                                 <button type="submit">SEARCH</button>
                             </div>

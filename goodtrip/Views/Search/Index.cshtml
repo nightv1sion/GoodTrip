@@ -5,13 +5,20 @@
 }
 
 <form method = "post">
-    <input asp-for="PlaceFrom" placeholder = "FROM" />
-    <input asp-for="PlaceTo" placeholder = "TO" />
-    <input asp-for="When" placeholder = "WHEN" />
-    <input asp-for="Nights" placeholder = "NIGHTS" />
-    <input asp-for="Tourists" placeholder = "TOURISTS" />
+    <input asp-for="Place" placeholder = "FROM" />
+    <input asp-for="DateOfStart" placeholder = "Date of start" />
+    <input asp-for="DateOfEnd" placeholder = "Date of end" />
+
     <button type="submit">SEARCH</button>
 </form>
 
-}
+@if(Model.Tours != null){
+    @foreach(var tour in Model.Tours){
+        <div class = "tour">
+            <img src = "@tour.ImageDataUrl">
+            <p>@tour.Name</p>
+            <p>@tour.Description</p>
+            <p>@tour.Price</p>
+        </div>
+    }
 }

@@ -6,14 +6,11 @@ namespace goodtrip.Models
     public class SearchModel
     {
         [Required]
-        public string PlaceFrom { get; set; }
+        public string Place { get; set; }
         [Required]
-        public string PlaceTo { get; set; }
-        [Required]
-        public DateTime When { get; set; }
-        public int? Nights { get; set; }
-        public int? Tourists { get; set; }
-        public List<Tour> Tours { get; set; }
+        public DateTime DateOfStart { get; set; }
+        public DateTime DateOfEnd { get; set; }
+        public List<TourModel> Tours { get; set; }
 
     }
 }
