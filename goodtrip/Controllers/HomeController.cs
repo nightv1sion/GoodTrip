@@ -23,7 +23,6 @@ namespace goodtrip.Controllers
             //SeedDataClass.SuperSeed(_dbContext);
 
         }
-
         public IActionResult Index()
         {
             /*ImageExcurtion img = _dbContext.ImageExcurtion.First();

@@ -1,0 +1,242 @@
+﻿@model goodtrip.Storage.Entity.Tour
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+<html>
+    <head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/tour.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=K2D&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css..">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/lightbox.min.css">
+    </head>
+<body>
+<div class = "container-fluid">
+    <div class = "tour">
+        <div class = "row">
+        <div class = "col-3">
+        <div class = "row">
+            <div class = "grid">
+        @foreach(var photo in ViewBag.HotelPhotos)
+        {
+            <img src = "@photo" />
+        }
+        </div>
+        </div>
+        </div>
+        <div class = "tourinfo col-9">
+            <div class = "nameoftour">
+                <p>@Model.Name</p>
+            </div>
+            <div class = "cityoftour">
+                <p>@Model.City, @Model.Country</p>
+            </div>
+            <p>@Model.Description</p>
+            <div class = "duration">
+                <p>@Model.Duration Days</p>
+            </div>
+            <div class = "scaledate">
+                <div class = "row">
+                    <div class = "col-4">
+                        <img src = "~/images/calendar.svg">
+                    </div>
+                    <div class = "col-8 dates">
+                        <p>FROM @Model.StartDate.Date.ToShortDateString() To @Model.EndDate.Date.ToShortDateString()</p>
+                    </div>
+                </div>
+            </div>
+            <div class = "persons">
+                     <div class = "row">
+                         <div class = "col-4">
+                        <img src = "~/images/person.svg" />
+                    </div>
+                    <div class = "col-8">
+                        <p>@Model.MaxTourists Persons</p>
+                    </div>
+                     </div>
+            </div>
+            <div class="row">
+                <div class = "col-6 price">
+                        <p>@Model.Price $</p>
+                </div>
+                <div class = "col-6 apply">
+                    <p>Apply</p>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+        <div class = "hotelheader">
+            <p>Hotel Info</p>
+        </div>
+        <div class = "hotelinfo">
+            <div class="hotelname">
+                <p>@Model.Hotel.Name</p>
+            </div>
+            <div class ="hoteldescription">
+                <p>@Model.Hotel.Description</p>
+            </div>
+            <div class = "row">
+                <div class = "col-6 ">
+                    <div class = "hoteladdress">
+                        <p>@Model.Hotel.Address</p>
+                    </div>
+                    <div class = "hotelstars">
+                        <div class = "row">
+                            <div class = "col-1">
+                                <img src = "~/images/stars.svg">
+                            </div>
+                            <div class = "col-11">
+                                <p>@Model.Hotel.Mark Stars</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class = "col-6 hotelmicroinfo">
+                    @if (Model.Hotel.IsWifi)
+                    {
+                        <div class = "row">
+                        <div class = "col-1 wifi">
+                        <img src = "~/images/wifi.svg">
+                        </div>
+                        <div class = "col-11 hotelwifi">
+                        <p>Free Wifi</p>                        
+                        </div>
+                        </div>
+                    }
+                    @if (Model.Hotel.Feeding)
+                    {
+                        <div class = "row">
+                        <div class = "col-1 hotelmealimg">
+                        <img src = "~/images/meal.svg">
+                        </div>
+                        <div class = "col-11 hotelmeal">
+                        <p>Meals included</p>                        
+                        </div>
+                        </div>
+                    }
+                    <div class = "row">
+                        <div class = "col-1 hotelfreeroomsimg">
+                        <img src = "~/images/freerooms.svg">
+                        </div>
+                        <div class = "col-11 hotelfreerooms">
+                        <p>@Model.Hotel.FreeRooms Free Rooms</p>
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+        <div class = "hotelheader">
+            <p>Excursion Info</p>
+        </div>
+        @{
+            int counter = 0;
+
+        @foreach(var excursion in Model.Excurtion){
+            
+            <div class = "excursioninfo">
+            <div class = "row">
+                <div class = "col-3">
+                    <div class = "grid">
+                        <img src="@ViewBag.ExcurtionPhotos[counter]">
+                        @{counter++;}
+                    </div>
+                </div>
+                <div class = "col-9">
+                    <div class = "excursionname">
+                        <p>@excursion.Name</p>
+                    </div>
+                    <div class = "excursiondescription">
+                        <p>@excursion.Description</p>
+                    </div>
+                    <div class = "excursionmicroinfo">
+                        <div class = "row">
+                            <div class = "col-4">
+                                <div class = "excursionduration">
+                                    <div class = "row">
+                                    <div class = "col-2 hoursimg">
+                                        <img src = "~/images/hours.svg">
+                                    </div>
+                                    <div class = "col-10 hours">
+                                        <p>@excursion.Duration Hours</p>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class = "col-4">
+                            <div class = "excursionlanguage">
+                            <div class = "row">
+                                <div class = "col-2 languageimg">
+                                <img src = "~/images/language.svg">
+                                </div>
+                                <div class = "col-10 language">
+                                <p>@excursion.Language</p>
+                                </div>
+                            </div>
+                                </div>
+                            </div>
+                            <div class = "col-4">
+                            <div class = "excursionpersons">
+                                 <div class = "row">
+                                 <div class = "col-3 personimg">
+                                <img src = "~/images/person.svg">
+                                </div>
+                                <div class = "col-9 person">
+                                <p>@excursion.MaxAmountOfVisitors Persons</p>
+                                </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class = "excursionplace">
+                            <div class = "row">
+                                <div class = "col-1">
+                                    <img src = "~/images/place.svg">
+                                </div>
+                                <div class = "col-11">
+                                    <p>@excursion.Place</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+        }
+</div>
+
+<script>
+const lightbox = document.createElement('div')
+lightbox.id = 'lightbox'
+document.body.appendChild(lightbox)
+
+const images = document.querySelectorAll('img')
+images.forEach(image => {
+  image.addEventListener('click', e => {
+    lightbox.classList.add('active')
+    const img = document.createElement('img')
+    img.src = image.src
+    while (lightbox.firstChild) {
+      lightbox.removeChild(lightbox.firstChild)
+    }
+    lightbox.appendChild(img)
+  })
+})
+
+lightbox.addEventListener('click', e => {
+  if (e.target !== e.currentTarget) return
+  lightbox.classList.remove('active')
+})
+</script>
+</body>
+</html>

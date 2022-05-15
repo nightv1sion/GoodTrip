@@ -1,0 +1,203 @@
+﻿body {
+    background-color: rgba(154,110,246,10%);
+    font-family: 'K2D', sans-serif;
+}
+.tour {
+    margin: auto;
+    margin-top: 4%;
+    width: 70%;
+}
+.tour img {
+    width: 100%;
+}
+.nameoftour p{
+    font-weight: bold;
+}
+
+.cityoftour {
+    font-weight: lighter;
+    font-style: italic;
+}
+.duration p {
+    text-align: center;
+    margin: auto;
+}
+.persons p {
+    text-align: start;
+    margin-left: 2%;
+
+}
+
+.dates {
+    margin: 0;
+    text-align: start;
+}
+.dates p {
+    margin-left: 2%;
+}
+body {
+    margin: 0;
+}
+
+.grid {
+    display: block;
+    grid-template-columns: repeat(3, 200px);
+    justify-content: center;
+    align-content: center;
+    grid-gap: 10px;
+}
+
+    .grid img {
+        cursor: pointer;
+        margin-bottom: 5%;
+    }
+
+#lightbox {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .8);
+    display: none;
+}
+
+#lightbox.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#lightbox img {
+    max-width: 90%;
+    max-height: 80%;
+    padding: 4px;
+    background-color: black;
+    border: 2px solid white;
+}
+.price {
+    width: 20%;
+    margin: auto;
+    background-color: #F0F335;
+    text-align: center;
+    border-radius: 30px;
+}
+.apply {
+    width: 20%;
+    margin: auto;
+    background: #FD7474;
+    text-align: center;
+    border-radius: 30px;
+}
+.hotelheader {
+    
+    margin: auto;
+    margin-top: 1.5%;
+    width: 20%;
+    text-align: center;
+    background-color: #9DB1F5;
+    padding: 0.5%;
+    border-radius: 30px;
+}
+.hotelheader p {
+    font-weight: bold;
+    font-size: 20px;
+    font-style: italic;
+    margin-bottom: 0px;
+}
+.hotelinfo {
+    width: 70%;
+    margin: auto;
+}
+.hotelname {
+    font-weight: bold;
+    font-style: italic;
+}
+.hoteladdress {
+    font-style: italic;
+}
+.excursioninfo {
+    margin: auto;
+    width: 70%;
+}
+.excursioninfo img {
+    width: 100%;
+}
+.excursionname p{
+    font-weight: bold;
+    font-style: italic;
+}
+
+.persons img{
+    width: 5%;
+}
+.scaledate img{
+    margin-left: 100%;
+    width: 10%;
+}
+.persons img {
+    margin-left: 100%;
+    width: 10%;
+}
+.duration {
+    font-weight: bold;
+}
+.price {
+    font-size: 24px;
+}
+.price p {
+    margin: 0;
+}
+.apply {
+    font-size: 24px;
+}
+.apply p {
+    margin: 0;
+}
+.wifi img{
+    width: 100%;
+}
+.hotelwifi {
+    text-align: start;
+    margin-left: 0;
+}
+.hotelmealimg img{
+    width: 100%;
+}
+.hotelfreerooms {
+    text-align: start;
+}
+.hotelfreeroomsimg img {
+    width: 100%;
+}
+.hoursimg img {
+    width: 100%;
+}
+.languageimg img {
+    width: 100%;
+}
+.excursionpersons img {
+    width: 50%;
+}
+.excursionpersons p {
+    text-align: start;
+}
+.hotelstars img {
+    width: 100%;
+}
+
+.hotelstars p {
+    text-align: start;
+}
+.excursioninfo {
+    margin-top: 2%;
+}
+.excursionplace img {
+    width: 50%;
+    margin: 0;
+    padding: 0;
+}
+.excursionplace p {
+    text-align: start;
+    margin-left: 0;
+}
