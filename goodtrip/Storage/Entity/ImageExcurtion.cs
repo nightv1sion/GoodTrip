@@ -6,6 +6,6 @@
         public string ImageTitle { get; set; }
         public byte[] ImageData { get; set; }
         public Guid ExcurtionId { get; set; }
-        public Excurtion Excurtion{ get; set; }
+        public Excurtion Excurtion { get; set; }
     }
 }

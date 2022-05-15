@@ -18,6 +18,10 @@ namespace goodtrip.Storage
 
         public DbSet<Hotel> Hotels { get; set; }
 
+        public DbSet<ImageExcurtion> ImageExcurtion { get; set; }
+
+        public DbSet<ImageHotel> ImageHotel { get; set; }
+
         public DbSet<Excurtion> Excurtions { get; set; }
 
         public DbSet<Review> Reviews { get; set; }

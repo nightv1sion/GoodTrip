@@ -170,10 +170,7 @@ namespace goodtrip.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("ExcurtionId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("HotelId")
+                    b.Property<Guid>("ExcurtionId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<byte[]>("ImageData")
@@ -187,8 +184,6 @@ namespace goodtrip.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ExcurtionId");
-
-                    b.HasIndex("HotelId");
 
                     b.ToTable("ImageExcurtion");
                 });
@@ -622,17 +617,13 @@ namespace goodtrip.Migrations
 
             modelBuilder.Entity("goodtrip.Storage.Entity.ImageExcurtion", b =>
                 {
-                    b.HasOne("goodtrip.Storage.Entity.Excurtion", null)
+                    b.HasOne("goodtrip.Storage.Entity.Excurtion", "Excurtion")
                         .WithMany("Images")
-                        .HasForeignKey("ExcurtionId");
-
-                    b.HasOne("goodtrip.Storage.Entity.Hotel", "Hotel")
-                        .WithMany()
-                        .HasForeignKey("HotelId")
+                        .HasForeignKey("ExcurtionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Hotel");
+                    b.Navigation("Excurtion");
                 });
 
             modelBuilder.Entity("goodtrip.Storage.Entity.ImageHotel", b =>
