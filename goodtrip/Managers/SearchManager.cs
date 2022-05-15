@@ -1,4 +1,4 @@
-﻿namespace goodtrip.Manager
+﻿namespace goodtrip.Managers
 {
     public class SearchManager
     {
