@@ -28,6 +28,6 @@ namespace goodtrip.Storage.Entity
 
         public List<Review> Review { get; set; }
 
-        public UserProfile TourOperator { get; set; }
+        public string TourOperator { get; set; }
     }
 }
