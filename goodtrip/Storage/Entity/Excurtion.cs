@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace goodtrip.Storage.Entity
 {
@@ -14,6 +15,8 @@ namespace goodtrip.Storage.Entity
         public string Language { get; set; }
         public string Feeding { get; set; }
         public string Name { get; set; }
+        [Column(TypeName = "varchar")]
+        [MaxLength]
         public string Description { get; set; }
         public List<ImageExcurtion> Images { get; set; }
         public Guid TourId { get; set; }

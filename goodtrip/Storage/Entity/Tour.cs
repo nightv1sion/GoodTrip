@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace goodtrip.Storage.Entity
 {
@@ -7,8 +8,10 @@ namespace goodtrip.Storage.Entity
         [Key]
         public Guid Id { get; set; }
         public string City { get; set; }
-
         public string Country { get; set; }
+        [Column(TypeName = "varchar")]
+        [MaxLength]
+        public string Description { get; set; }
         public DateTime Date { get; set; }
         public int MaxTourists { get; set; }
 
