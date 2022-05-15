@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Route = goodtrip.Storage.Entity.Route;
+
 
 namespace goodtrip.Storage
 {
@@ -20,6 +22,9 @@ namespace goodtrip.Storage
 
         public DbSet<Review> Reviews { get; set; }
 
+        public DbSet<Route> Routes { get; set; }
+        public DbSet<ImageExcurtion> ImagesExcurtion { get; set; }
+        public DbSet<ImageHotel> ImagesHotel { get; set; }
 
         public GoodTripContext(DbContextOptions<GoodTripContext> options) : base(options)
         {
