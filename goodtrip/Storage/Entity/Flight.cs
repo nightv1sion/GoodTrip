@@ -9,8 +9,7 @@ namespace goodtrip.Storage.Entity
         public string Aviacompany { get; set; }
         public DateTime DepartureTime { get; set; }
         public DateTime ArrivalTime { get; set; }
-        public string DepartureCity { get; set; }
-        public string ArrivalCity { get; set; }
+        public List<Route> Routes { get; set; }
         public string Plane { get; set; }
         public double MaxBaggageWeight { get; set; }
         public string DepartureAirport { get; set; }

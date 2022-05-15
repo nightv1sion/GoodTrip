@@ -80,10 +80,6 @@ namespace goodtrip.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ArrivalCity")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("ArrivalTime")
                         .HasColumnType("datetime2");
 
@@ -92,10 +88,6 @@ namespace goodtrip.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DepartureAirport")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DepartureCity")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -249,6 +241,44 @@ namespace goodtrip.Migrations
                     b.HasIndex("TourId");
 
                     b.ToTable("Reviews");
+                });
+
+            modelBuilder.Entity("goodtrip.Storage.Entity.Route", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ArrivalAirport")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ArrivalCity")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DepartureAirport")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DepartureCity")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Distance")
+                        .HasColumnType("float");
+
+                    b.Property<Guid>("FlightId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FlightId");
+
+                    b.ToTable("Route");
                 });
 
             modelBuilder.Entity("goodtrip.Storage.Entity.Tour", b =>
@@ -565,7 +595,7 @@ namespace goodtrip.Migrations
             modelBuilder.Entity("goodtrip.Storage.Entity.Flight", b =>
                 {
                     b.HasOne("goodtrip.Storage.Entity.Tour", "Tour")
-                        .WithMany("Flight")
+                        .WithMany("FlightToAndBack")
                         .HasForeignKey("TourId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -619,6 +649,17 @@ namespace goodtrip.Migrations
                         .IsRequired();
 
                     b.Navigation("Tour");
+                });
+
+            modelBuilder.Entity("goodtrip.Storage.Entity.Route", b =>
+                {
+                    b.HasOne("goodtrip.Storage.Entity.Flight", "Flight")
+                        .WithMany("Routes")
+                        .HasForeignKey("FlightId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Flight");
                 });
 
             modelBuilder.Entity("goodtrip.Storage.Entity.UserProfile", b =>
@@ -696,6 +737,11 @@ namespace goodtrip.Migrations
                     b.Navigation("Images");
                 });
 
+            modelBuilder.Entity("goodtrip.Storage.Entity.Flight", b =>
+                {
+                    b.Navigation("Routes");
+                });
+
             modelBuilder.Entity("goodtrip.Storage.Entity.Hotel", b =>
                 {
                     b.Navigation("Images");
@@ -705,7 +751,7 @@ namespace goodtrip.Migrations
                 {
                     b.Navigation("Excurtion");
 
-                    b.Navigation("Flight");
+                    b.Navigation("FlightToAndBack");
 
                     b.Navigation("Hotel")
                         .IsRequired();
