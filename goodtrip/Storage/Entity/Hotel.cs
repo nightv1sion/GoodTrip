@@ -8,8 +8,7 @@ namespace goodtrip.Storage.Entity
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        [Column(TypeName="varchar")]
-        [MaxLength]
+        [Column(TypeName = "nvarchar(4000)")]
         public string Description { get; set; }
         public double Mark { get; set; }
         public string Country { get; set; }
@@ -18,7 +17,7 @@ namespace goodtrip.Storage.Entity
         public int Rooms { get; set; }
         public int FreeRooms { get; set; }
         public bool IsWifi { get; set; }
-        public string Feeding { get; set; }
+        public bool Feeding { get; set; }
         public List<ImageHotel> Images { get; set; }
         public Guid TourId { get; set; }
         public Tour Tour { get; set; }

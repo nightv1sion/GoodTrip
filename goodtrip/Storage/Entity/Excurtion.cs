@@ -13,10 +13,8 @@ namespace goodtrip.Storage.Entity
         public DateTime TimeDate { get; set; }
         public int MaxAmountOfVisitors { get; set; }
         public string Language { get; set; }
-        public bool Feeding { get; set; }
         public string Name { get; set; }
-        [Column(TypeName = "varchar")]
-        [MaxLength]
+        [Column(TypeName = "nvarchar(4000)")]
         public string Description { get; set; }
         public List<ImageExcurtion> Images { get; set; }
         public Guid TourId { get; set; }
