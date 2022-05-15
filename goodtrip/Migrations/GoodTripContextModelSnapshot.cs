@@ -35,9 +35,8 @@ namespace goodtrip.Migrations
                     b.Property<int>("Duration")
                         .HasColumnType("int");
 
-                    b.Property<string>("Feeding")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("Feeding")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Language")
                         .IsRequired()
@@ -117,11 +116,10 @@ namespace goodtrip.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("varchar");
-
-                    b.Property<string>("Food")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Feeding")
+                        .HasColumnType("bit");
 
                     b.Property<int>("FreeRooms")
                         .HasColumnType("int");
@@ -141,10 +139,6 @@ namespace goodtrip.Migrations
 
                     b.Property<Guid>("TourId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("TypeOfFood")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -216,7 +210,7 @@ namespace goodtrip.Migrations
 
                     b.Property<string>("Text")
                         .IsRequired()
-                        .HasColumnType("varchar");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("TourId")
                         .HasColumnType("uniqueidentifier");
@@ -256,9 +250,6 @@ namespace goodtrip.Migrations
                     b.Property<DateTime>("DepartureTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<double>("Distance")
-                        .HasColumnType("float");
-
                     b.Property<Guid>("FlightId")
                         .HasColumnType("uniqueidentifier");
 
@@ -291,7 +282,7 @@ namespace goodtrip.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("varchar");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Duration")
                         .HasColumnType("int");
@@ -299,8 +290,16 @@ namespace goodtrip.Migrations
                     b.Property<int>("MaxTourists")
                         .HasColumnType("int");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<double>("Price")
                         .HasColumnType("float");
+
+                    b.Property<string>("TourOperator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -420,8 +419,7 @@ namespace goodtrip.Migrations
 
                     b.HasKey("UserProfileId");
 
-                    b.HasIndex("TourID")
-                        .IsUnique();
+                    b.HasIndex("TourID");
 
                     b.HasIndex("UserId")
                         .IsUnique();
@@ -656,8 +654,8 @@ namespace goodtrip.Migrations
             modelBuilder.Entity("goodtrip.Storage.Entity.UserProfile", b =>
                 {
                     b.HasOne("goodtrip.Storage.Entity.Tour", "Tour")
-                        .WithOne("TourOperator")
-                        .HasForeignKey("goodtrip.Storage.Entity.UserProfile", "TourID")
+                        .WithMany()
+                        .HasForeignKey("TourID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -748,9 +746,6 @@ namespace goodtrip.Migrations
                         .IsRequired();
 
                     b.Navigation("Review");
-
-                    b.Navigation("TourOperator")
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("goodtrip.Storage.Entity.User", b =>
