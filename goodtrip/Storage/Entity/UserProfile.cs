@@ -18,5 +18,7 @@ namespace goodtrip.Storage.Entity
         public DateTime PassportValidityPeriod { get; set; }
         public Guid UserId { get; set; }
         public User User { get; set; }
+        public Guid TourID { get; set; }
+        public Tour Tour { get; set; }
     }
 }
