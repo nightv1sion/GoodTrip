@@ -169,7 +169,7 @@ namespace goodtrip.Migrations
                     b.HasIndex("TourId")
                         .IsUnique();
 
-                    b.ToTable("Hotel");
+                    b.ToTable("Hotels");
                 });
 
             modelBuilder.Entity("goodtrip.Storage.Entity.ImageExcurtion", b =>
@@ -565,7 +565,7 @@ namespace goodtrip.Migrations
             modelBuilder.Entity("goodtrip.Storage.Entity.Flight", b =>
                 {
                     b.HasOne("goodtrip.Storage.Entity.Tour", "Tour")
-                        .WithMany("FlightToAndBack")
+                        .WithMany("Flight")
                         .HasForeignKey("TourId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -705,7 +705,7 @@ namespace goodtrip.Migrations
                 {
                     b.Navigation("Excurtion");
 
-                    b.Navigation("FlightToAndBack");
+                    b.Navigation("Flight");
 
                     b.Navigation("Hotel")
                         .IsRequired();
