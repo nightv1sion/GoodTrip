@@ -7,5 +7,6 @@ namespace goodtrip.Storage.Entity
     {
         //public BussinessInfo BussinessInfo {get; set;}
         public List<Tour> CreatedTours { get; set; }
+        public List<Request> ReceivedRequests { get; set; }
     }
 }

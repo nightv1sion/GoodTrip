@@ -212,9 +212,27 @@ namespace goodtrip.Controllers
             tour.Excurtion[0].Images.Add(imgexc);
             _context.Tours.Add(tour);
             _context.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("PrintTours");
+
         }
 
+        public IActionResult PrintTours()
+        {
+            List<Tour> tours = _context.Tours.Include(t => t.TourOperatorProfile).Include(t => t.TourOperatorProfile.User).
+                Where(t => t.TourOperatorProfile.User.UserName == HttpContext.User.Identity.Name).ToList();
+            return View(tours);
+        }
+        public IActionResult DeleteTour(string id)
+        {
+            Guid guid = Guid.Parse(id);
+            Tour tourtodelete = _context.Tours.FirstOrDefault(t => t.Id == guid);
+            if(tourtodelete != null)
+            {
+                _context.Tours.Remove(tourtodelete);
+            }
+            _context.SaveChanges();
+            return RedirectToAction("PrintTours");
+        }
         public async Task<IActionResult> OperatorChangeBussinessInfo()
         {
             return View();
