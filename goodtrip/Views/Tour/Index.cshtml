@@ -140,15 +140,17 @@
         </div>
         @{
             int counter = 0;
-
+            var excursionphotos = ViewBag.ExcurtionPhotos;
         @foreach(var excursion in Model.Excurtion){
             
             <div class = "excursioninfo">
             <div class = "row">
                 <div class = "col-3">
                     <div class = "grid">
-                        <img src="@ViewBag.ExcurtionPhotos[counter]">
-                        @{counter++;}
+                        @if(counter < excursionphotos.Count){
+                            <img src ="@excursionphotos[counter]">
+                            counter++;
+                        }
                     </div>
                 </div>
                 <div class = "col-9">

@@ -38,3 +38,9 @@
     margin-left: 87%;
     font-size: 18px;
 }
+a.text:active, /* активная/посещенная ссылка */
+a.text:hover, /* при наведении */
+a.text {
+    text-decoration: none;
+    color: black;
+}

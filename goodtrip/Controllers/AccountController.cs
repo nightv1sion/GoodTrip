@@ -29,7 +29,7 @@ namespace goodtrip.Controllers
         [HttpGet]
         public async Task<IActionResult> Register()
         {
-            await SeedData();
+            //await SeedData();
             return View();
         }
         [HttpPost]
