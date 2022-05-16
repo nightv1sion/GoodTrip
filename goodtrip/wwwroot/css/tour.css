@@ -202,7 +202,47 @@ body {
     margin-left: 0;
 }
 .newcomment {
-    margin: 0;
+    margin: auto;
+    margin-top: 2%;
     width: 70%;
-    border: 2px solid black;
+}
+.newcomment input {
+    width: 30%;
+    margin-bottom: 1%;
+}
+.newcomment textarea {
+    margin-bottom: 1%;
+}
+.newcomment {
+    text-align: center;
+}
+.comment {
+    width: 70%;
+    margin: auto;
+    background-color: white;
+    border-radius: 25px;
+}
+.comment div {
+    margin-left: 1%;
+}
+.nameofcomment {
+    font-weight: bold;
+}
+.nameofcomment p {
+    margin: 0;
+}
+.dateofcomment p{
+    text-align: end;
+}
+.dateofcomment p {
+    margin: 0;
+}
+.textofcomment p {
+    padding-bottom: 3%;
+}
+a.text:active, /* активная/посещенная ссылка */
+a.text:hover, /* при наведении */
+a.text {
+    text-decoration: none;
+    color: black;
 }

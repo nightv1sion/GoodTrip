@@ -80,7 +80,7 @@ namespace goodtrip.Controllers
             {
                 ModelState.AddModelError("comment","Name and text are required!");
             }
-            return Index(tourinfoModel.TourId);
+            return Redirect($"Index/{tourinfoModel.TourId.ToString()}");
         }
     }
 }
