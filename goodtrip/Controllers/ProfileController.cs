@@ -120,17 +120,22 @@ namespace goodtrip.Controllers
         {
             return View();
         }
-        [Authorize(Roles="Operator")]
-        public IActionResult CreateTour()
+        [Authorize(Roles = "Operator")]
+        public IActionResult CreateTour(NewTourModel newtourModel = null)
         {
-            
-            return View();
+            return View(newtourModel);
         }
         [Authorize(Roles="Operator")]
+        [ActionName("CreateTour")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult CreateTour(NewTourModel newtourModel)
+        public IActionResult CreateTourPost(NewTourModel newtourModel)
         {
+            if(ModelState.IsValid == false || Request.Form.Files.Count == 0)
+            {
+                ViewBag.SuperError = "All fields are required";
+                return View(newtourModel);
+            }
             UserOperatorProfile creator = _context.UserOperatorProfiles.Include(p => p.User).FirstOrDefault(p => p.User.UserName == HttpContext.User.Identity.Name);
             Tour tour = new Tour()
             {

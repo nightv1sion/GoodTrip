@@ -1,6 +1,4 @@
-﻿@model SearchModel
-
-@{
+﻿@{
     var username = Context.User.Identity.Name;
 }
 <!DOCTYPE html>
@@ -33,14 +31,15 @@
                 </div>
                 <div class="col-8">
                     <div class="search">
-                        <form method = "post" asp-controller="Search" asp-action="Index">
-                            <input asp-for="Place" placeholder = "FROM" />
-                            <input asp-for="DateOfStart" placeholder = "Date of start" />
-                            <input asp-for="DateOfEnd" placeholder = "Date of end" />
-                            <div class="btnsearch">
-                                <button type="submit">SEARCH</button>
-                            </div>
+                        <form name="supersearch">
+                            <input type = "text" name = "city" id="city" placeholder = "city" />
+                            <input type= "date" name = "startdate" id="startdate" placeholder = "Date of start" />
+                            <input type = "date" name = "enddate" id="enddate" placeholder = "Date of end" />
+                            
                         </form>
+                        <div class="btnsearch">
+                                <button onclick="redirect()" type="submit">SEARCH</button>
+                        </div>
                     </div>
                 </div>
                 <div class="col-2">
@@ -71,6 +70,15 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        function redirect() {
+            var city = document.getElementsById("city").value;
+            var startdate = document.getElementsById("startdate").value;
+            var enddate = document.getElementsById("enddate").value;
+
+            window.location.href = "https://localhost:44315/Search?city=" + city + "?startdate="+startdate + "?enddate="+enddate;
+        };
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
  </body>
 </html>

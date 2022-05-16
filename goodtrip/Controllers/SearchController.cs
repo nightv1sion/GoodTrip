@@ -14,10 +14,25 @@ namespace goodtrip.Controllers
             _context = context;
         }
         [HttpGet]
-        public IActionResult Index(SearchModel searchModel)
+        public IActionResult Index(string? city, DateTime? startdate, DateTime? enddate)
         {
+            SearchModel searchModel = new SearchModel();
+            
             List<TourModel> searchedTours  = new List<TourModel>();
-            foreach(var tour in _context.Tours.Include(t => t.Hotel).ToList())
+            List<Tour> tours = _context.Tours.Include(t => t.Hotel).ToList();
+            if (city != null)
+            {
+                tours = tours.Where(t => t.City == city).ToList();
+            }
+            if(startdate != null)
+            {
+                tours = tours.Where(t => t.StartDate >= startdate).ToList();
+            }
+            if(enddate != null)
+            {
+                tours = tours.Where(t => t.EndDate >= enddate).ToList();
+            }
+            foreach (var tour in tours)
             {
                 var hotel = tour.Hotel;
                     hotel.Images = _context.ImagesHotel.Where(i => i.HotelId == hotel.Id).ToList<ImageHotel>();

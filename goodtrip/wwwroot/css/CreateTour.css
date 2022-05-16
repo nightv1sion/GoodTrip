@@ -10,3 +10,7 @@
 .title {
     text-align: center;
 }
+.validation {
+    text-align: center;
+    color: red;
+}
