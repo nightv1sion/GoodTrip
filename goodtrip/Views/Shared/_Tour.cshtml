@@ -48,7 +48,7 @@
                 </div>
                 <div class = "col-6 apply">
                     @if(Context.User.IsInRole("Customer")){
-                        <a asp-action="CreateRequest" asp-route-id="@Model.Id.ToString()">Apply</a>
+                            <a asp-controller = "Tour" asp-action="CreateRequest" asp-route-id="@Model.Id.ToString()">Apply</a>
                     }
                     else
                     {

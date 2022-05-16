@@ -38,7 +38,7 @@ namespace goodtrip.Controllers
         public async Task<IActionResult> CustomerChangeDocuments()
         {
             string username = HttpContext.User.Identity.Name;
-            User user = username != null ? _context.Users.Include(user => user.Profile).FirstOrDefault(u => u.Email == username) : null;
+            User user = username != null ? _context.Users.Include(user => user.Profile).FirstOrDefault(u => u.UserName == username) : null;
             DocumentsModel profile = new DocumentsModel();
             if (user != null)
             {
@@ -56,17 +56,17 @@ namespace goodtrip.Controllers
         public async Task<IActionResult> CustomerChangeDocuments(DocumentsModel profile)
         {
             string username = HttpContext.User.Identity.Name;
-            User user = username != null ? _context.Users.Include(user => user.Profile).FirstOrDefault(u => u.Email == username) : null;
-            if(user != null)
+            UserCustomerProfile userprofile = username != null ? _context.UserCustomerProfiles.Include(p => p.User).FirstOrDefault(p => p.User.UserName == username) : null;
+            if(userprofile != null)
             {
-                user.Profile.Name = profile.Name;
-                user.Profile.LastName = profile.LastName;
-                user.Profile.BirthDay = profile.BirthDay;
-                user.Profile.Nationality = profile.Nationality == "Russia" ? Nationality.Russia : Nationality.Europe;
-                user.Profile.Gender = profile.Gender == "male" ? Gender.Male : Gender.Female;
-                user.Profile.PassportNumber = profile.PassNumber;
-                user.Profile.PassportValidityPeriod = profile.PassValidityPeriod;
-                _context.Update<User>(user);
+                userprofile.Name = profile.Name;
+                userprofile.LastName = profile.LastName;
+                userprofile.BirthDay = profile.BirthDay;
+                userprofile.Nationality = profile.Nationality == "Russia" ? Nationality.Russia : Nationality.Europe;
+                userprofile.Gender = profile.Gender == "male" ? Gender.Male : Gender.Female;
+                userprofile.PassportNumber = profile.PassNumber;
+                userprofile.PassportValidityPeriod = profile.PassValidityPeriod;
+                _context.Update<UserCustomerProfile>(userprofile);
                 await _context.SaveChangesAsync();
             }
             return View();

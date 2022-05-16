@@ -19,10 +19,10 @@ namespace goodtrip.Controllers
         {
             Guid guid = new Guid(id);
             Tour tour = _context.Tours.Include(t => t.Excurtion).Include(t => t.Hotel).Include(t => t.Review).ToList<Tour>().FirstOrDefault(t => t.Id == guid);
-            if(tour != null)
+            if (tour != null)
             {
                 tour.Hotel.Images = _context.ImagesHotel.Where(i => i.HotelId == tour.Hotel.Id).ToList();
-                foreach(var excurtion in tour.Excurtion)
+                foreach (var excurtion in tour.Excurtion)
                 {
                     excurtion.Images = _context.ImagesExcurtion.Where(i => i.ExcurtionId == excurtion.Id).ToList();
                 }
@@ -33,16 +33,16 @@ namespace goodtrip.Controllers
             }
             tour.Review = tour.Review.OrderByDescending(r => r.Created).ToList<Review>();
             List<string> hotelPhotos = new List<string>();
-            foreach(var photo in tour.Hotel.Images)
+            foreach (var photo in tour.Hotel.Images)
             {
                 hotelPhotos.Add(string.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(photo.ImageData)));
             }
             ViewBag.HotelPhotos = hotelPhotos;
             List<string> excurtionPhotos = new List<string>();
-            foreach(var excurtion in tour.Excurtion)
+            foreach (var excurtion in tour.Excurtion)
             {
-                if(excurtion.Images.Count != 0)
-        {
+                if (excurtion.Images.Count != 0)
+                {
                     excurtionPhotos.Add(string.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(excurtion.Images[0]?.ImageData)));
                 }
             }
@@ -62,7 +62,7 @@ namespace goodtrip.Controllers
             if (tourinfoModel.CommentName != null && tourinfoModel.CommentText != null)
             {
                 Tour tour = await _context.Tours.FirstOrDefaultAsync(t => t.Id == Guid.Parse(tourinfoModel.TourId));
-                if(tour != null)
+                if (tour != null)
                 {
                     Review review = new Review()
                     {
@@ -79,11 +79,11 @@ namespace goodtrip.Controllers
             }
             else
             {
-                ModelState.AddModelError("comment","Name and text are required!");
+                ModelState.AddModelError("comment", "Name and text are required!");
             }
             return Redirect($"Index/{tourinfoModel.TourId.ToString()}");
         }
-        [Authorize(Roles="Customer")]
+        [Authorize(Roles = "Customer")]
         [Route("Tour/CreateRequest/{id}")]
         [HttpGet]
         public IActionResult CreateRequest(string id)
@@ -92,6 +92,13 @@ namespace goodtrip.Controllers
             {
                 TourId = id
             };
+            string username = HttpContext.User.Identity.Name;
+            UserCustomerProfile profile = _context.UserCustomerProfiles.Include(p => p.User).FirstOrDefault(p => p.User.UserName == username);
+           if(profile != null)
+            {
+                requestModel.CustomerName = profile.Name;
+                requestModel.CustomerLastName = profile.LastName;
+            }
             return View(requestModel);
         }
         [HttpPost]
