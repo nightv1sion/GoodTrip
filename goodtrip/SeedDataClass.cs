@@ -1,4 +1,4 @@
-﻿using goodtrip.Storage;
+﻿/*using goodtrip.Storage;
 using goodtrip.Storage.Entity;
 
 namespace goodtrip
@@ -1030,3 +1030,4 @@ namespace goodtrip
         }
     }
 }
+*/

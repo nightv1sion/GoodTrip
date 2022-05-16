@@ -1,4 +1,4 @@
-﻿@model goodtrip.Storage.Entity.Tour
+﻿@model goodtrip.Models.NewTourModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
@@ -15,32 +15,31 @@
     <link rel="stylesheet" href="~/css/CreateTour.css" asp-append-version="true" />
 </head>
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     <div class = "border p-3 mt-4">
-        <div class ="row pb-2">
+        <div class ="row pb-2 title">
             <h2 class = "text-primary">Create Tour</h2>
             <hr />
         </div>
-        <input type="hidden" asp-for="Id"/>
         <div class = "mb-3">
-            <label asp-for="Name"></label>
-            <input asp-for="Name" class = "form-control"/>
+            <label asp-for="TourName">Tour Name</label>
+            <input asp-for="TourName" class = "form-control"/>
         </div>
         <div class = "mb-3">
-            <label asp-for="Description"></label>
-            <input asp-for="Description" class = "form-control"/>
+            <label asp-for="TourDescription"></label>
+            <input asp-for="TourDescription" class = "form-control"/>
         </div>
         <div class = "mb-3">
-            <label asp-for="Country"></label>
-            <input asp-for="Country" class = "form-control"/>
+            <label asp-for="TourCountry"></label>
+            <input asp-for="TourCountry" class = "form-control"/>
         </div>
         <div class = "mb-3">
-            <label asp-for="City"></label>
-            <input asp-for="City" class = "form-control"/>
+            <label asp-for="TourCity"></label>
+            <input asp-for="TourCity" class = "form-control"/>
         </div>
         <div class = "mb-3">
-            <label asp-for="Duration"></label>
-            <input asp-for="Duration" class = "form-control"/>
+            <label asp-for="TourDuration"></label>
+            <input asp-for="TourDuration" class = "form-control"/>
         </div>
         <div class = "mb-3">
             <label asp-for="StartDate">Date when tour is avaliable</label>
@@ -51,74 +50,111 @@
             <input type ="date" asp-for="EndDate" class = "form-control"/>
         </div>
         <div class = "mb-3">
-            <label asp-for="MaxTourists">Maximum Amount of Tourists</label>
-            <input asp-for="MaxTourists" class = "form-control"/>
+            <label asp-for="TourMaxTourists">Maximum Amount of Tourists</label>
+            <input asp-for="TourMaxTourists" class = "form-control"/>
         </div>
         <div class = "mb-3">
-            <label asp-for="Price"></label>
-            <input asp-for="Price" class = "form-control"/>
+            <label asp-for="TourPrice"></label>
+            <input asp-for="TourPrice" class = "form-control"/>
         </div>
     </div>
         <div class = "border p-3 mt-4">
-        <div class ="row pb-2">
+        <div class ="row pb-2 title">
             <h2 class = "text-primary">Add Hotel Info</h2>
             <hr />
         </div>
             <div class = "mb-3">
-            <label asp-for="Hotel.Name">Hotel Name</label>
-            <input asp-for="Hotel.Name" class = "form-control"/>
+            <label asp-for="HotelName">Hotel Name</label>
+            <input asp-for="HotelName" class = "form-control"/>
         </div>
         <div class = "mb-3">
-            <label asp-for="Hotel.Description">Hotel Description</label>
-            <input asp-for="Hotel.Description" class = "form-control"/>
+            <label asp-for="HotelDescription">Hotel Description</label>
+            <input asp-for="HotelDescription" class = "form-control"/>
         </div>
         <div class = "mb-3">
-            <label asp-for="Hotel.Country">Hotel Country</label>
-            <input asp-for="Hotel.Country" class = "form-control"/>
+            <label asp-for="HotelCountry">Hotel Country</label>
+            <input asp-for="HotelCountry" class = "form-control"/>
         </div>
         <div class = "mb-3">
-            <label asp-for="Hotel.City">Hotel City</label>
-            <input asp-for="Hotel.City" class = "form-control"/>
+            <label asp-for="HotelCity">Hotel City</label>
+            <input asp-for="HotelCity" class = "form-control"/>
         </div>
         <div class = "mb-3">
-            <label asp-for="Hotel.Address">Hotel Adress</label>
-            <input asp-for="Hotel.Address" class = "form-control"/>
+            <label asp-for="HotelAddress">Hotel Adress</label>
+            <input asp-for="HotelAddress" class = "form-control"/>
         </div>
         <div class = "mb-3">
-            <label asp-for="Hotel.Feeding">Is feeding included</label>
-            <input type = "checbox" asp-for="Hotel.Feeding">
+            <label asp-for="HotelFeeding">Is feeding included</label>
+            <br />
+            <input type = "radio" asp-for="HotelFeeding" value = "yes"> yes
+            <input type = "radio" asp-for="HotelFeeding" value = "no"> no
         </div>
         <div class = "mb-3">
-            <label asp-for="Hotel.IsWifi">Is there a Wi-Fi in the hotel</label>
-            <input type = "checbox" asp-for="Hotel.IsWifi">
+            <label asp-for="HotelIsWifi">Is there a Wi-Fi in the hotel</label>
+            <br />
+            <input type = "radio" asp-for="HotelIsWifi" value="yes"> yes
+            <input type = "radio" asp-for="HotelIsWifi" value="no"> no
         </div>
         <div class = "mb-3">
-            <label asp-for="Hotel.Mark">How many stars does the hotel have</label>
-            <input asp-for="Hotel.Mark" class = "form-control"/>
+            <label asp-for="HotelMark">How many stars does the hotel have</label>
+            <input asp-for="HotelMark" class = "form-control"/>
         </div>
         <div class = "mb-3">
-            <label asp-for="Hotel.Rooms">How many rooms are there in the hotel</label>
-            <input asp-for="Hotel.Rooms" class = "form-control"/>
+            <label asp-for="HotelRooms">How many rooms are there in the hotel</label>
+            <input asp-for="HotelRooms" class = "form-control"/>
         </div>
         <div class = "mb-3">
-            <label asp-for="Hotel.FreeRooms">How many rooms are free</label>
-            <input asp-for="Hotel.FreeRooms" class = "form-control"/>
+            <label asp-for="HotelFreeRooms">How many rooms are free</label>
+            <input asp-for="HotelFreeRooms" class = "form-control"/>
         </div>
           <div class="form-group">
             <label>Upload image</label>
-            <input type="file" name="uploadedFile" class="form-control" asp-for="Hotel.Images"/>
+            <input type="file" name="uploadedFile" class="form-control"/>
         </div>
         <div class="form-group">
             <label>Upload image</label>
-            <input type="file" name="uploadedFile" class="form-control" asp-for="Hotel.Images"/>
+            <input type="file" name="uploadedFile" class="form-control"/>
         </div>
         <div class="form-group">
             <label>Upload image</label>
-            <input type="file" name="uploadedFile" class="form-control" asp-for="Hotel.Images"/>
+            <input type="file" name="uploadedFile" class="form-control"/>
+        </div>
+        </div>
+        <div class = "border p-3 mt-4">
+        <div class ="row pb-2 title">
+            <h2 class = "text-primary">Add Excursion Info</h2>
+            <hr />
+        </div>
+        <div class = "mb-3">
+            <label asp-for="ExcursionName"></label>
+            <input asp-for="ExcursionName" class = "form-control"/>
+        </div>
+        <div class = "mb-3">
+            <label asp-for="ExcursionDescription"></label>
+            <input asp-for="ExcursionDescription" class = "form-control"/>
+        </div>
+        <div class = "mb-3">
+            <label asp-for="ExcursionDuration"></label>
+            <input asp-for="ExcursionDuration" class = "form-control"/>
+        </div>
+        <div class = "mb-3">
+            <label asp-for="ExcursionLanguage"></label>
+            <input asp-for="ExcursionLanguage" class = "form-control"/>
+        </div>
+        <div class = "mb-3">
+            <label asp-for="ExcursionMaxAmountOfVisitors"></label>
+            <input asp-for="ExcursionMaxAmountOfVisitors" class = "form-control"/>
+        </div>
+        <div class = "mb-3">
+            <label asp-for="ExcursionPlace"></label>
+            <input asp-for="ExcursionPlace" class = "form-control"/>
         </div>
         <div class="form-group">
-            <input type="submit" value="Add images" class="btn btn-outline-secondary" />
+            <label>Upload image</label>
+            <input type="file" name="uploadedFile" class="form-control"/>
         </div>
         </div>
-        <button type = "submit" class ="btn-primary" style="width:150px">Create</button>
+        <div class = "buttoncreate">
+            <button type = "submit" class ="btn-primary" style="width:150px">Create</button>
+        </div>
 </form>

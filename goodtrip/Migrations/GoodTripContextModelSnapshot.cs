@@ -227,11 +227,12 @@ namespace goodtrip.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("TourOperator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("TourOperatorProfileId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("TourOperatorProfileId");
 
                     b.ToTable("Tours");
                 });
@@ -557,6 +558,17 @@ namespace goodtrip.Migrations
                     b.Navigation("Tour");
                 });
 
+            modelBuilder.Entity("goodtrip.Storage.Entity.Tour", b =>
+                {
+                    b.HasOne("goodtrip.Storage.Entity.UserOperatorProfile", "TourOperatorProfile")
+                        .WithMany("CreatedTours")
+                        .HasForeignKey("TourOperatorProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TourOperatorProfile");
+                });
+
             modelBuilder.Entity("goodtrip.Storage.Entity.UserProfile", b =>
                 {
                     b.HasOne("goodtrip.Storage.Entity.User", "User")
@@ -643,6 +655,11 @@ namespace goodtrip.Migrations
                 {
                     b.Navigation("Profile")
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("goodtrip.Storage.Entity.UserOperatorProfile", b =>
+                {
+                    b.Navigation("CreatedTours");
                 });
 #pragma warning restore 612, 618
         }

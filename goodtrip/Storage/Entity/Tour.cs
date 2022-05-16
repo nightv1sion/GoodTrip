@@ -20,6 +20,7 @@ namespace goodtrip.Storage.Entity
         public List<Excurtion> Excurtion { get; set; }
         public Hotel Hotel { get; set; }
         public List<Review> Review { get; set; }
-        public string TourOperator { get; set; }
+        public UserOperatorProfile TourOperatorProfile { get; set; }
+        public Guid TourOperatorProfileId { get; set; }
     }
 }
