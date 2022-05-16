@@ -19,10 +19,10 @@ namespace goodtrip.Controllers
             Tour tour = _context.Tours.Include(t => t.Excurtion).Include(t => t.Hotel).ToList<Tour>().FirstOrDefault(t => t.Id == guid);
             if(tour != null)
             {
-                tour.Hotel.Images = _context.ImageHotel.Where(i => i.HotelId == tour.Hotel.Id).ToList();
+                tour.Hotel.Images = _context.ImagesHotel.Where(i => i.HotelId == tour.Hotel.Id).ToList();
                 foreach(var excurtion in tour.Excurtion)
                 {
-                    excurtion.Images = _context.ImageExcurtion.Where(i => i.ExcurtionId == excurtion.Id).ToList();
+                    excurtion.Images = _context.ImagesExcurtion.Where(i => i.ExcurtionId == excurtion.Id).ToList();
                 }
             }
             List<string> hotelPhotos = new List<string>();

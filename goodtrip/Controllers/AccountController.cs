@@ -24,28 +24,7 @@ namespace goodtrip.Controllers
             _signInManager = signInManager;
             _dbContext = context;
             _roleManager = roleManager;
-        }
-        [HttpPost]
-        public IActionResult Check(User user)
-        {
-            User finded_user = _dbContext.Users.ToList<User>().Find(u => u.Email == user.Email);
-            if (ModelState.IsValid != true)     
-            {
-                return View("Home/Index", user);
-            }
-            if(finded_user != null)
-            {
-                if(finded_user.Password == user.Password)
-                {
-                    // action
-                }
-                else
-                {
-                    ModelState.AddModelError("Authentification", "Login or password is wrong!");
-                    return View("/../../Home/Index/", user);
-                }
-            }
-            return RedirectToAction("Index", "Home", null);
+            //SeedData();
         }
         [HttpGet]
         public async Task<IActionResult> Register()
@@ -58,7 +37,7 @@ namespace goodtrip.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = new User() { Email = registerUser.Email, UserName = registerUser.Email, 
+                User user = new User() { Login = registerUser.Login , UserName = registerUser.Login, 
                     Password = registerUser.Password, Profile = registerUser.AccountType == "Operator" ? new UserOperatorProfile() : new UserCustomerProfile()};
                 user.AccountType = registerUser.AccountType == "Operator" ? AccountType.Operator : AccountType.Customer;
                 var result = await _userManager.CreateAsync(user, registerUser.Password);
@@ -96,7 +75,7 @@ namespace goodtrip.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(loginUser.Email, loginUser.Password, loginUser.RememberMe, false);
+                var result = await _signInManager.PasswordSignInAsync(loginUser.Login, loginUser.Password, loginUser.RememberMe, false);
                 if (result.Succeeded)
                 {
                     if (!string.IsNullOrEmpty(loginUser.ReturnUrl) && Url.IsLocalUrl(loginUser.ReturnUrl))

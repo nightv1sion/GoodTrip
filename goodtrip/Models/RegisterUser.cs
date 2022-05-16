@@ -5,7 +5,7 @@ namespace goodtrip.Models
     public class RegisterUser
     {
         [Required]
-        public string Email { get; set; }
+        public string Login { get; set; }
         [DataType(DataType.Password)]
         [Required]
         public string Password { get; set; }

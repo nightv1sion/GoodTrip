@@ -9,8 +9,8 @@ namespace goodtrip.Storage.Entity
     public class User : IdentityUser<Guid>
     {
         [BindProperty]
-        [Required(ErrorMessage = "Email is required")]
-        public string Email { get; set; }
+        [Required(ErrorMessage = "Login is required")]
+        public string Login { get; set; }
         [BindProperty]
         [Display(Name = "Password")]
         [Required(ErrorMessage = "Password is required")]
