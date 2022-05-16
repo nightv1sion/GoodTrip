@@ -23,16 +23,20 @@ namespace goodtrip.Controllers
             //SeedDataClass.SuperSeed(_dbContext);
 
         }
+        [HttpGet]
         public IActionResult Index()
         {
-            /*ImageExcurtion img = _dbContext.ImageExcurtion.First();
-            string imageBase64Data =
-            Convert.ToBase64String(img.ImageData);
-            string imageDataURL =
-            string.Format("data:image/jpg;base64,{0}",
-            imageBase64Data);
-            ViewBag.ImageDataUrl = imageDataURL;*/
-            return View();
+            var objTourList = _dbContext.Tours.ToList();
+            List<string> hotelPhotos = new List<string>();
+            foreach (var objTour in objTourList)
+            {
+                foreach (var photo in objTour.Hotel.Images)
+                {
+                    hotelPhotos.Add(string.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(photo.ImageData)));
+                }
+            }
+            ViewBag.HotelPhotos = hotelPhotos;
+            return View(objTourList);
         }
 
 

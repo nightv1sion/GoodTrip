@@ -51,7 +51,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id,
             };
-            FileStream file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\NewYorkHotel1.jpg", FileMode.Open);
+            FileStream file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\NewYorkHotel1.jpg", FileMode.Open);
             List<ImageHotel> hotelimages = new List<ImageHotel>();
             MemoryStream ms = new MemoryStream();
             file.CopyTo(ms);
@@ -59,14 +59,14 @@ namespace goodtrip
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\NewYorkHotel2.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\NewYorkHotel2.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\NewYorkHotel3.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\NewYorkHotel3.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
@@ -86,7 +86,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id
             };
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\NewYorkExcursion.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\NewYorkExcursion.jpg", FileMode.Open);
             List<ImageExcurtion> excurtionimages = new List<ImageExcurtion>();
             ms = new MemoryStream();
             file.CopyTo(ms);
@@ -133,7 +133,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id,
             };
-            FileStream file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\ChicagoHotel1.jpg", FileMode.Open);
+            FileStream file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\ChicagoHotel1.jpg", FileMode.Open);
             List<ImageHotel> hotelimages = new List<ImageHotel>();
             MemoryStream ms = new MemoryStream();
             file.CopyTo(ms);
@@ -141,14 +141,14 @@ namespace goodtrip
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\ChicagoHotel2.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\ChicagoHotel2.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\ChicagoHotel3.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\ChicagoHotel3.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
@@ -181,7 +181,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id
             };
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\ChicagoExcursion.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\ChicagoExcursion.jpg", FileMode.Open);
             List<ImageExcurtion> excurtionimages = new List<ImageExcurtion>();
             ms = new MemoryStream();
             file.CopyTo(ms);
@@ -229,7 +229,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id,
             };
-            FileStream file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\OrlandoHotel1.jpg", FileMode.Open);
+            FileStream file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\OrlandoHotel1.jpg", FileMode.Open);
             List<ImageHotel> hotelimages = new List<ImageHotel>();
             MemoryStream ms = new MemoryStream();
             file.CopyTo(ms);
@@ -237,14 +237,14 @@ namespace goodtrip
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\OrlandoHotel2.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\OrlandoHotel2.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\OrlandoHotel3.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\OrlandoHotel3.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
@@ -264,7 +264,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id
             };
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\OrlandoExcursion.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\OrlandoExcursion.jpg", FileMode.Open);
             List<ImageExcurtion> excurtionimages = new List<ImageExcurtion>();
             ms = new MemoryStream();
             file.CopyTo(ms);
@@ -311,7 +311,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id,
             };
-            FileStream file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\PhiladelphiaHotel1.jpg", FileMode.Open);
+            FileStream file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\PhiladelphiaHotel1.jpg", FileMode.Open);
             List<ImageHotel> hotelimages = new List<ImageHotel>();
             MemoryStream ms = new MemoryStream();
             file.CopyTo(ms);
@@ -319,14 +319,14 @@ namespace goodtrip
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\PhiladelphiaHotel2.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\PhiladelphiaHotel2.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\PhiladelphiaHotel3.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\PhiladelphiaHotel3.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
@@ -346,7 +346,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id
             };
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\PhiladelphiaExcursion.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\PhiladelphiaExcursion.jpg", FileMode.Open);
             List<ImageExcurtion> excurtionimages = new List<ImageExcurtion>();
             ms = new MemoryStream();
             file.CopyTo(ms);
@@ -399,7 +399,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id,
             };
-            FileStream file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\SanFranciscoHotel1.jpg", FileMode.Open);
+            FileStream file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\SanFranciscoHotel1.jpg", FileMode.Open);
             List<ImageHotel> hotelimages = new List<ImageHotel>();
             MemoryStream ms = new MemoryStream();
             file.CopyTo(ms);
@@ -407,14 +407,14 @@ namespace goodtrip
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\SanFranciscoHotel2.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\SanFranciscoHotel2.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\SanFranciscoHotel3.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\SanFranciscoHotel3.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
@@ -434,7 +434,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id
             };
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\SanFranciscoExcursion.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\SanFranciscoExcursion.jpg", FileMode.Open);
             List<ImageExcurtion> excurtionimages = new List<ImageExcurtion>();
             ms = new MemoryStream();
             file.CopyTo(ms);
@@ -481,7 +481,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id,
             };
-            FileStream file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\hotelLAX.jpg", FileMode.Open);
+            FileStream file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\hotelLAX.jpg", FileMode.Open);
             List<ImageHotel> hotelimages = new List<ImageHotel>();
             MemoryStream ms = new MemoryStream();
             file.CopyTo(ms);
@@ -489,14 +489,14 @@ namespace goodtrip
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\hotelLAX2.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\hotelLAX2.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\hotelLAX3.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\hotelLAX3.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
@@ -515,7 +515,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id
             };
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\los-angelesExcursion1.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\los-angelesExcursion1.jpg", FileMode.Open);
             List<ImageExcurtion> excurtionimages = new List<ImageExcurtion>();
             ms = new MemoryStream();
             file.CopyTo(ms);
@@ -562,7 +562,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id,
             };
-            FileStream file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\SpringHill.jpg", FileMode.Open);
+            FileStream file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\SpringHill.jpg", FileMode.Open);
             List<ImageHotel> hotelimages = new List<ImageHotel>();
             MemoryStream ms = new MemoryStream();
             file.CopyTo(ms);
@@ -570,14 +570,14 @@ namespace goodtrip
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\SpringHill2.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\SpringHill2.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\SpringHill3.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\SpringHill3.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
@@ -597,7 +597,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id
             };
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\NigWat.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\NigWat.jpg", FileMode.Open);
             List<ImageExcurtion> excurtionimages = new List<ImageExcurtion>();
             ms = new MemoryStream();
             file.CopyTo(ms);
@@ -644,7 +644,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id,
             };
-            FileStream file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\Harra.jpg", FileMode.Open);
+            FileStream file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\Harra.jpg", FileMode.Open);
             List<ImageHotel> hotelimages = new List<ImageHotel>();
             MemoryStream ms = new MemoryStream();
             file.CopyTo(ms);
@@ -652,14 +652,14 @@ namespace goodtrip
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\Harra2.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\Harra2.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\Harra3.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\Harra3.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
@@ -679,7 +679,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id
             };
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\EVex.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\EVex.jpg", FileMode.Open);
             List<ImageExcurtion> excurtionimages = new List<ImageExcurtion>();
             ms = new MemoryStream();
             file.CopyTo(ms);
@@ -700,7 +700,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id
             };
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\GCex.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\GCex.jpg", FileMode.Open);
             List<ImageExcurtion> excurtionimages2 = new List<ImageExcurtion>();
             ms = new MemoryStream();
             file.CopyTo(ms);
@@ -748,7 +748,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id,
             };
-            FileStream file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\Trump.jpg", FileMode.Open);
+            FileStream file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\Trump.jpg", FileMode.Open);
             List<ImageHotel> hotelimages = new List<ImageHotel>();
             MemoryStream ms = new MemoryStream();
             file.CopyTo(ms);
@@ -756,14 +756,14 @@ namespace goodtrip
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\Trump2.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\Trump2.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\Trump3.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\Trump3.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
@@ -783,7 +783,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id
             };
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\Msea.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\Msea.jpg", FileMode.Open);
             List<ImageExcurtion> excurtionimages = new List<ImageExcurtion>();
             ms = new MemoryStream();
             file.CopyTo(ms);
@@ -804,7 +804,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id
             };
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\JIex.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\JIex.jpg", FileMode.Open);
             List<ImageExcurtion> excurtionimages2 = new List<ImageExcurtion>();
             ms = new MemoryStream();
             file.CopyTo(ms);
@@ -852,7 +852,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id,
             };
-            FileStream file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\Wai.jpg", FileMode.Open);
+            FileStream file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\Wai.jpg", FileMode.Open);
             List<ImageHotel> hotelimages = new List<ImageHotel>();
             MemoryStream ms = new MemoryStream();
             file.CopyTo(ms);
@@ -860,14 +860,14 @@ namespace goodtrip
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\Wai2.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\Wai2.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\Wai3.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\Wai3.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
@@ -887,7 +887,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id
             };
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\OHex.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\OHex.jpg", FileMode.Open);
             List<ImageExcurtion> excurtionimages = new List<ImageExcurtion>();
             ms = new MemoryStream();
             file.CopyTo(ms);
@@ -908,7 +908,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id
             };
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\PHex.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\PHex.jpg", FileMode.Open);
             List<ImageExcurtion> excurtionimages2 = new List<ImageExcurtion>();
             ms = new MemoryStream();
             file.CopyTo(ms);
@@ -956,7 +956,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id,
             };
-            FileStream file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\Alex.jpg", FileMode.Open);
+            FileStream file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\Alex.jpg", FileMode.Open);
             List<ImageHotel> hotelimages = new List<ImageHotel>();
             MemoryStream ms = new MemoryStream();
             file.CopyTo(ms);
@@ -964,14 +964,14 @@ namespace goodtrip
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\Alex2.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\Alex2.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\Alex3.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\Alex3.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
@@ -991,7 +991,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id
             };
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\ANex.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\ANex.jpg", FileMode.Open);
             List<ImageExcurtion> excurtionimages = new List<ImageExcurtion>();
             ms = new MemoryStream();
             file.CopyTo(ms);
@@ -1012,7 +1012,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id
             };
-            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\DENex.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\DENex.jpg", FileMode.Open);
             List<ImageExcurtion> excurtionimages2 = new List<ImageExcurtion>();
             ms = new MemoryStream();
             file.CopyTo(ms);
