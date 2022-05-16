@@ -25,6 +25,7 @@
 @if(Model.Tours != null){
     @foreach(var tour in Model.Tours){
         <div class = "tour">
+            <a asp-controller = "Tour" asp-action="Index" asp-route-id="@tour.Id" class="text">
             <div class = "SearchImage">
             <img src = "@tour.ImageDataUrl">
             </div>
@@ -37,6 +38,8 @@
             <div class = "PriceTour">
                   <p>@tour.Price$</p>
             </div>
+        </a>
+
         </div>
     }
 }
