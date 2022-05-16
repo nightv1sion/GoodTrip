@@ -20,34 +20,38 @@
 <body>
 <div class = "container-fluid">
     <partial name = "_Tour" model = "@Model.Tour" />
-
+    <div class = "hotelheader">
+            <p>Comments</p>
+    </div>
         @if (Context.User.IsInRole("Customer"))
         {
             <div class="newcomment">
                 <form method = "post" asp-controller = "Tour" asp-action = "Comment">
                     <div class = "commentname">
                     <input asp-for = "TourId" type="hidden"/>
-                    <input asp-for = "CommentName">
+                    <input asp-for = "CommentName" class = "form-control" placeholder = "Name">
                     </div>
                     <div class = "commenttext">
-                    <input asp-for="CommentText" type=text>
+                    <textarea asp-for="CommentText" type=text class = "form-control" placeholder = "Your feedback to us..." rows = 4>
+                    </textarea>
                     </div>
-                    <button type="submit">Comment!</button>
+                    <button type="submit" class = "btn btn-primary">Comment!</button>
                 </form>
             </div>
         }
     </div>
+    
     @if (Model.Tour.Review != null)
     {
           @foreach(var comment in @Model.Tour.Review)
         {
         <div class = "comment">
-            <div class = "nameofcomment">
+                <div class = "nameofcomment">
                 <p>@comment.Username</p>
-            </div>
-            <div class = "dateofcomment">
+                </div>
+                <div class = "dateofcomment">
                 <p>@comment.Created</p>
-            </div>
+                </div>
             <div class = "textofcomment">
                 <p>@comment.Text</p>
             </div>
