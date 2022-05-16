@@ -166,6 +166,9 @@ namespace goodtrip.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("CustomerLastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -177,13 +180,7 @@ namespace goodtrip.Migrations
                     b.Property<Guid>("CustomerProfileId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CustomerUserProfileId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("OperatorProfileId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("OperatorUserProfileId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("PhoneNumber")
@@ -193,13 +190,19 @@ namespace goodtrip.Migrations
                     b.Property<Guid>("TourId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("UserCustomerProfileUserProfileId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("UserOperatorProfileUserProfileId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerUserProfileId");
-
-                    b.HasIndex("OperatorUserProfileId");
-
                     b.HasIndex("TourId");
+
+                    b.HasIndex("UserCustomerProfileUserProfileId");
+
+                    b.HasIndex("UserOperatorProfileUserProfileId");
 
                     b.ToTable("Requests");
                 });
@@ -593,27 +596,19 @@ namespace goodtrip.Migrations
 
             modelBuilder.Entity("goodtrip.Storage.Entity.Request", b =>
                 {
-                    b.HasOne("goodtrip.Storage.Entity.UserCustomerProfile", "Customer")
-                        .WithMany("SendedRequests")
-                        .HasForeignKey("CustomerUserProfileId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("goodtrip.Storage.Entity.UserOperatorProfile", "Operator")
-                        .WithMany("ReceivedRequests")
-                        .HasForeignKey("OperatorUserProfileId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("goodtrip.Storage.Entity.Tour", "Tour")
-                        .WithMany()
+                        .WithMany("Requests")
                         .HasForeignKey("TourId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Customer");
+                    b.HasOne("goodtrip.Storage.Entity.UserCustomerProfile", null)
+                        .WithMany("SendedRequests")
+                        .HasForeignKey("UserCustomerProfileUserProfileId");
 
-                    b.Navigation("Operator");
+                    b.HasOne("goodtrip.Storage.Entity.UserOperatorProfile", null)
+                        .WithMany("ReceivedRequests")
+                        .HasForeignKey("UserOperatorProfileUserProfileId");
 
                     b.Navigation("Tour");
                 });
@@ -718,6 +713,8 @@ namespace goodtrip.Migrations
 
                     b.Navigation("Hotel")
                         .IsRequired();
+
+                    b.Navigation("Requests");
 
                     b.Navigation("Review");
                 });

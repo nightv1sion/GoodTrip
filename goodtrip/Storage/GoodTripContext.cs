@@ -34,6 +34,8 @@ namespace goodtrip.Storage
                 .HasOne(u => u.Profile)
                 .WithOne(p => p.User)
                 .HasForeignKey<UserProfile>(p => p.UserId);
+
+            
         }
     }
 }

@@ -215,13 +215,14 @@ namespace goodtrip.Controllers
             return RedirectToAction("PrintTours");
 
         }
-
+        [Authorize(Roles = "Operator")]
         public IActionResult PrintTours()
         {
             List<Tour> tours = _context.Tours.Include(t => t.TourOperatorProfile).Include(t => t.TourOperatorProfile.User).
                 Where(t => t.TourOperatorProfile.User.UserName == HttpContext.User.Identity.Name).ToList();
             return View(tours);
         }
+
         public IActionResult DeleteTour(string id)
         {
             Guid guid = Guid.Parse(id);
@@ -233,9 +234,33 @@ namespace goodtrip.Controllers
             _context.SaveChanges();
             return RedirectToAction("PrintTours");
         }
-        public async Task<IActionResult> OperatorChangeBussinessInfo()
+        [Authorize(Roles = "Operator")]
+        public async Task<IActionResult> PrintRequests()
         {
-            return View();
+            User currentOperator = _context.Users.Include(u => u.Profile).FirstOrDefault(u => u.UserName == HttpContext.User.Identity.Name);
+            List<Request> requests;
+            if (currentOperator != null)
+            {
+                 requests = _context.Requests.Where(r => r.OperatorProfileId == currentOperator.Profile.UserProfileId).ToList();
+            }
+            else
+            {
+                return View();
+            }
+            List<RequestModel> searchedRequests = new List<RequestModel>();
+            foreach (var request in requests)
+            {
+                RequestModel model = new RequestModel()
+                {
+                    CustomerName = request.CustomerName,
+                    CustomerLastName = request.CustomerLastName,
+                    PhoneNumber = request.PhoneNumber,
+                    TourId = request.TourId.ToString(),
+                    TourName = _context.Tours.FirstOrDefault(t => t.Id == request.TourId)?.Name
+                };
+                searchedRequests.Add(model);
+            }
+            return View(searchedRequests);
         }
     }
 }

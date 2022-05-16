@@ -1,4 +1,5 @@
-﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+﻿@model List<RequestModel>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 <head>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
@@ -25,15 +26,29 @@
                     <div class="Documents">
                         <a asp-action="OperatorChangeDocuments">Documents</a>
                     </div>
-                    <div class="BussinessInfo" style = "background-color: rgba(154,110,246,7%); color: #8643D6;">
-                        <a>Bussiness info</a>
+                    <div class="Requests" style = "background-color: rgba(154,110,246,7%); color: #8643D6;">
+                        <a asp-action="PrintRequests">Requests to me</a>
                     </div>
+                    
                     <div class="Something">
                         <a asp-action="PrintTours">My tours</a>
                     </div>
                 </div>
             </div>
-            <div class = "col-6"></div>
+            <div class = "col-6">
+                @foreach(var request in Model)
+                {
+                    <div class = "customernamerequest">
+                        <p>@request.CustomerName @request.CustomerLastName</p>
+                    </div>
+                    <div class = "customernumberrequest">
+                        <p>@request.PhoneNumber</p>    
+                    </div>
+                    <div class="linkontour">
+                        <a asp-controller="Tour" asp-action="Index" asp-route-id="@request.TourId">@request.TourName</a>    
+                    </div>
+                }
+            </div>
             <div class = "logoutbar col-3">
                 <div class = "LogoutButton">
                     <a asp-controller="Account" asp-action="Logout" class="logoutlink">LOG OUT</a> 

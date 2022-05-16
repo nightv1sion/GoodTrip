@@ -83,11 +83,42 @@ namespace goodtrip.Controllers
             }
             return Redirect($"Index/{tourinfoModel.TourId.ToString()}");
         }
-        [Authorize("Customer")]
+        [Authorize(Roles="Customer")]
+        [Route("Tour/CreateRequest/{id}")]
         [HttpGet]
-        public IActionResult CreateRequest()
+        public IActionResult CreateRequest(string id)
         {
-            return View();
+            RequestModel requestModel = new RequestModel()
+            {
+                TourId = id
+            };
+            return View(requestModel);
+        }
+        [HttpPost]
+        public IActionResult CreateRequest(RequestModel requestModel)
+        {
+            Request newRequest = new Request()
+            {
+                Id = Guid.NewGuid(),
+                CustomerName = requestModel.CustomerName,
+                CustomerLastName = requestModel.CustomerLastName,
+                PhoneNumber = requestModel.PhoneNumber,
+            };
+            Tour choosedTour = _context.Tours.FirstOrDefault(t => t.Id == Guid.Parse(requestModel.TourId));
+            newRequest.Tour = choosedTour;
+            newRequest.TourId = choosedTour.Id;
+
+            UserCustomerProfile customer = _context.UserCustomerProfiles.Include(p => p.User).FirstOrDefault(p => p.User.UserName == HttpContext.User.Identity.Name);
+            //newRequest.CustomerProfile = customer;
+            newRequest.CustomerProfileId = customer.UserProfileId;
+
+            //newRequest.OperatorProfile = choosedTour.TourOperatorProfile;
+            newRequest.OperatorProfileId = choosedTour.TourOperatorProfileId;
+            newRequest.Created = DateTime.Now;
+
+            _context.Requests.Add(newRequest);
+            _context.SaveChanges();
+            return Redirect($"Tour/Index/{newRequest.Tour.Id}");
         }
     }
 }
