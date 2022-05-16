@@ -118,7 +118,7 @@ namespace goodtrip.Controllers
 
             _context.Requests.Add(newRequest);
             _context.SaveChanges();
-            return Redirect($"Tour/Index/{newRequest.Tour.Id}");
+            return Redirect($"/Tour/Index/{newRequest.Tour.Id}");
         }
     }
 }
