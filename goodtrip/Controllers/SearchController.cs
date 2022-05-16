@@ -33,6 +33,7 @@ namespace goodtrip.Controllers
                 };
                 searchedTours.Add(model);
             }
+            searchModel.Tours = searchedTours;
             return View(searchModel);
         }
         [HttpPost]

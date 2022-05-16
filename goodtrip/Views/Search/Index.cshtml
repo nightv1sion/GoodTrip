@@ -50,9 +50,28 @@
                                     </div>
                                 </div>
                                 <div class = "col-11">
-                                    <input asp-for="Place" placeholder = "City" />
-                                    <input asp-for="DateOfStart" type = "date" placeholder = "Date of start" />
-                                    <input asp-for="DateOfEnd" type = "date" placeholder = "Date of end" />
+                                    <div class = "row">
+                                        <div class = "col-3"></div>
+                                        <div class = "col-2">
+                                            <div class = "city">
+                                                <p>City</p>
+                                                <input asp-for="Place" placeholder = "City" />
+                                            </div>
+                                        </div>
+                                        <div class = "col-2">
+                                            <div class = "datestart">
+                                                <p>Date start</p>
+                                                 <input asp-for="DateOfStart" type = "date" placeholder = "Date of start" />
+                                            </div>
+                                        </div>
+                                        <div class = "col-2">
+                                            <div class = "dateend">
+                                                <p>Date end</p>
+                                                <input asp-for="DateOfEnd" type = "date" placeholder = "Date of end" />
+                                            </div>
+                                        </div>
+                                        <div class = "col-3"></div>
+                                    </div>
                                      <div class="btnsearchh">
                                     <button type="submit">SEARCH</button>
                                     @if(Model.Tours != null){
