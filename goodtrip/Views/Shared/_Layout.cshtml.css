@@ -1,42 +1,6 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
-
-/*a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
-}*/
-
-/*a{
-    color: white;
-    text-decoration: none;
-    text-decoration-color: none;
-    color: black;
-    font-size: 16px;
-}
-    a:hover {
-        text-decoration: none;
-        text-decoration-color: none;
-        color: black;
-    }
-.sidebarSquare a {
-    font-size: 18px;
-}
-.sidebar a {
-    margin-left: 5%;
-}
-
-.Documents a {
-}*/
-a {
-    text-decoration: none;
-    text-decoration-color: none;
-    color: black;
-    font-size: 16px;
-}
-
-
 .btn-primary {
     color: #fff;
     background-color: #1b6ec2;
@@ -74,7 +38,7 @@ button.accept-policy {
     line-height: 60px;
 }
 
-header .container-fluiddd {
+header .container-lay {
     background-color: rgba(154,110,246,50%);
 }
 
@@ -85,8 +49,14 @@ header .container-fluiddd {
 
 .search {
     text-align: center;
-    width: 6.3%;
+    padding-left:0.8%;
+    width: 6%;
+    padding-right: 5.5%;
     margin: auto;
+    margin-top: 2.3%;
+    margin-right:-4%;
+    padding-top: 0.2%;
+    padding-bottom:0.2%;
     background-color: rgba(154, 110, 246, 0.35);
     border: 1px solid #8643D6;
     border-radius: 5px;
@@ -116,11 +86,11 @@ header .container-fluiddd {
 }
 
 .btnsearch button {
-    margin-top: 1%;
+/*    margin-top: 1%;
     margin-bottom: 1%;
     padding: 0.5% 1.5%;
     background-color: rgba(154, 110, 246, 0.35);
     border: 1px solid #8643D6;
     border-radius: 5px;
-    font-size: 24px;
+    font-size: 24px;*/
 }

@@ -17,7 +17,7 @@
 </head>
 <body>
     <header>
-        <div class="container-fluiddd">
+        <div class="container-lay">
             <div class="row">
                 <div class = "col-2">
                     <div class="logo">
@@ -27,17 +27,17 @@
                 </div>
                 <div class = "search">
                      <div class="col-3">
-                         <a asp-controller="Search" asp-action="Index" class = "LaySearch">SEARCH</a>
+                         <a asp-controller="Search" asp-action="Index" style = "text-decoration: none; text-decoration-color: none; color: black; font-size: 24px;">SEARCH</a>
                      </div>
                  </div>
                 <div class="col-2">
                     <div class="profilee">
                         @if(Context.User.Identity.IsAuthenticated)
                         {
-                            <a asp-controller="Profile" asp-action="Index" class = "profilebutton">PROFILE</a>
+                            <a asp-controller="Profile" asp-action="Index" class = "profilebutton" style = "text-decoration: none; text-decoration-color: none; color: black; font-size: 24px;">PROFILE</a>
                         }
                         else{
-                            <a asp-controller="Account" asp-action="Login" class = "profilebutton">LOGIN</a>
+                            <a asp-controller="Account" asp-action="Login" class = "profilebutton" style = "text-decoration: none; text-decoration-color: none; color: black; font-size: 24px;">LOGIN</a>
                         }
                     </div>
                 </div> 
