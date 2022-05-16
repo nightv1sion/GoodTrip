@@ -120,7 +120,21 @@ namespace goodtrip.Controllers
         {
             return View();
         }
+
+        public IActionResult CreateTour()
+        {
+            return View();
+        }
         
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CreateTour(Tour obj)
+        {
+            _context.Add(obj);
+            _context.SaveChanges();
+            return View();
+        }
+
 
 
         public async Task<IActionResult> OperatorChangeBussinessInfo()
