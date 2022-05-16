@@ -159,3 +159,41 @@ a:hover {
 header .container-fluid {
     
 }
+
+.ReqCont {
+    border-radius: 20px;
+    border: 2px solid black;
+    padding: 10px;
+    margin-top: 5%;
+    margin-bottom: 2%;
+    background-color: rgba(154, 110, 246, 0.14);
+}
+
+.customernamerequest {
+    text-align: center;
+    font-size: 20px;
+    border-radius: 20px;
+    border: 2px solid #8643D6;
+    padding-top: 10px;
+}
+
+.customernumberrequest {
+    text-align: center;
+    font-size: 20px;
+    border-radius: 20px;
+    border:2px solid #8643D6;
+    padding-top: 10px;
+}
+
+.linkontour {
+    text-align: center;
+    font-size: 20px;
+    border-radius: 20px;
+    border: 2px solid #8643D6;
+    padding-top: 10px;
+}
+
+.whatisunder{
+    text-align:center;
+    font-size:20px;
+}

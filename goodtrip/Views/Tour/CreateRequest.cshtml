@@ -1,7 +1,6 @@
 ﻿@model RequestModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
-    Layout = null;
     ViewData["Title"] = "Create Tour";
 }
 <html>
@@ -16,23 +15,26 @@
     <link rel="stylesheet" href="~/css/createrequest.css" asp-append-version="true" />
 </head>
 <body>
-    <div class="container-fluid">
-        <div class = "customername">
-            <form method = "post" asp-controller="Tour" asp-action="CreateRequest">
+    <div class="crcont" >
+            <form method = "post">
+                <p>Request for tour</p>
+                <div class = "customername">
                 <label asp-for="CustomerName">Your Name</label>
-                 <input asp-for="CustomerName"/>
-
+                </div>
+                 <input asp-for="CustomerName" style= "border-radius:30px;"/>
+            <div class = "customerlastname">
             <label asp-for="CustomerLastName">Your Last Name</label>
-            <input asp-for="CustomerLastName"/>
-
+            </div>
+            <input asp-for="CustomerLastName" style= "border-radius:30px;"/>
+            <div class = "customerphone">
             <label asp-for="PhoneNumber">Your phone number</label>
-            <input asp-for="PhoneNumber"/>
+            </div>
+            <input asp-for="PhoneNumber" style= "border-radius:30px;"/>
 
             <input asp-for="TourId" type="hidden" />
-            <button type="submit">Send request</button>
-            </form>
-            
-        </div>
+            <div  class = "senbtn">
+            <button type="submit">Send request</button></div>
+            </form> 
     </div>
 </body>
 </html>
