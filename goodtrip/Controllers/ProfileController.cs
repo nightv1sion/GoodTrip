@@ -24,11 +24,11 @@ namespace goodtrip.Controllers
             string name = User?.FindFirst(x => x.Type == ClaimsIdentity.DefaultNameClaimType)?.Value;
             if(role == "Customer")
             {
-                return RedirectToAction("CustomerChangeSettings");
+                return RedirectToAction("CustomerChangeDocuments");
             }
             else if(role == "Operator")
             {
-                return RedirectToAction("OperatorChangeSettings");
+                return RedirectToAction("OperatorChangeDocuments");
             }
             return NotFound();
         }
@@ -71,12 +71,6 @@ namespace goodtrip.Controllers
             }
             return View();
         }
-        [HttpGet]
-        [Authorize(Roles="Customer")]
-        public async Task<IActionResult> CustomerChangeSettings()
-        {
-            return View();
-        }
         [Authorize(Roles="Operator")]
         [HttpGet]
         public async Task<IActionResult> OperatorChangeDocuments()
@@ -113,11 +107,6 @@ namespace goodtrip.Controllers
                 _context.Update<User>(user);
                 await _context.SaveChangesAsync();
             }
-            return View();
-        }
-        [HttpGet]
-        public async Task<IActionResult> OperatorChangeSettings()
-        {
             return View();
         }
         [Authorize(Roles = "Operator")]

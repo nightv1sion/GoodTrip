@@ -20,14 +20,8 @@
         <div class = "row">
             <div class="sidebar col-3 containter-fluid">
                 <div class="sidebarSquare">
-                    <div class="Settings">
-                        <a asp-action="CustomerChangeSettings">Settings</a>
-                    </div>
                     <div class="Documents">
                         <a style = "background-color: rgba(154,110,246,7%); color: #8643D6;">Documents</a>
-                    </div>
-                    <div class="Something">
-                                               <a asp-action="Something">Something</a>
                     </div>
                 </div>
             </div>
@@ -39,7 +33,7 @@
                             <div class = "ContInputs">
                                 <input asp-for = "Name" type="text" placeholder = "Name" class = "form-control">
                                 <input asp-for = "LastName" type = "text" placeholder = "Last name" class = "form-control">
-                                <input asp-for = "BirthDay" placeholder = "Birthday" class = "form-control">
+                                <input type = "Date" asp-for = "BirthDay" placeholder = "Birthday" class = "form-control">
                             </div>
                             <div class = "Nationality">
                                 <select class="form-select" aria-label="Пример выбора по умолчанию" asp-for = "Nationality">
@@ -57,7 +51,7 @@
                             <div class = "PassInfo">
                                 <p>Passport Information</p>
                                 <input asp-for = "PassNumber" type="text" placeholder = "Number of document" class = "form-control"/>
-                                <input asp-for = "PassValidityPeriod" placeholder = "Validity period" class = "form-control" id="passvalperiod"/>
+                                <input type = "Date" asp-for = "PassValidityPeriod" placeholder = "Validity period" class = "form-control" id="passvalperiod"/>
                             </div>
                             <div class = "center">
                                 <button type = "submit">SAVE</button>
