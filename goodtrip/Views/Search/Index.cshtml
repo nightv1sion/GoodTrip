@@ -14,37 +14,78 @@
                     <div class="col-12">
                     <div class="searchh">
                         <form method = "post" asp-controller="Search" asp-action="Index">
-                            <input asp-for="Place" placeholder = "FROM" />
-                            <input asp-for="DateOfStart" placeholder = "Date of start" />
-                            <input asp-for="DateOfEnd" placeholder = "Date of end" />
-                            <div class="btnsearchh">
-                                <button type="submit">SEARCH</button>
+                            <div class = "row">
+                                <div class = "col-1 leftinputs">
+                                    <div class = "price">
+                                        
+                                        <div class="row">
+                                                <p>Price scale</p>
+                                            <div class="col-6">
+                                                <input asp-for="PriceStart" />
+                                            </div>
+
+                                            <div class="col-6 ">
+                                                <input asp-for = "PriceEnd" id = "priceend" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class = "feeding">
+                                        <p>Has feeding</p>
+                                        
+                                        <input asp-for ="IsFeeding" type = "radio" value="true"/> Yes
+                                        <input asp-for ="IsFeeding" type = "radio" value="false"/> No
+                                    </div>
+                                    <div class = "starsofhotel">
+                                        <p>Hotel stars</p>
+                                        <input asp-for="AmountOfStartOfHotel" />
+                                    </div>
+                                    <div class = "wifi">
+                                        <p>Free wi-fi</p>
+                                        <input asp-for ="IsWifi" type = "radio" value="true"/> Yes
+                                        <input asp-for ="IsWifi" type = "radio" value="false"/> No
+                                    </div>
+                                     <div class = "duration">
+                                        <p>Duration</p>
+                                        <input asp-for="Duration" />
+                                    </div>
+                                </div>
+                                <div class = "col-11">
+                                    <input asp-for="Place" placeholder = "City" />
+                                    <input asp-for="DateOfStart" type = "date" placeholder = "Date of start" />
+                                    <input asp-for="DateOfEnd" type = "date" placeholder = "Date of end" />
+                                     <div class="btnsearchh">
+                                    <button type="submit">SEARCH</button>
+                                    @if(Model.Tours != null){
+                                        @foreach(var tour in Model.Tours){
+                                            <div class = "tour">
+                                                <a asp-controller = "Tour" asp-action="Index" asp-route-id="@tour.Id" class="text">
+                                                <div class = "SearchImage">
+                                                <img src = "@tour.ImageDataUrl">
+                                                </div>
+                                                <div class = "NameTour">
+                                                                <p>@tour.Name</p>
+                                                </div>
+                                                <div class = "DescriptionTour">
+                                                       <p>@tour.Description</p>
+                                                </div>
+                                                <div class = "PriceTour">
+                                                      <p>@tour.Price$</p>
+                                                </div>
+                                            </a>
+
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                                
+                                </div>
                             </div>
+                           
                         </form>
                     </div>
                 </div>
 </form>
-<body style = "background-color: #E2D3FF">
-@if(Model.Tours != null){
-    @foreach(var tour in Model.Tours){
-        <div class = "tour">
-            <a asp-controller = "Tour" asp-action="Index" asp-route-id="@tour.Id" class="text">
-            <div class = "SearchImage">
-            <img src = "@tour.ImageDataUrl">
-            </div>
-            <div class = "NameTour">
-                            <p>@tour.Name</p>
-            </div>
-            <div class = "DescriptionTour">
-                   <p>@tour.Description</p>
-            </div>
-            <div class = "PriceTour">
-                  <p>@tour.Price$</p>
-            </div>
-        </a>
 
-        </div>
-    }
-}
+ <body style = "background-color: #E2D3FF">
 
 </body>

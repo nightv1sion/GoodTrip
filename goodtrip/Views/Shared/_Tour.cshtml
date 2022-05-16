@@ -47,7 +47,13 @@
                         <p>@Model.Price $</p>
                 </div>
                 <div class = "col-6 apply">
-                    <a asp-action="CreateRequest" asp-route-id="@Model.Id.ToString()">Apply</a>
+                    @if(Context.User.IsInRole("Customer")){
+                        <a asp-action="CreateRequest" asp-route-id="@Model.Id.ToString()">Apply</a>
+                    }
+                    else
+                    {
+                        <a>You need to have a customer account to apply tour</a>
+                    }
                 </div>
             </div>
             </div>

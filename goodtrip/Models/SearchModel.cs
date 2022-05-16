@@ -5,11 +5,15 @@ namespace goodtrip.Models
 {
     public class SearchModel
     {
-        [Required]
-        public string Place { get; set; }
-        [Required]
-        public DateTime DateOfStart { get; set; }
-        public DateTime DateOfEnd { get; set; }
+        public string? Place { get; set; }
+        public DateTime? DateOfStart { get; set; }
+        public DateTime? DateOfEnd { get; set; }
+        public int? PriceStart { get; set; }
+        public int? PriceEnd { get; set; }
+        public bool? IsFeeding { get; set; }
+        public int? AmountOfStartOfHotel { get; set; }
+        public bool? IsWifi { get; set; }
+        public int? Duration { get; set; }
         public List<TourModel> Tours { get; set; }
 
     }
