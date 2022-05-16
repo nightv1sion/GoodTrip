@@ -179,6 +179,10 @@ namespace goodtrip.Migrations
                     b.Property<Guid>("TourId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("TourId");

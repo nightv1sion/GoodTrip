@@ -201,3 +201,8 @@ body {
     text-align: start;
     margin-left: 0;
 }
+.newcomment {
+    margin: 0;
+    width: 70%;
+    border: 2px solid black;
+}
