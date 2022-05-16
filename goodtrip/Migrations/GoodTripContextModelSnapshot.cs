@@ -133,7 +133,7 @@ namespace goodtrip.Migrations
 
                     b.HasIndex("ExcurtionId");
 
-                    b.ToTable("ImageExcurtion");
+                    b.ToTable("ImagesExcurtion");
                 });
 
             modelBuilder.Entity("goodtrip.Storage.Entity.ImageHotel", b =>
@@ -157,7 +157,7 @@ namespace goodtrip.Migrations
 
                     b.HasIndex("HotelId");
 
-                    b.ToTable("ImageHotel");
+                    b.ToTable("ImagesHotel");
                 });
 
             modelBuilder.Entity("goodtrip.Storage.Entity.Review", b =>
@@ -249,7 +249,6 @@ namespace goodtrip.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
@@ -261,6 +260,10 @@ namespace goodtrip.Migrations
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Login")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -337,15 +340,10 @@ namespace goodtrip.Migrations
                     b.Property<DateTime>("PassportValidityPeriod")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("TourID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("UserProfileId");
-
-                    b.HasIndex("TourID");
 
                     b.HasIndex("UserId")
                         .IsUnique();
@@ -557,19 +555,11 @@ namespace goodtrip.Migrations
 
             modelBuilder.Entity("goodtrip.Storage.Entity.UserProfile", b =>
                 {
-                    b.HasOne("goodtrip.Storage.Entity.Tour", "Tour")
-                        .WithMany()
-                        .HasForeignKey("TourID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("goodtrip.Storage.Entity.User", "User")
                         .WithOne("Profile")
                         .HasForeignKey("goodtrip.Storage.Entity.UserProfile", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Tour");
 
                     b.Navigation("User");
                 });
