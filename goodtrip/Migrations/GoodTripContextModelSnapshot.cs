@@ -160,6 +160,50 @@ namespace goodtrip.Migrations
                     b.ToTable("ImagesHotel");
                 });
 
+            modelBuilder.Entity("goodtrip.Storage.Entity.Request", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CustomerLastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CustomerName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("CustomerProfileId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CustomerUserProfileId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("OperatorProfileId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("OperatorUserProfileId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("TourId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerUserProfileId");
+
+                    b.HasIndex("OperatorUserProfileId");
+
+                    b.HasIndex("TourId");
+
+                    b.ToTable("Requests");
+                });
+
             modelBuilder.Entity("goodtrip.Storage.Entity.Review", b =>
                 {
                     b.Property<Guid>("Id")
@@ -547,6 +591,33 @@ namespace goodtrip.Migrations
                     b.Navigation("Hotel");
                 });
 
+            modelBuilder.Entity("goodtrip.Storage.Entity.Request", b =>
+                {
+                    b.HasOne("goodtrip.Storage.Entity.UserCustomerProfile", "Customer")
+                        .WithMany("SendedRequests")
+                        .HasForeignKey("CustomerUserProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("goodtrip.Storage.Entity.UserOperatorProfile", "Operator")
+                        .WithMany("ReceivedRequests")
+                        .HasForeignKey("OperatorUserProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("goodtrip.Storage.Entity.Tour", "Tour")
+                        .WithMany()
+                        .HasForeignKey("TourId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("Operator");
+
+                    b.Navigation("Tour");
+                });
+
             modelBuilder.Entity("goodtrip.Storage.Entity.Review", b =>
                 {
                     b.HasOne("goodtrip.Storage.Entity.Tour", "Tour")
@@ -657,9 +728,16 @@ namespace goodtrip.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("goodtrip.Storage.Entity.UserCustomerProfile", b =>
+                {
+                    b.Navigation("SendedRequests");
+                });
+
             modelBuilder.Entity("goodtrip.Storage.Entity.UserOperatorProfile", b =>
                 {
                     b.Navigation("CreatedTours");
+
+                    b.Navigation("ReceivedRequests");
                 });
 #pragma warning restore 612, 618
         }

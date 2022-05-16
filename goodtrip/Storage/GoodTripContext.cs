@@ -21,6 +21,7 @@ namespace goodtrip.Storage
 
         public DbSet<ImageExcurtion> ImagesExcurtion { get; set; }
         public DbSet<ImageHotel> ImagesHotel { get; set; }
+        public DbSet<Request> Requests { get; set; }
 
         public GoodTripContext(DbContextOptions<GoodTripContext> options) : base(options)
         {

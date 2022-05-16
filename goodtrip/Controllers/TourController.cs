@@ -1,6 +1,7 @@
 ﻿using goodtrip.Models;
 using goodtrip.Storage;
 using goodtrip.Storage.Entity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -81,6 +82,12 @@ namespace goodtrip.Controllers
                 ModelState.AddModelError("comment","Name and text are required!");
             }
             return Redirect($"Index/{tourinfoModel.TourId.ToString()}");
+        }
+        [Authorize("Customer")]
+        [HttpGet]
+        public IActionResult CreateRequest()
+        {
+            return View();
         }
     }
 }

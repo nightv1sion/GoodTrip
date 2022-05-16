@@ -5,6 +5,7 @@ namespace goodtrip.Storage.Entity
 {
     public class UserCustomerProfile : UserProfile
     {
+        public List<Request> SendedRequests { get; set; }
         
     }
 }
