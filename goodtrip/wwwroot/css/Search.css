@@ -64,3 +64,25 @@ a.text {
     border-radius: 5px;
     font-size: 24px;
 }
+.price {
+    margin: auto;
+    width: 100%;
+}
+.price input{
+    width: 250%;
+}
+#priceend {
+    margin-left: 175%;
+}
+.feeding {
+    margin-top: 3%;
+}
+.leftinputs input {
+    margin-bottom: 20%;
+}
+.leftinputs p {
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0;
+    margin-bottom: 5%;
+}
