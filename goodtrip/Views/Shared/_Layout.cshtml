@@ -8,40 +8,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - goodtrip</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/goodtrip.styles.css" asp-append-version="true" />
+     <link rel="stylesheet" href="~/goodtrip.styles.css" asp-append-version="true" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=K2D&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <link rel="stylesheet" href = "_Layout.cshtml.css"/>
-               <link rel="stylesheet" href="~/css/reset.css" asp-append-version="true" />
-             <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
 </head>
 <body>
     <header>
-        <div class="container-fluid">
+        <div class="container-fluiddd">
             <div class="row">
                 <div class = "col-2">
                     <div class="logo">
-                        <img src = "/images/goodtripLogo.svg" style="max-width: 50%"/>
+
+                        <a asp-controller="Home" asp-action="Index"> <img src = "/images/goodtripLogo.svg" style="max-width: 50%"/></a>
                     </div>
                 </div>
-                <div class="col-8">
-                    <div class="search">
-                        <form name="supersearch">
-                            <input type = "text" name = "city" id="city" placeholder = "city" />
-                            <input type= "date" name = "startdate" id="startdate" placeholder = "Date of start" />
-                            <input type = "date" name = "enddate" id="enddate" placeholder = "Date of end" />
-                            
-                        </form>
-                        <div class="btnsearch">
-                                <button onclick="redirect()" type="submit">SEARCH</button>
-                        </div>
-                    </div>
-                </div>
+                <div class = "search">
+                     <div class="col-3">
+                         <a asp-controller="Search" asp-action="Index" class = "LaySearch">SEARCH</a>
+                     </div>
+                 </div>
                 <div class="col-2">
-                    <div class="profile">
+                    <div class="profilee">
                         @if(Context.User.Identity.IsAuthenticated)
                         {
                             <a asp-controller="Profile" asp-action="Index" class = "profilebutton">PROFILE</a>
@@ -68,15 +58,6 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script type="text/javascript">
-        function redirect() {
-            var city = document.getElementsById("city").value;
-            var startdate = document.getElementsById("startdate").value;
-            var enddate = document.getElementsById("enddate").value;
-
-            window.location.href = "https://localhost:44315/Search?city=" + city + "?startdate="+startdate + "?enddate="+enddate;
-        };
-    </script>
     @await RenderSectionAsync("Scripts", required: false)
  </body>
 </html>

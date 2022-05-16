@@ -1,7 +1,7 @@
 ﻿body {
     font-family: 'K2D', sans-serif;
 }
-a{
+/*a{
     text-decoration: none;
     text-decoration-color: none;
     color: black;
@@ -12,7 +12,7 @@ a:hover {
     text-decoration: none;
     text-decoration-color: none;
     color: black;
-}
+}*/
 .CustomerProfile {
     font-family: 'K2D', sans-serif;
     font-size: 48px;
@@ -104,9 +104,9 @@ a:hover {
 .Something {
     margin-bottom: 35%;
 }
-.sidebarSquare a {
+/*.sidebarSquare a {
     font-size: 18px;
-}
+}*/
 
 .LogoutButton {
     text-align: center;
