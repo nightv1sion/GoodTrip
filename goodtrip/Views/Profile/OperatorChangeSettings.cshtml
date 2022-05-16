@@ -10,7 +10,7 @@
          <link rel="stylesheet" href="~/goodtrip.styles.css" asp-append-version="true" />
 </head>
 <header>
-    <div>
+    <div class = "container-fluid">
         <p class = "text-center CustomerProfile">Operator Profile</p>
     </div>
     <hr class="LineInHeader"align = "center">
@@ -30,11 +30,10 @@
                         <a asp-action="OperatorChangeBussinessInfo" style = "text-decoration: none; text-decoration-color: none; color: black; font-size: 16px;">Bussiness info</a>
                     </div>
                     <div class="Something">
-<<<<<<< HEAD
                         <a asp-action="CreateTour" style = "text-decoration: none; text-decoration-color: none; color: black; font-size: 16px;">Create tour</a>
-=======
-                        <a asp-action="PrintTours">My tours</a>
->>>>>>> fe403ee8bc738cbd7ce18ed8583ea5f42fff114f
+                    </div>
+                    <div class = "MyTours">
+                         <a asp-action="PrintTours" style = "text-decoration: none; text-decoration-color: none; color: black; font-size: 16px;">My tours</a>
                     </div>
                 </div>
             </div>

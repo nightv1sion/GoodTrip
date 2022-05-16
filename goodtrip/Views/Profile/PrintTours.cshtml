@@ -22,16 +22,16 @@
             <div class="sidebar col-3 containter-fluid">
                 <div class="sidebarSquare">
                     <div class="Settings">
-                        <a>Settings</a>
+                        <a asp-action="OperatorChangeSettings" style = "text-decoration: none; text-decoration-color: none; color: black; font-size: 16px;">Settings</a>
                     </div>
                     <div class="Documents">
-                        <a asp-action="OperatorChangeDocuments">Documents</a>
+                        <a asp-action="OperatorChangeDocuments" style = "text-decoration: none; text-decoration-color: none; color: black; font-size: 16px;">Documents</a>
                     </div>
                     <div class="BussinessInfo">
-                        <a asp-action="OperatorChangeBussinessInfo">Bussiness info</a>
+                        <a asp-action="OperatorChangeBussinessInfo" style = "text-decoration: none; text-decoration-color: none; color: black; font-size: 16px;">Bussiness info</a>
                     </div>
-                    <div class="Something" style = "background-color: rgba(154,110,246,7%); color: #8643D6;">
-                        <a asp-action="PrintTours">My tours</a>
+                    <div class="MyTours" style = "background-color: rgba(154,110,246,7%); color: #8643D6;">
+                        <a style = "text-decoration: none; text-decoration-color: none; color: black; font-size: 16px;">My tours</a>
                     </div>
                 </div>
             </div>
@@ -40,12 +40,12 @@
                     <div class="row">
                         <div class="col-3">
                             <div class="printedtour">
-                                <a asp-controller = "Tour" asp-action="Index" asp-route-id="@tour.Id.ToString()">@tour.Name</a>
+                                <a asp-controller = "Tour" asp-action="Index" asp-route-id="@tour.Id.ToString()" style = "text-decoration: none; text-decoration-color: none; color: black;">@tour.Name</a>
                             </div>
                         </div>
                         <div class = "col-3">
                             <div class="deletebutton">
-                                <a asp-controller = "Profile" asp-action="DeleteTour" asp-route-id="@tour.Id.ToString()">Delete</a>
+                                <a asp-controller = "Profile" asp-action="DeleteTour" asp-route-id="@tour.Id.ToString()" style = "text-decoration: none; text-decoration-color: none; color: black;">Delete</a>
                             </div>
                         </div>
                         <div class = "col-6">
@@ -54,12 +54,12 @@
                     </div>
                 }
                 <div class = "buttoncreatetour">
-                    <a asp-action="CreateTour">Create new tour</a>
+                    <a asp-action="CreateTour" style = "text-decoration: none; text-decoration-color: none; color: black;">Create new tour</a>
                 </div>
             </div>
             <div class = "logoutbar col-3">
                 <div class = "LogoutButton">
-                    <a asp-controller="Account" asp-action="Logout" class="logoutlink">LOG OUT</a> 
+                    <a asp-controller="Account" asp-action="Logout" class="logoutlink" style = "text-decoration: none; text-decoration-color: none; color: black; font-size: 16px;">LOG OUT</a> 
                 </div>
             </div>
         </div>
