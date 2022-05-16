@@ -1,7 +1,7 @@
 ﻿body {
     font-family: 'K2D', sans-serif;
 }
-a{
+/*a{
     text-decoration: none;
     text-decoration-color: none;
     color: black;
@@ -12,7 +12,7 @@ a:hover {
     text-decoration: none;
     text-decoration-color: none;
     color: black;
-}
+}*/
 .CustomerProfile {
     font-family: 'K2D', sans-serif;
     font-size: 48px;
@@ -102,11 +102,13 @@ a:hover {
     margin-top: 10%;
 }
 .Something {
-    margin-bottom: 35%;
 }
-.sidebarSquare a {
+.MyTours {
+    margin-bottom: 50%;
+}
+/*.sidebarSquare a {
     font-size: 18px;
-}
+}*/
 
 .LogoutButton {
     text-align: center;
@@ -126,21 +128,34 @@ a:hover {
 }
 .printedtour {
     margin-top: 12%;
+    border-radius:20px;
     border: 2px solid black;
     padding: 3%;
     text-align: center;
 }
 .deletebutton {
+    border-radius: 20px;
     margin-top: 14%;
     padding: 3%;
-    background-color: red;
+    font-size:16px;
+    border: 2px solid black;
+    background-color: rgba(154, 110, 246, 0.35);
     text-align: center;
-    border-radius: 10px;
 }
 .buttoncreatetour {
+    text-decoration: none;
+    text-decoration-color: none;
     margin: auto;
-    width: 25%;
+    width: 40%;
+    height: 20%;
+    color: black;
+    font-size: 25px;
     margin-top: 5%;
+    border-radius: 30px;
+    background-color: rgba(154, 110, 246, 0.35);
     border: 2px solid black;
     text-align: center;
+}
+header .container-fluid {
+    
 }
