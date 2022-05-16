@@ -15,12 +15,13 @@
     <link rel="stylesheet" href="~/css/CreateTour.css" asp-append-version="true" />
 </head>
 
-<form mehod="post">
+<form mehod="post" enctype="multipart/form-data">
     <div class = "border p-3 mt-4">
         <div class ="row pb-2">
             <h2 class = "text-primary">Create Tour</h2>
             <hr />
         </div>
+        <input type="hidden" asp-for="Id"/>
         <div class = "mb-3">
             <label asp-for="Name"></label>
             <input asp-for="Name" class = "form-control"/>
@@ -57,7 +58,6 @@
             <label asp-for="Price"></label>
             <input asp-for="Price" class = "form-control"/>
         </div>
-        <button type = "sumbit" class ="btn-primary" style="width:150px">Create</button>
     </div>
         <div class = "border p-3 mt-4">
         <div class ="row pb-2">
@@ -104,5 +104,21 @@
             <label asp-for="Hotel.FreeRooms">How many rooms are free</label>
             <input asp-for="Hotel.FreeRooms" class = "form-control"/>
         </div>
+          <div class="form-group">
+            <label>Upload image</label>
+            <input type="file" name="uploadedFile" class="form-control" asp-for="Hotel.Images"/>
         </div>
+        <div class="form-group">
+            <label>Upload image</label>
+            <input type="file" name="uploadedFile" class="form-control" asp-for="Hotel.Images"/>
+        </div>
+        <div class="form-group">
+            <label>Upload image</label>
+            <input type="file" name="uploadedFile" class="form-control" asp-for="Hotel.Images"/>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Add images" class="btn btn-outline-secondary" />
+        </div>
+        </div>
+        <button type = "sumbit" class ="btn-primary" style="width:150px">Create</button>
 </form>
