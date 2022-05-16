@@ -17,6 +17,8 @@
 
 <form method="post" enctype="multipart/form-data">
     <div class="validation">@ViewBag.SuperError</div>
+    <center>
+     <div style="text-align:center;">
     <div class = "border p-3 mt-4">
         <div class ="row pb-2 title">
             <h2 class = "text-primary">Create Tour</h2>
@@ -24,39 +26,39 @@
         </div>
         <div class = "mb-3">
             <label asp-for="TourName">Tour Name</label>
-            <input asp-for="TourName" class = "form-control" style = "width: 30%;border-radius:15px;"/>
+            <input asp-for="TourName" class = "form-control" style = "width: 44%;border-radius:15px;margin:auto;"/>
+        </div>
+        <div class = "mb-7">
+            <label asp-for="TourDescription">Description of tour</label>
+            <input asp-for="TourDescription" class = "form-control" style = "width: 44%;border-radius:15px;margin:auto;/>
         </div>
         <div class = "mb-3">
-            <label asp-for="TourDescription"></label>
-            <input asp-for="TourDescription" class = "form-control"/>
+            <label asp-for="TourCountry">Country</label>
+            <input asp-for="TourCountry" class = "form-control" style = "width: 44%;border-radius:15px;margin:auto;"/>
         </div>
         <div class = "mb-3">
-            <label asp-for="TourCountry"></label>
-            <input asp-for="TourCountry" class = "form-control"/>
+            <label asp-for="TourCity">City</label>
+            <input asp-for="TourCity" class = "form-control" style = "width: 44%;border-radius:15px;margin:auto;"/>
         </div>
         <div class = "mb-3">
-            <label asp-for="TourCity"></label>
-            <input asp-for="TourCity" class = "form-control"/>
+            <label asp-for="TourDuration">Duration</label>
+            <input asp-for="TourDuration" class = "form-control" style = "width: 12%;border-radius:15px;margin:auto;"/>
         </div>
-        <div class = "mb-3">
-            <label asp-for="TourDuration"></label>
-            <input asp-for="TourDuration" class = "form-control"/>
-        </div>
-        <div class = "mb-3">
+        <div>
             <label asp-for="StartDate">Date when tour is avaliable</label>
-            <input type ="date" asp-for="StartDate" class = "form-control"/>
+            <input type ="date" asp-for="StartDate" class = "form-control" style = "width: 12%;border-radius:15px;margin:auto;"/>
         </div>
         <div class = "mb-3">
             <label asp-for="EndDate">Date when Tour is not avaliable anymore</label>
-            <input type ="date" asp-for="EndDate" class = "form-control"/>
+            <input type ="date" asp-for="EndDate" class = "form-control" style = "width: 12%;border-radius:15px;margin:auto;"/>
         </div>
         <div class = "mb-3">
             <label asp-for="TourMaxTourists">Maximum Amount of Tourists</label>
-            <input asp-for="TourMaxTourists" class = "form-control"/>
+            <input asp-for="TourMaxTourists" class = "form-control" style = "width: 12%;border-radius:15px;margin:auto;"/>
         </div>
         <div class = "mb-3">
-            <label asp-for="TourPrice"></label>
-            <input asp-for="TourPrice" class = "form-control"/>
+            <label asp-for="TourPrice">Price of tour</label>
+            <input asp-for="TourPrice" class = "form-control" style = "width: 12%;border-radius:15px;margin:auto;"/>
         </div>
     </div>
         <div class = "border p-3 mt-4">
@@ -158,4 +160,6 @@
         <div class = "buttoncreate">
             <button type = "submit" class ="btn-primary" style="width:150px">Create</button>
         </div>
+        </div>
+        </center>
 </form>
