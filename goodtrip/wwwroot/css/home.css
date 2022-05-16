@@ -17,3 +17,54 @@
     display: block;
     line-height: normal;
 }
+
+.best_offers_cont {
+    margin-top:8%;
+    padding-bottom:2%;
+    position:center;
+    width: 100%;
+    height: 80%;
+    background: rgba(154, 110, 246, 0.14);
+    box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.14);
+    border-radius: 30px;
+}
+
+.left_image {
+    margin-left:20px;
+    width: 360px;
+    height: 210px;
+}
+.left_image img {
+        width: 100%;
+        height: auto;
+}
+
+.mid_image {
+    margin: -220px 0px 0px 440px;
+    width: 450px;
+    height: 275px;
+    border: 6px solid #9A6EF6;
+    border-radius: 5px;
+}
+.mid_image img {
+    width: 100%;
+    height: 100%;
+}
+.right_image {
+    margin: -250px 20px 50px 925px;
+    width: 360px;
+    height: 210px;
+}
+    .right_image img {
+        width: 100%;
+        height: auto;
+    }
+.text_bo {
+    font-family: 'K2D';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 96px;
+    line-height: 125px;
+    text-align: center;
+    color: #8E7DF3;
+}
