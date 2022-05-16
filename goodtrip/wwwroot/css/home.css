@@ -31,9 +31,8 @@
 
 .left_image {
     margin-left:20px;
-    width: 400px;
-    height: 250px;
-    border: 6px solid #9A6EF6;
+    width: 360px;
+    height: 210px;
 }
 .left_image img {
         width: 100%;
@@ -41,21 +40,20 @@
 }
 
 .mid_image {
-    margin: -250px 0px 0px 440px;
-    width: 400px;
-    height: 250px;
+    margin: -220px 0px 0px 440px;
+    width: 450px;
+    height: 275px;
     border: 6px solid #9A6EF6;
     border-radius: 5px;
 }
 .mid_image img {
     width: 100%;
-    height: auto;
+    height: 100%;
 }
 .right_image {
-    margin: -250px 20px 50px 870px;
-    width: 400px;
-    height: 250px;
-    border: 6px solid #9A6EF6;
+    margin: -250px 20px 50px 925px;
+    width: 360px;
+    height: 210px;
 }
     .right_image img {
         width: 100%;
