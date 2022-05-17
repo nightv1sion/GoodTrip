@@ -78,20 +78,26 @@
                                         @foreach(var tour in Model.Tours){
                                             <div class = "tour">
                                                 <a asp-controller = "Tour" asp-action="Index" asp-route-id="@tour.Id" class="text">
-                                                <div class = "SearchImage">
-                                                <img src = "@tour.ImageDataUrl">
-                                                </div>
-                                                <div class = "NameTour">
-                                                                <p>@tour.Name</p>
-                                                </div>
-                                                <div class = "DescriptionTour">
-                                                       <p>@tour.Description</p>
+                                                <div class="row">
+                                                    <div class = "col-4">
+                                                        <div class = "SearchImage">
+                                                        <img src = "@tour.ImageDataUrl">
+                                                         </div>
+                                                    </div>
+                                                    <div class = "col-8">
+                                                        <div class = "NameTour">
+                                                            <p>@tour.Name</p>
+                                                        </div>
+                                                        <div class = "DescriptionTour">
+                                                            <p>@tour.Description</p>
+                                                        </div>
+                                                    </div>
+                                                    
                                                 </div>
                                                 <div class = "PriceTour">
-                                                      <p>@tour.Price$</p>
+                                                    <p>@tour.Price$</p>
                                                 </div>
                                             </a>
-
                                             </div>
                                         }
                                     }

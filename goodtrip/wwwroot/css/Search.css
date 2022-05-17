@@ -2,41 +2,41 @@
     margin: auto;
     background-color: #ffffff;
     font-family: K2D;
-    border: outset #808080;
-    border-radius: 30px;
-    padding: 20px 40px;
-    width: 40%;
-    min-height: 30%;
-    max-height: 30%;
+    border-radius: 20px;
+    width: 50%;
+    min-height: 50%;
     margin-bottom: 1%;
 }
 
 .SearchImage {
-    width: 150px;
-    height: 100px;
+    height: 150px;
+    margin-top: 5%;
+    margin-left: 7%;
+    margin-bottom: 5%;
 }
 
-    .SearchImage img {
-        width: 100%;
-        height: 100%    ;
-    }
-
+.SearchImage img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5%;
+}
 .NameTour {
-    margin: -100px 20px 50px 210px;
-    font-size: 14px;
+    text-align: start;
+    font-weight: bold;
+    margin-top: 3%;
+    margin-bottom: 2%;
 }
-
 .DescriptionTour {
-    /*margin: -50px 0px 50px 210px;*/
-    margin: -50px 20px 50px 210px;
-    /*padding: 20px 0px 20% 210px;*/
-    font-size: 12px;
+    text-align: start;
+    word-break: break-all;
 }
-
 .PriceTour {
+    width:10%;
+    margin: auto;
+    margin-right: 0;
+    margin-
     background-color: #baf783;
     border-radius: 30px;
-    margin-left: 87%;
     font-size: 18px;
 }
 
@@ -52,9 +52,9 @@ a.text {
     padding-top: 2%;
 }
 
-    .searchh form {
-        margin-top: 50%;
-    }
+.searchh form {
+    margin-top: 50%;
+}
 
 .btnsearchh button {
     margin-top: 1%;
