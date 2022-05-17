@@ -1,4 +1,5 @@
-﻿using goodtrip.Models;
+﻿using goodtrip.Managers;
+using goodtrip.Models;
 using goodtrip.Storage;
 using goodtrip.Storage.Entity;
 using goodtrip.Storage.Enums;
@@ -13,15 +14,16 @@ namespace goodtrip.Controllers
     public class ProfileController : Controller
     {
         private GoodTripContext _context { get; set; }
-        public ProfileController(GoodTripContext context)
+        private IProfileManager _profileManager { get; set; }
+        public ProfileController(GoodTripContext context, IProfileManager profileManager)
         {
+            _profileManager = profileManager;
             _context = context;
         }
 
         public async Task<IActionResult> Index()
         {
             string role = User?.FindFirst(x => x.Type == ClaimsIdentity.DefaultRoleClaimType)?.Value;
-            string name = User?.FindFirst(x => x.Type == ClaimsIdentity.DefaultNameClaimType)?.Value;
             if(role == "Customer")
             {
                 return RedirectToAction("CustomerChangeDocuments");
@@ -38,17 +40,14 @@ namespace goodtrip.Controllers
         public async Task<IActionResult> CustomerChangeDocuments()
         {
             string username = HttpContext.User.Identity.Name;
-            User user = username != null ? _context.Users.Include(user => user.Profile).FirstOrDefault(u => u.UserName == username) : null;
-            DocumentsModel profile = new DocumentsModel();
-            if (user != null)
+            DocumentsModel profile;
+            if (username != null)
             {
-                profile.Name = user.Profile.Name;
-                profile.LastName = user.Profile.LastName;
-                profile.BirthDay = user.Profile.BirthDay;
-                profile.Nationality = user.Profile.Nationality.ToString();
-                profile.Gender = user.Profile.Gender.ToString().ToLower();
-                profile.PassNumber = user.Profile.PassportNumber;
-                profile.PassValidityPeriod = user.Profile.PassportValidityPeriod;
+                profile = _profileManager.DocumentsInfo(username);
+            }
+            else
+            {
+                profile = new DocumentsModel();
             }
             return View(profile);
         }
@@ -56,19 +55,7 @@ namespace goodtrip.Controllers
         public async Task<IActionResult> CustomerChangeDocuments(DocumentsModel profile)
         {
             string username = HttpContext.User.Identity.Name;
-            UserCustomerProfile userprofile = username != null ? _context.UserCustomerProfiles.Include(p => p.User).FirstOrDefault(p => p.User.UserName == username) : null;
-            if(userprofile != null)
-            {
-                userprofile.Name = profile.Name;
-                userprofile.LastName = profile.LastName;
-                userprofile.BirthDay = profile.BirthDay;
-                userprofile.Nationality = profile.Nationality == "Russia" ? Nationality.Russia : Nationality.Europe;
-                userprofile.Gender = profile.Gender == "male" ? Gender.Male : Gender.Female;
-                userprofile.PassportNumber = profile.PassNumber;
-                userprofile.PassportValidityPeriod = profile.PassValidityPeriod;
-                _context.Update<UserCustomerProfile>(userprofile);
-                await _context.SaveChangesAsync();
-            }
+            await _profileManager.ChangeDocumentsAsync(username, profile);
             return View();
         }
         [Authorize(Roles="Operator")]
@@ -76,17 +63,14 @@ namespace goodtrip.Controllers
         public async Task<IActionResult> OperatorChangeDocuments()
         {
             string username = HttpContext.User.Identity.Name;
-            User user = username != null ? _context.Users.Include(user => user.Profile).FirstOrDefault(u => u.Email == username) : null;
-            DocumentsModel profile = new DocumentsModel();
-            if (user != null)
+            DocumentsModel profile;
+            if (username != null)
             {
-                profile.Name = user.Profile.Name;
-                profile.LastName = user.Profile.LastName;
-                profile.BirthDay = user.Profile.BirthDay;
-                profile.Nationality = user.Profile.Nationality.ToString();
-                profile.Gender = user.Profile.Gender.ToString().ToLower();
-                profile.PassNumber = user.Profile.PassportNumber;
-                profile.PassValidityPeriod = user.Profile.PassportValidityPeriod;
+                profile = _profileManager.DocumentsInfo(username);
+            }
+            else
+            {
+                profile = new DocumentsModel();
             }
             return View(profile);
         }
@@ -94,26 +78,16 @@ namespace goodtrip.Controllers
         public async Task<IActionResult> OperatorChangeDocuments(DocumentsModel profile)
         {
             string username = HttpContext.User.Identity.Name;
-            User user = username != null ? _context.Users.Include(user => user.Profile).FirstOrDefault(u => u.Email == username) : null;
-            if (user != null)
-            {
-                user.Profile.Name = profile.Name;
-                user.Profile.LastName = profile.LastName;
-                user.Profile.BirthDay = profile.BirthDay;
-                user.Profile.Nationality = profile.Nationality == "Russia" ? Nationality.Russia : Nationality.Europe;
-                user.Profile.Gender = profile.Gender == "male" ? Gender.Male : Gender.Female;
-                user.Profile.PassportNumber = profile.PassNumber;
-                user.Profile.PassportValidityPeriod = profile.PassValidityPeriod;
-                _context.Update<User>(user);
-                await _context.SaveChangesAsync();
-            }
+            await _profileManager.ChangeDocumentsAsync(username, profile);
             return View();
         }
         [Authorize(Roles = "Operator")]
+        [HttpGet]
         public IActionResult CreateTour(NewTourModel newtourModel = null)
         {
             return View(newtourModel);
         }
+
         [Authorize(Roles="Operator")]
         [ActionName("CreateTour")]
         [HttpPost]
@@ -125,129 +99,43 @@ namespace goodtrip.Controllers
                 ViewBag.SuperError = "All fields are required";
                 return View(newtourModel);
             }
-            UserOperatorProfile creator = _context.UserOperatorProfiles.Include(p => p.User).FirstOrDefault(p => p.User.UserName == HttpContext.User.Identity.Name);
-            Tour tour = new Tour()
+            var files = Request.Form.Files;
+            string username = HttpContext.User.Identity.Name;
+            if(username != null)
             {
-                Id = Guid.NewGuid(),
-                Name = newtourModel.TourName,
-                City = newtourModel.TourCity,
-                Country = newtourModel.TourCountry,
-                Description = newtourModel.TourDescription,
-                Duration = newtourModel.TourDuration,
-                StartDate = newtourModel.StartDate,
-                EndDate = newtourModel.EndDate,
-                MaxTourists = newtourModel.TourMaxTourists,
-                Price = newtourModel.TourPrice,
-            };
-            if(creator != null)
-            {
-                tour.TourOperatorProfile = creator;
-                tour.TourOperatorProfileId = creator.UserProfileId;
+                _profileManager.CreateTour(username, newtourModel, files);
             }
-            Hotel hotel = new Hotel()
-            {
-                Id = Guid.NewGuid(),
-                Name = newtourModel.HotelName,
-                City = newtourModel.HotelCity,
-                Country = newtourModel.HotelCountry,
-                Address = newtourModel.HotelAddress,
-                Description = newtourModel.HotelDescription,
-                Feeding = newtourModel.HotelFeeding == "yes" ? true : false,
-                FreeRooms = newtourModel.HotelFreeRooms,
-                Rooms = newtourModel.HotelRooms,
-                Mark = newtourModel.HotelMark,
-                IsWifi = newtourModel.HotelIsWifi == "yes" ? true : false,
-                Tour = tour,
-                TourId = tour.Id,
-                Images = new List<ImageHotel>()
-            };
-            foreach (var file in Request.Form.Files)
-            {
-                ImageHotel img = new ImageHotel();
-                img.ImageTitle = file.FileName;
-                MemoryStream ms = new MemoryStream();
-                file.CopyTo(ms);
-                img.ImageData = ms.ToArray();
-                ms.Close(); ms.Dispose();
-                img.Id = Guid.NewGuid();
-                img.Hotel = hotel; img.HotelId = hotel.Id;
-                hotel.Images.Add(img);
-            }
-            ImageHotel imghotellast = hotel.Images[hotel.Images.Count - 1];
-            ImageExcurtion imgexc = new ImageExcurtion()
-            {
-                ImageData = imghotellast.ImageData,
-                ImageTitle = imghotellast.ImageTitle,
-                Id = Guid.NewGuid()
-            };
-            hotel.Images.RemoveAt(hotel.Images.Count - 1);
-            tour.Hotel = hotel;
-            tour.Excurtion = new List<Excurtion>();
-            tour.Excurtion.Add(new Excurtion()
-            {
-                Id = Guid.NewGuid(),
-                Name = newtourModel.ExcursionName,
-                Description = newtourModel.ExcursionDescription,
-                Duration = newtourModel.ExcursionDuration,
-                Language = newtourModel.ExcursionLanguage,
-                MaxAmountOfVisitors  = newtourModel.ExcursionMaxAmountOfVisitors,
-                Place = newtourModel.ExcursionPlace,
-                Tour = tour,
-                TourId = tour.Id,
-                Images = new List<ImageExcurtion>()
-            });
-            imgexc.Excurtion = tour.Excurtion[0];
-            imgexc.ExcurtionId = tour.Excurtion[0].Id;
-            tour.Excurtion[0].Images.Add(imgexc);
-            _context.Tours.Add(tour);
-            _context.SaveChanges();
             return RedirectToAction("PrintTours");
-
         }
+
         [Authorize(Roles = "Operator")]
         public IActionResult PrintTours()
         {
-            List<Tour> tours = _context.Tours.Include(t => t.TourOperatorProfile).Include(t => t.TourOperatorProfile.User).
-                Where(t => t.TourOperatorProfile.User.UserName == HttpContext.User.Identity.Name).ToList();
+            string username = HttpContext.User.Identity.Name;
+            List<Tour> tours = _profileManager.AllTours(username);
             return View(tours);
         }
 
+
         public IActionResult DeleteTour(string id)
         {
-            Guid guid = Guid.Parse(id);
-            Tour tourtodelete = _context.Tours.FirstOrDefault(t => t.Id == guid);
-            if(tourtodelete != null)
-            {
-                _context.Tours.Remove(tourtodelete);
-            }
-            _context.SaveChanges();
+            _profileManager.RemoveTour(id);
             return RedirectToAction("PrintTours");
         }
+
+
         [Authorize(Roles = "Operator")]
         public async Task<IActionResult> PrintRequests()
         {
-            User currentOperator = _context.Users.Include(u => u.Profile).FirstOrDefault(u => u.UserName == HttpContext.User.Identity.Name);
-            List<Request> requests;
-            if (currentOperator != null)
+            string username = HttpContext.User.Identity.Name;
+            List<RequestModel> searchedRequests;
+            if (username!= null)
             {
-                 requests = _context.Requests.Where(r => r.OperatorProfileId == currentOperator.Profile.UserProfileId).ToList();
+                searchedRequests = _profileManager.AllRequests(username);
             }
             else
             {
                 return View();
-            }
-            List<RequestModel> searchedRequests = new List<RequestModel>();
-            foreach (var request in requests)
-            {
-                RequestModel model = new RequestModel()
-                {
-                    CustomerName = request.CustomerName,
-                    CustomerLastName = request.CustomerLastName,
-                    PhoneNumber = request.PhoneNumber,
-                    TourId = request.TourId.ToString(),
-                    TourName = _context.Tours.FirstOrDefault(t => t.Id == request.TourId)?.Name
-                };
-                searchedRequests.Add(model);
             }
             return View(searchedRequests);
         }

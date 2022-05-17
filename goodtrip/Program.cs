@@ -1,3 +1,4 @@
+using goodtrip.Managers;
 using goodtrip.Storage;
 using goodtrip.Storage.Entity;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -19,6 +20,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.AccessDeniedPath = "/deniedaccess";
     });
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<IProfileManager, ProfileManager>();
 var app = builder.Build();
 
 

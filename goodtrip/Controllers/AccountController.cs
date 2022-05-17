@@ -44,11 +44,7 @@ namespace goodtrip.Controllers
                 await _userManager.AddToRoleAsync(user, registerUser.AccountType);
                 if (result.Succeeded)
                 {
-                    /*var claims = new List<Claim> { new Claim(ClaimsIdentity.DefaultNameClaimType, "name"),
-                                                   new Claim(ClaimsIdentity.DefaultRoleClaimType, registerUser.AccountType) };
-                    ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);*/
                     await _signInManager.SignInAsync(user, null);
-                    //await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
                     return RedirectToAction("Index", "Home");
                 }
                 else
