@@ -1,5 +1,5 @@
 ﻿body {
-    background-color: rgba(154,110,246,10%);
+    /*background-color: rgba(154,110,246,10%);*/
     font-family: 'K2D', sans-serif;
 }
 .tour {
@@ -68,6 +68,10 @@ body {
     align-items: center;
 }
 
+.tourdescription {
+    word-break: break-all;
+}
+
 #lightbox img {
     max-width: 90%;
     max-height: 80%;
@@ -78,31 +82,29 @@ body {
 .price {
     width: 20%;
     margin: auto;
-    background-color: #F0F335;
+    border: 1px solid green;
     text-align: center;
     border-radius: 30px;
 }
 .apply {
     width: 20%;
     margin: auto;
-    background: #FD7474;
+    border: 1px solid purple;
     text-align: center;
     border-radius: 30px;
 }
 .hotelheader {
-    
     margin: auto;
     margin-top: 1.5%;
     width: 20%;
     text-align: center;
-    background-color: #9DB1F5;
     padding: 0.5%;
+    border: 1px solid #9DB1F5;
     border-radius: 30px;
 }
 .hotelheader p {
     font-weight: bold;
     font-size: 20px;
-    font-style: italic;
     margin-bottom: 0px;
 }
 .hotelinfo {
@@ -191,6 +193,7 @@ body {
 }
 .excursioninfo {
     margin-top: 2%;
+    word-break: break-all;
 }
 .excursionplace img {
     width: 50%;
@@ -217,11 +220,14 @@ body {
     text-align: center;
 }
 .comment {
-    width: 70%;
-    margin: auto;
+    width: 25%;
+    margin-left: 15%;
     background-color: white;
     border-radius: 25px;
+    border: 1px solid purple;
 }
+
+
 .comment div {
     margin-left: 1%;
 }
@@ -245,4 +251,15 @@ a.text:hover, /* при наведении */
 a.text {
     text-decoration: none;
     color: black;
+}
+
+.textofcomment {
+    border-top: 1px solid purple;
+}
+.textofcomment p{
+    margin-left: 4%;
+}
+.comment {
+    margin-bottom: 1%;
+    word-break: break-all;
 }

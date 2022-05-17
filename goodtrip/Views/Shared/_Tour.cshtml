@@ -1,5 +1,9 @@
 ﻿@model goodtrip.Storage.Entity.Tour
+<div class = "entiretour">
 <div class = "tour">
+        <div class = "hotelheader">
+            <p>Tour Info</p>
+        </div>
         <div class = "row">
         <div class = "col-3">
         <div class = "row">
@@ -18,7 +22,9 @@
             <div class = "cityoftour">
                 <p>@Model.City, @Model.Country</p>
             </div>
-            <p>@Model.Description</p>
+            <div class = "tourdescription">
+                <p>@Model.Description</p>
+            </div>
             <div class = "duration">
                 <p>@Model.Duration Days</p>
             </div>
@@ -48,7 +54,7 @@
                 </div>
                 <div class = "col-6 apply">
                     @if(Context.User.IsInRole("Customer")){
-                            <a asp-controller = "Tour" asp-action="CreateRequest" asp-route-id="@Model.Id.ToString()">Apply</a>
+                            <a asp-controller = "Tour" asp-action="CreateRequest" asp-route-id="@Model.Id.ToString()" class="text">Apply</a>
                     }
                     else
                     {
@@ -67,10 +73,11 @@
             </div>
         </div>
         </div>
-        <div class = "hotelheader">
-            <p>Hotel Info</p>
-        </div>
+        
         <div class = "hotelinfo">
+            <div class = "hotelheader">
+            <p>Hotel Info</p>
+            </div>
             <div class="hotelname">
                 <p>@Model.Hotel.Name</p>
             </div>
@@ -129,15 +136,16 @@
 
             </div>
         </div>
-        <div class = "hotelheader">
-            <p>Excursion Info</p>
-        </div>
+        
         @{
             int counter = 0;
             var excursionphotos = ViewBag.ExcurtionPhotos;
         @foreach(var excursion in Model.Excurtion){
             
             <div class = "excursioninfo">
+            <div class = "hotelheader">
+            <p>Excursion Info</p>
+        </div>
             <div class = "row">
                 <div class = "col-3">
                     <div class = "grid">
@@ -209,3 +217,4 @@
         </div>
                 }
         }
+        </div>

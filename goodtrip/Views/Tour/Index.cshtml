@@ -46,16 +46,15 @@
           @foreach(var comment in @Model.Tour.Review)
         {
         <div class = "comment">
-                <div class = "nameofcomment">
-                    <p>Author's Name:</p>
-                <p>@comment.Username</p>
+            <div class = "row">
+                <div class = "col-6 nameofcomment">
+                    <p>@comment.Username</p>
                 </div>
-                <div class = "dateofcomment">
-                    <p>Was Created:</p>
+                <div class = "col-5 dateofcomment">
                 <p>@comment.Created</p>
-                </div>
+                </div> 
+            </div>
             <div class = "textofcomment">
-                <p>Text:</p>
                 <p>@comment.Text</p>
             </div>
         </div>

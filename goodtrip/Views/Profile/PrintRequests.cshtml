@@ -41,28 +41,24 @@
                 @foreach(var request in Model)
                 {
                         i++;
-                       <div class = "ReqCont">
-                        <div class = "whatisunder">
-                        <p>Request @i</p>
-                        </div>
-                        <div class = "whatisunder">
-                        <p>Customer's Name:</p>
-                        </div>
-                        <div class = "customernamerequest">
-                            <p>@request.CustomerName @request.CustomerLastName</p>
-                        </div>
-                        <div class = "whatisunder">
-                        <p>Customer's PhoneNumber:</p>
-                        </div>
-                        <div class = "customernumberrequest">
-                            <p>@request.PhoneNumber</p>    
-                        </div>
-                        <div class = "whatisunder">
-                        <p>Request for Tour:</p>
-                        </div>
-                        <div class="linkontour">
-                            <a asp-controller="Tour" asp-action="Index" asp-route-id="@request.TourId">@request.TourName</a>    
-                        </div>
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                          <div class="accordion-item requestaccordeon">
+                            <h2 class="accordion-header" id="flush-heading@(i)">
+                              <button class="accordion-button collapsed requestbutton" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse@(i)" aria-expanded="false" aria-controls="flush-collapse@(i)">
+                                <p>@(request.CustomerName)`s request</p> 
+                              </button>
+                            </h2>
+                            <div id="flush-collapse@(i)" class="accordion-collapse collapse" aria-labelledby="flush-heading@(i)" data-bs-parent="#accordionFlushExample">
+                              <div class="accordion-body">
+                                <p>Name: @request.CustomerName</p>
+                                <p>Last name: @request.CustomerLastName</p>
+                                <p>Phone number: @request.PhoneNumber</p>
+                                <div class="linkontour">
+                                Tour: <a asp-controller="Tour" asp-action="Index" asp-route-id="@request.TourId">@request.TourName</a>    
+                                </div>
+                                </div>
+                            </div>
+                          </div>
                         </div>
                 }
                 }else{
