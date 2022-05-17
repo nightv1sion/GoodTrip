@@ -10,107 +10,151 @@
     <link rel="stylesheet" href="~/css/Search.css" asp-append-version="true" />
 </head>
 
-<form method = "post">
-                    <div class="col-12">
-                    <div class="searchh">
-                        <form method = "post" asp-controller="Search" asp-action="Index">
-                            <div class = "row">
-                                <div class = "col-1 leftinputs">
-                                    <div class = "price">
-                                        
-                                        <div class="row">
-                                                <p>Price scale</p>
-                                            <div class="col-6">
-                                                <input asp-for="PriceStart" />
-                                            </div>
+    
 
-                                            <div class="col-6 ">
-                                                <input asp-for = "PriceEnd" id = "priceend" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class = "feeding">
-                                        <p>Has feeding</p>
-                                        
-                                        <input asp-for ="IsFeeding" type = "radio" value="true"/> Yes
-                                        <input asp-for ="IsFeeding" type = "radio" value="false"/> No
-                                    </div>
-                                    <div class = "starsofhotel">
-                                        <p>Hotel stars</p>
-                                        <input asp-for="AmountOfStartOfHotel" />
-                                    </div>
-                                    <div class = "wifi">
-                                        <p>Free wi-fi</p>
-                                        <input asp-for ="IsWifi" type = "radio" value="true"/> Yes
-                                        <input asp-for ="IsWifi" type = "radio" value="false"/> No
-                                    </div>
-                                     <div class = "duration">
-                                        <p>Duration</p>
-                                        <input asp-for="Duration" />
-                                    </div>
-                                </div>
-                                <div class = "col-11">
-                                    <div class = "row">
-                                        <div class = "col-3"></div>
-                                        <div class = "col-2">
-                                            <div class = "city">
-                                                <p>City</p>
-                                                <input asp-for="Place" placeholder = "City" />
-                                            </div>
-                                        </div>
-                                        <div class = "col-2">
-                                            <div class = "datestart">
-                                                <p>Date start</p>
-                                                 <input asp-for="DateOfStart" type = "date" placeholder = "Date of start" />
-                                            </div>
-                                        </div>
-                                        <div class = "col-2">
-                                            <div class = "dateend">
-                                                <p>Date end</p>
-                                                <input asp-for="DateOfEnd" type = "date" placeholder = "Date of end" />
-                                            </div>
-                                        </div>
-                                        <div class = "col-3"></div>
-                                    </div>
-                                     <div class="btnsearchh">
-                                    <button type="submit">SEARCH</button>
-                                    @if(Model.Tours != null){
-                                        @foreach(var tour in Model.Tours){
-                                            <div class = "tour">
-                                                <a asp-controller = "Tour" asp-action="Index" asp-route-id="@tour.Id" class="text">
-                                                <div class="row">
-                                                    <div class = "col-4">
-                                                        <div class = "SearchImage">
-                                                        <img src = "@tour.ImageDataUrl">
-                                                         </div>
-                                                    </div>
-                                                    <div class = "col-8">
-                                                        <div class = "NameTour">
-                                                            <p>@tour.Name</p>
-                                                        </div>
-                                                        <div class = "DescriptionTour">
-                                                            <p>@tour.Description</p>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                </div>
-                                                <div class = "PriceTour">
-                                                    <p>@tour.Price$</p>
-                                                </div>
-                                            </a>
-                                            </div>
-                                        }
-                                    }
-                                </div>
-                                
-                                </div>
+ <body @*style = "background-color: #E2D3FF"*@>
+        <form method = "post" asp-controller="Search" asp-action="Index">
+     <div class="container-fluid searchh">
+            <div class = "row">
+                <div class = "col-3 leftinputs">
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                            <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                Price
+                                </button>
+                            </h2>
+                            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <div class="row setprice">
+                                <p>Price scale</p>
+                            <div class="col-6">
+                                <input asp-for="PriceStart" />
                             </div>
-                           
-                        </form>
+
+                            <div class="col-6 ">
+                                <input asp-for = "PriceEnd" id = "priceend" />
+                            </div>
+                        </div>
+                        </div>
+                            </div>
+                            </div>
+                            <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                Has feeding
+                                </button>
+                            </h2>
+                            <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body"><div class = "feeding">
+                        <p>Has feeding</p>
+                                        
+                        <input asp-for ="IsFeeding" type = "radio" value="true"/> Yes
+                        <input asp-for ="IsFeeding" type = "radio" value="false"/> No
+                    </div></div>
+                            </div>
+                            </div>
+                            <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                Hotel stars
+                                </button>
+                            </h2>
+                            <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body"><div class = "starsofhotel">
+                        <p>Amount of Hotel stars</p>
+                        <input asp-for="AmountOfStartOfHotel" />
+                    </div></div>
+                            </div>
+                            </div>
+                            <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                                Free WI-Fi
+                                </button>
+                            </h2>
+                            <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body"><div class = "starsofhotel">
+                        <div class = "feeding">
+                        <p>Free WI-FI</p>
+                        <input asp-for ="IsWifi" type = "radio" value="true"/> Yes
+                        <input asp-for ="IsWifi" type = "radio" value="false"/> No
                     </div>
+                    </div></div>
+                            </div>
+                            </div>
+                            <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingFive">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                                Duration of tour
+                                </button>
+                            </h2>
+                            <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body"><div class = "starsofhotel">
+                        <div class = "duration">
+                        <p>Duration</p>
+                        <input asp-for="Duration" />
+                    </div>
+                    </div></div>
+                            </div>
+                            </div>
+                        </div>
                 </div>
-</form>
-
- <body style = "background-color: #E2D3FF">
-
+                <div class = "col-9 searchresults">
+                    <div class = "row">
+                        <div class = "col-4">
+                            <div class = "city">
+                                <p>City</p>
+                                <input asp-for="Place" class="form-control" placeholder = "City" />
+                            </div>
+                        </div>
+                        <div class = "col-4">
+                            <div class = "datestart">
+                                <p>Date start</p>
+                                    <input asp-for="DateOfStart" type = "date" class = "form-control"  placeholder = "Date of start" />
+                            </div>
+                        </div>
+                        <div class = "col-4">
+                            <div class = "dateend">
+                                <p>Date end</p>
+                                <input asp-for="DateOfEnd" type = "date" class = "form-control"  placeholder = "Date of end" />
+                            </div>
+                        </div>
+                    </div>
+                        <div class="btnsearchh">
+                    <button type="submit">SEARCH</button>
+                    @if(Model.Tours != null){
+                        @foreach(var tour in Model.Tours){
+                            <div class = "tour">
+                                <a asp-controller = "Tour" asp-action="Index" asp-route-id="@tour.Id" class="text">
+                                <div class="row">
+                                    <div class = "col-4">
+                                        <div class = "SearchImage">
+                                        <img src = "@tour.ImageDataUrl">
+                                            </div>
+                                    </div>
+                                    <div class = "col-8">
+                                        <div class = "NameTour">
+                                            <p>@tour.Name</p>
+                                        </div>
+                                        <div class = "DescriptionTour">
+                                            <p>@tour.Description</p>
+                                        </div>
+                                    </div>
+                                                    
+                                </div>
+                                <div class = "PriceTour">
+                                    <p>@tour.Price$</p>
+                                </div>
+                            </a>
+                            </div>
+                        }
+                    }
+                </div>
+                                
+                </div>
+            </div>
+    </div>
+                           
+        </form>
 </body>
