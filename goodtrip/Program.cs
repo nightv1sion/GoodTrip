@@ -22,6 +22,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IProfileManager, ProfileManager>();
 builder.Services.AddScoped<ISearchManager, SearchManager>();
+builder.Services.AddScoped<ITourManager, TourManager>();
 var app = builder.Build();
 
 

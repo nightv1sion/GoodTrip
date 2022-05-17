@@ -1,4 +1,5 @@
-﻿using goodtrip.Models;
+﻿using goodtrip.Managers;
+using goodtrip.Models;
 using goodtrip.Storage;
 using goodtrip.Storage.Entity;
 using Microsoft.AspNetCore.Authorization;
@@ -9,73 +10,35 @@ namespace goodtrip.Controllers
 {
     public class TourController : Controller
     {
-        private readonly GoodTripContext _context;
-        public TourController(GoodTripContext context)
+        private readonly ITourManager _tourManager;
+        public TourController(ITourManager tourManager)
         {
-            _context = context;
+            _tourManager = tourManager;
         }
+
         [Route("Tour/Index/{id}")]
         public IActionResult Index(string id)
         {
-            Guid guid = new Guid(id);
-            Tour tour = _context.Tours.Include(t => t.Excurtion).Include(t => t.Hotel).Include(t => t.Review).ToList<Tour>().FirstOrDefault(t => t.Id == guid);
-            if (tour != null)
-            {
-                tour.Hotel.Images = _context.ImagesHotel.Where(i => i.HotelId == tour.Hotel.Id).ToList();
-                foreach (var excurtion in tour.Excurtion)
-                {
-                    excurtion.Images = _context.ImagesExcurtion.Where(i => i.ExcurtionId == excurtion.Id).ToList();
-                }
-            }
-            else
-            {
-                return NotFound();
-            }
-            tour.Review = tour.Review.OrderByDescending(r => r.Created).ToList<Review>();
-            List<string> hotelPhotos = new List<string>();
-            foreach (var photo in tour.Hotel.Images)
-            {
-                hotelPhotos.Add(string.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(photo.ImageData)));
-            }
-            ViewBag.HotelPhotos = hotelPhotos;
-            List<string> excurtionPhotos = new List<string>();
-            foreach (var excurtion in tour.Excurtion)
-            {
-                if (excurtion.Images.Count != 0)
-                {
-                    excurtionPhotos.Add(string.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(excurtion.Images[0]?.ImageData)));
-                }
-            }
-            ViewBag.ExcurtionPhotos = excurtionPhotos;
+            Tour tour = _tourManager.FindTour(id);
+            ViewBag.HotelPhotos = _tourManager.FindHotelPhotos(tour);
+            ViewBag.ExcurtionPhotos = _tourManager.FindExcursionPhotos(tour);
+            string username = HttpContext?.User?.Identity?.Name;
             TourInfoModel tourmodel = new TourInfoModel()
             {
                 Tour = tour,
                 TourId = tour.Id.ToString(),
-                CommentName = HttpContext?.User?.Identity?.Name != null ? _context.Users.Include(u => u.Profile).FirstOrDefault(u => u.UserName == HttpContext.User.Identity.Name)?.Profile?.Name : null
+                CommentName = username != null ? _tourManager.FindCommentName(username) : null
             };
 
             return View("Index", tourmodel);
         }
+
         [HttpPost]
         public async Task<IActionResult> Comment(TourInfoModel tourinfoModel)
         {
             if (tourinfoModel.CommentName != null && tourinfoModel.CommentText != null)
             {
-                Tour tour = await _context.Tours.FirstOrDefaultAsync(t => t.Id == Guid.Parse(tourinfoModel.TourId));
-                if (tour != null)
-                {
-                    Review review = new Review()
-                    {
-                        Id = Guid.NewGuid(),
-                        Tour = tour,
-                        TourId = tour.Id,
-                        Created = DateTime.Now,
-                        Text = tourinfoModel.CommentText,
-                        Username = tourinfoModel.CommentName
-                    };
-                    await _context.Reviews.AddAsync(review);
-                    await _context.SaveChangesAsync();
-                }
+                await _tourManager.CommentAsync(tourinfoModel);
             }
             else
             {
@@ -83,48 +46,36 @@ namespace goodtrip.Controllers
             }
             return Redirect($"Index/{tourinfoModel.TourId.ToString()}");
         }
+
         [Authorize(Roles = "Customer")]
         [Route("Tour/CreateRequest/{id}")]
         [HttpGet]
-        public IActionResult CreateRequest(string id)
+        public async Task<IActionResult> CreateRequest(string id)
         {
             RequestModel requestModel = new RequestModel()
             {
                 TourId = id
             };
             string username = HttpContext.User.Identity.Name;
-            UserCustomerProfile profile = _context.UserCustomerProfiles.Include(p => p.User).FirstOrDefault(p => p.User.UserName == username);
-           if(profile != null)
+            UserCustomerProfile profile = null;
+            if (username != null)
+            {
+                profile = await _tourManager.TakeProfileInfoAsync(username);
+            }
+            if(profile != null)
             {
                 requestModel.CustomerName = profile.Name;
                 requestModel.CustomerLastName = profile.LastName;
             }
             return View(requestModel);
         }
+
         [HttpPost]
-        public IActionResult CreateRequest(RequestModel requestModel)
+        public async Task<IActionResult> CreateRequest(RequestModel requestModel)
         {
-            Request newRequest = new Request()
-            {
-                Id = Guid.NewGuid(),
-                CustomerName = requestModel.CustomerName,
-                CustomerLastName = requestModel.CustomerLastName,
-                PhoneNumber = requestModel.PhoneNumber,
-            };
-            Tour choosedTour = _context.Tours.FirstOrDefault(t => t.Id == Guid.Parse(requestModel.TourId));
-            newRequest.Tour = choosedTour;
-            newRequest.TourId = choosedTour.Id;
-
-            UserCustomerProfile customer = _context.UserCustomerProfiles.Include(p => p.User).FirstOrDefault(p => p.User.UserName == HttpContext.User.Identity.Name);
-            //newRequest.CustomerProfile = customer;
-            newRequest.CustomerProfileId = customer.UserProfileId;
-
-            //newRequest.OperatorProfile = choosedTour.TourOperatorProfile;
-            newRequest.OperatorProfileId = choosedTour.TourOperatorProfileId;
-            newRequest.Created = DateTime.Now;
-
-            _context.Requests.Add(newRequest);
-            _context.SaveChanges();
+            string username = HttpContext?.User?.Identity?.Name;
+            Request newRequest = await _tourManager.CreateRequestAsync(requestModel, username);
+            
             return Redirect($"/Tour/Index/{newRequest.Tour.Id}");
         }
     }

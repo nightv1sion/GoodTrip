@@ -14,12 +14,10 @@ namespace goodtrip.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly SignInManager<User> _signInManager;
-        private readonly GoodTripContext _dbContext;
-        public HomeController(ILogger<HomeController> logger, SignInManager<User> signInManager, GoodTripContext dbContext)
+        public HomeController(ILogger<HomeController> logger, SignInManager<User> signInManager)
         {
             _logger = logger;
             _signInManager = signInManager;
-            _dbContext = dbContext;
             //SeedDataClass.SuperSeed(_dbContext);
 
         }

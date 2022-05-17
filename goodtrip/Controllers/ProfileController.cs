@@ -13,12 +13,10 @@ namespace goodtrip.Controllers
     [Authorize]
     public class ProfileController : Controller
     {
-        private GoodTripContext _context { get; set; }
         private IProfileManager _profileManager { get; set; }
-        public ProfileController(GoodTripContext context, IProfileManager profileManager)
+        public ProfileController(IProfileManager profileManager)
         {
             _profileManager = profileManager;
-            _context = context;
         }
 
         public async Task<IActionResult> Index()

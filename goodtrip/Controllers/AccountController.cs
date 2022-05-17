@@ -15,14 +15,12 @@ namespace goodtrip.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly RoleManager<UserRole> _roleManager;
-        private GoodTripContext _dbContext { get; set; }
 
-        public AccountController(GoodTripContext context, UserManager<User> userManager, SignInManager<User> signInManager, RoleManager<UserRole> roleManager)
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, RoleManager<UserRole> roleManager)
 
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _dbContext = context;
             _roleManager = roleManager;
             //SeedData();
         }
