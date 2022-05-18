@@ -5,4 +5,5 @@
 - Tourists buy these tours
 
 **ER-diagram for a database:**
-![image](https://user-images.githubusercontent.com/92179208/169149979-1d4c1990-19d4-49a8-b3da-6ed73616b63e.png)
+![image](https://user-images.githubusercontent.com/92179208/169150496-79128102-82ed-413a-8c58-7836f40f946f.png)
+
