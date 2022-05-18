@@ -43,6 +43,11 @@
                                 <a asp-controller = "Tour" asp-action="Index" asp-route-id="@tour.Id.ToString()" style = "text-decoration: none; text-decoration-color: none; color: black;">@tour.Name</a>
                             </div>
                         </div>
+                        <div class="col-3">
+                            <div class="editbutton">
+                                <a asp-action="TourEdit" asp-controller="Profile" asp-route-id="@tour.Id.ToString()" style = "text-decoration: none; text-decoration-color: none; color: black;">Edit</a>
+                            </div>
+                        </div>
                         <div class = "col-3">
                             <div class="deletebutton">
                                 <a asp-controller = "Profile" asp-action="DeleteTour" asp-route-id="@tour.Id.ToString()" style = "text-decoration: none; text-decoration-color: none; color: black;">Delete</a>
