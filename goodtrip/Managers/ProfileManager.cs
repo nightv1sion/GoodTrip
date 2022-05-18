@@ -170,5 +170,53 @@ namespace goodtrip.Managers
             }
             return searchedRequests;
         }
+
+        public EditTourModel TourEdit(Guid guid)
+        {
+            if (guid != null)
+            {
+                Tour tour = _context.Tours.FirstOrDefault(t => t.Id == guid);
+                Hotel hotel = _context.Hotels.FirstOrDefault(t => t.TourId == guid);
+                Excurtion excursion = _context.Excurtions.FirstOrDefault(t => t.TourId == guid);
+                EditTourModel model = new EditTourModel();
+
+                model.Id = tour.Id;
+                model.TourName = tour.Name;
+                model.TourCity = tour.City;
+                model.StartDate = tour.StartDate;
+                model.EndDate = tour.EndDate;
+                model.TourCountry = tour.Country;
+                model.TourDescription = tour.Description;
+                model.TourMaxTourists = tour.MaxTourists;
+                model.TourPrice = tour.Price;
+                model.TourDuration = tour.Duration;
+
+                model.HotelName = hotel.Name;
+                model.HotelDescription = hotel.Description;
+                model.HotelMark = hotel.Mark;
+                model.HotelCountry = hotel.Country;
+                model.HotelCity = hotel.City;
+                model.HotelAddress = hotel.Address;
+                model.HotelRooms = hotel.Rooms;
+                model.HotelFreeRooms = hotel.FreeRooms;
+                model.HotelIsWifi = hotel.IsWifi;
+                model.HotelFeeding = hotel.Feeding;
+
+                model.ExcursionDuration = excursion.Duration;
+                model.ExcursionPlace = excursion.Place;
+                model.ExcursionMaxAmountOfVisitors = excursion.MaxAmountOfVisitors;
+                model.ExcursionLanguage = excursion.Language;
+                model.ExcursionName = excursion.Name;
+                model.ExcursionDescription = excursion.Description;
+
+                    return model;
+            }
+            else return null;
+        }
+        public void EditTour(Tour tour)
+        {
+            _context.Tours.Update(tour);
+            _context.SaveChangesAsync();
+        }
     }
 }

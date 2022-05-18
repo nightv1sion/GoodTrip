@@ -137,5 +137,28 @@ namespace goodtrip.Controllers
             }
             return View(searchedRequests);
         }
+
+        [Authorize(Roles = "Operator")]
+        [ActionName("TourEdit")]
+        [HttpGet]
+        [Route("Profile/TourEdit/{id}")]
+        public IActionResult TourEdit(string id)
+        {
+                    Guid guid = Guid.Parse(id);
+                    EditTourModel tour = _profileManager.TourEdit(guid);
+                    return View(tour);
+        }
+
+        [Authorize(Roles = "Operator")]
+        [ActionName("TourEdit")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult TourEdit(Tour tour)
+        {
+            _profileManager.EditTour(tour);
+            return RedirectToAction("Index");
+        }
     }
 }
+
+

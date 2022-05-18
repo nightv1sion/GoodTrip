@@ -1,0 +1,180 @@
+﻿@model goodtrip.Models.EditTourModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Edit Tour";
+}
+<head>
+     <link rel="stylesheet" href="~/css/reset.css" asp-append-version="true" />
+     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=K2D&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="~/css/reset.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/CreateTour.css" asp-append-version="true" />
+</head>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="validation">@ViewBag.SuperError</div>
+    <center>
+    <div class = "border p-3 mt-4" style="border-radius:20px;">
+        <div class ="row pb-2 title">
+            <h2 class = "text-primary">Tour Info</h2>
+            <hr />
+        </div>
+        <div class = "row">
+            <div class = "column">
+        <div class = "mb-3">
+            <label asp-for="TourName">Tour Name</label>
+            <input asp-for="TourName" class = "form-control" style = "width: 60%;border-radius:15px;margin:auto;"/>
+        </div>
+        <div class = "mb-7">
+            <label asp-for="TourDescription">Description of tour</label>
+            <input asp-for="TourDescription" class = "form-control" style = "width: 60%;border-radius:15px;margin:auto;"/>
+        </div>
+        <div class = "mb-3">
+            <label asp-for="TourCountry">Country</label>
+            <input asp-for="TourCountry" class = "form-control" style = "width: 60%;border-radius:15px;margin:auto;"/>
+        </div>
+        <div class = "mb-3">
+            <label asp-for="TourCity">City</label>
+            <input asp-for="TourCity" class = "form-control" style = "width: 60%;border-radius:15px;margin:auto;"/>
+        </div>
+        </div>
+        <div class = "column">
+        <div class = "mb-3">
+            <label asp-for="TourDuration">Duration</label>
+            <input asp-for="TourDuration" class = "form-control" style = "width: 24%;border-radius:15px;margin:auto;"/>
+        </div>
+        <div>
+            <label asp-for="StartDate">Date when tour is avaliable</label>
+            <input type ="date" asp-for="StartDate" class = "form-control" style = "width: 24%;border-radius:15px;margin:auto;"/>
+        </div>
+        <div class = "mb-3">
+            <label asp-for="EndDate">Date when Tour is not avaliable anymore</label>
+            <input type ="date" asp-for="EndDate" class = "form-control" style = "width: 24%;border-radius:15px;margin:auto;"/>
+        </div>
+        <div class = "mb-3">
+            <label asp-for="TourMaxTourists">Maximum Amount of Tourists</label>
+            <input asp-for="TourMaxTourists" class = "form-control" style = "width: 24%;border-radius:15px;margin:auto;"/>
+        </div>
+        <div class = "mb-3">
+            <label asp-for="TourPrice">Price of tour</label>
+            <input asp-for="TourPrice" class = "form-control" style = "width: 24%;border-radius:15px;margin:auto;"/>
+        </div>
+        </div>
+        </div>
+        </div>
+        <div class = "border p-3 mt-4" style="border-radius:20px;">
+        <div class ="row pb-2 title">
+            <h2 class = "text-primary">Hotel Info</h2>
+            <hr />
+        </div>
+        <div class="row">
+            <div class="column">
+            <div class = "mb-3">
+            <label asp-for="HotelName">Hotel Name</label>
+            <input asp-for="HotelName" class = "form-control" style = "width: 60%;border-radius:15px;margin:auto;"/>
+        </div>
+        <div class = "mb-3">
+            <label asp-for="HotelDescription">Hotel Description</label>
+            <input asp-for="HotelDescription" class = "form-control" style = "width: 60%;border-radius:15px;margin:auto;"/>
+        </div>
+        <div class = "mb-3">
+            <label asp-for="HotelCountry">Hotel Country</label>
+            <input asp-for="HotelCountry" class = "form-control" style = "width: 60%;border-radius:15px;margin:auto;"/>
+        </div>
+        <div class = "mb-3">
+            <label asp-for="HotelCity">Hotel City</label>
+            <input asp-for="HotelCity" class = "form-control" style = "width: 60%;border-radius:15px;margin:auto;"/>
+        </div>
+        <div class = "mb-3">
+            <label asp-for="HotelAddress">Hotel Adress</label>
+            <input asp-for="HotelAddress" class = "form-control" style = "width: 60%;border-radius:15px;margin:auto;"/>
+        </div>
+        </div>
+        <div class="column">
+        <div class = "mb-3">
+            <label asp-for="HotelFeeding">Is feeding included</label>
+            <br />
+            <input type = "radio" asp-for="HotelFeeding" value = "yes"> yes
+            <input type = "radio" asp-for="HotelFeeding" value = "no"> no
+        </div>
+        <div class = "mb-3">
+            <label asp-for="HotelIsWifi">Is there a Wi-Fi in the hotel</label>
+            <br />
+            <input type = "radio" asp-for="HotelIsWifi" value="yes"> yes
+            <input type = "radio" asp-for="HotelIsWifi" value="no"> no
+        </div>
+        <div class = "mb-3">
+            <label asp-for="HotelMark">How many stars does the hotel have</label>
+            <input asp-for="HotelMark" class = "form-control" style = "width: 24%;border-radius:15px;margin:auto;"/>
+        </div>
+        <div class = "mb-3">
+            <label asp-for="HotelRooms">How many rooms are there in the hotel</label>
+            <input asp-for="HotelRooms" class = "form-control" style = "width: 24%;border-radius:15px;margin:auto;"/>
+        </div>
+        <div class = "mb-3">
+            <label asp-for="HotelFreeRooms">How many rooms are free</label>
+            <input asp-for="HotelFreeRooms" class = "form-control" style = "width: 24%;border-radius:15px;margin:auto;"/>
+        </div>
+        </div>
+          <div class="form-group upload">
+            <label class="uploadimagelabel">Upload image</label>
+            <input type="file" name="uploadedFile" class="form-control" style = "width: 60%;border-radius:15px;margin:auto;"/>
+        </div>
+        <div class="form-group upload">
+            <input type="file" name="uploadedFile" class="form-control" style = "width: 60%;border-radius:15px;margin:auto;"/>
+        </div>
+        <div class="form-group upload">
+            <input type="file" name="uploadedFile" class="form-control" style = "width: 60%;border-radius:15px;margin:auto;"/>
+        </div>
+        </div>
+        </div>
+        <div class = "border p-3 mt-4" style="border-radius:20px;">
+        <div class ="row pb-2 title">
+            <h2 class = "text-primary">Excursion Info</h2>
+            <hr />
+        </div>
+        <div class="row">
+            <div class = "column">
+        <div class = "mb-3">
+            <label asp-for="ExcursionName">Name of excursion</label>
+            <input asp-for="ExcursionName" class = "form-control" style = "width: 60%;border-radius:15px;margin:auto;"/>
+        </div>
+        <div class = "mb-3">
+            <label asp-for="ExcursionDescription">Description</label>
+            <input asp-for="ExcursionDescription" class = "form-control" style = "width: 60%;border-radius:15px;margin:auto;"/>
+        </div>
+        <div class = "mb-3">
+            <label asp-for="ExcursionDuration">Duration</label>
+            <input asp-for="ExcursionDuration" class = "form-control" style = "width: 60%;border-radius:15px;margin:auto;"/>
+        </div>
+        </div>
+        <div class="column">
+        <div class = "mb-3">
+            <label asp-for="ExcursionLanguage">Language</label>
+            <input asp-for="ExcursionLanguage" class = "form-control" style = "width: 60%;border-radius:15px;margin:auto;"/>
+        </div>
+        <div class = "mb-3">
+            <label asp-for="ExcursionMaxAmountOfVisitors">Maximum amount of visitors</label>
+            <input asp-for="ExcursionMaxAmountOfVisitors" class = "form-control" style = "width: 60%;border-radius:15px;margin:auto;"/>
+        </div>
+        <div class = "mb-3">
+            <label asp-for="ExcursionPlace">Place</label>
+            <input asp-for="ExcursionPlace" class = "form-control" style = "width: 60%;border-radius:15px;margin:auto;"/>
+        </div>
+        </div>
+        </div>
+        <div class="form-group">
+            <label class="uploadimagelabel upload">Upload image</label>
+            <input  type="file" name="uploadedFile" class="form-control" style = "width: 60%;border-radius:15px;margin:auto;"/>
+        </div>
+        </div>
+        <div class = "buttoncreate">
+            <button type = "submit" class ="btn-primary" style="width:150px">Create</button>
+        </div>
+        </div>
+        </center>
+</form>
