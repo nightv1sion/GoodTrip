@@ -38,23 +38,131 @@
             <div class = "col-6">
                     @{int i = 0;
                 @if (Model != null){
-                @foreach(var request in Model)
+                @foreach(var request in Model.Where(r => r.IsReviewed == null))
                 {
                         i++;
                         <div class="accordion accordion-flush" id="accordionFlushExample">
                           <div class="accordion-item requestaccordeon">
                             <h2 class="accordion-header" id="flush-heading@(i)">
                               <button class="accordion-button collapsed requestbutton" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse@(i)" aria-expanded="false" aria-controls="flush-collapse@(i)">
-                                <p>@(request.CustomerName)`s request</p> 
+                                <div class = "row">
+                                    <div class = "col-6">
+                                        <p>@(request.CustomerName)`s request</p> 
+                                    </div>
+                                    <div class = "col-6">
+                                        @if(request.IsReviewed == null)
+                                        {
+                                            <div class="notreviewed">
+                                                <p>Not reviewed</p>
+                                            </div>
+                                        }
+                                        else if(request.IsReviewed == true)
+                                        {
+                                            <div class="accepted">
+                                                <p>Accepted</p>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="rejected">
+                                                <p>Rejected</p>
+                                            </div>
+                                        }
+                                        </div>
+                                </div>
+                                
                               </button>
                             </h2>
                             <div id="flush-collapse@(i)" class="accordion-collapse collapse" aria-labelledby="flush-heading@(i)" data-bs-parent="#accordionFlushExample">
                               <div class="accordion-body">
-                                <p>Name: @request.CustomerName</p>
-                                <p>Last name: @request.CustomerLastName</p>
-                                <p>Phone number: @request.PhoneNumber</p>
-                                <div class="linkontour">
-                                Tour: <a asp-controller="Tour" asp-action="Index" asp-route-id="@request.TourId">@request.TourName</a>    
+                                <div class = "row">
+                                    <div class="col-6">
+                                        <p>Name: @request.CustomerName</p>
+                                        <p>Last name: @request.CustomerLastName</p>
+                                        <p>Phone number: @request.PhoneNumber</p>
+                                        <p>Amount of tourists: @request.AmountOfTourists</p>
+                                        <p>Duration: @request.Duration</p>
+                                        <div class = "customerwishes">
+                                            <p>Customer`s wishes: @request.CustomerWishes</p>
+                                        </div>
+                                        <p>Created: @request.Created</p>
+                                        <div class="linkontour">
+                                        Tour: <a asp-controller="Tour" asp-action="Index" asp-route-id="@request.TourId">@request.TourName</a>    
+                                        </div>
+                                    </div>
+                                    <div class = "col-6">
+                                        @if(request.IsReviewed == null){
+                                            <div class = "acceptbutton">
+                                            <a asp-controller="Profile" asp-action="AcceptRequest" asp-route-id="@request.RequestId" class="text">Accept</a>
+                                            </div>
+                                            <div class = "rejectbutton">
+                                            <a asp-controller="Profile" asp-action="RejectRequest" asp-route-id="@request.RequestId" class="text">Reject</a>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                }
+                <div class = "reviewTitle">
+                    <p>Previously reviewed</p>
+                </div>
+                @foreach(var request in Model.Where(r => r.IsReviewed != null))
+                {
+                        i++;
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                          <div class="accordion-item requestaccordeon">
+                            <h2 class="accordion-header" id="flush-heading@(i)">
+                              <button class="accordion-button collapsed requestbutton" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse@(i)" aria-expanded="false" aria-controls="flush-collapse@(i)">
+                                <div class = "row">
+                                    <div class = "col-6">
+                                        <p>@(request.CustomerName)`s request</p> 
+                                    </div>
+                                    <div class = "col-6">
+                                        @if(request.IsReviewed == null)
+                                        {
+                                            <div class="notreviewed">
+                                                <p>Not reviewed</p>
+                                            </div>
+                                        }
+                                        else if(request.IsReviewed == true)
+                                        {
+                                            <div class="accepted">
+                                                <p>Accepted</p>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="rejected">
+                                                <p>Rejected</p>
+                                            </div>
+                                        }
+                                        </div>
+                                </div>
+                                
+                              </button>
+                            </h2>
+                            <div id="flush-collapse@(i)" class="accordion-collapse collapse" aria-labelledby="flush-heading@(i)" data-bs-parent="#accordionFlushExample">
+                              <div class="accordion-body">
+                                <div class = "row">
+                                    <div class="col-6">
+                                        <p>Name: @request.CustomerName</p>
+                                        <p>Last name: @request.CustomerLastName</p>
+                                        <p>Phone number: @request.PhoneNumber</p>
+                                        <p>Amount of tourists: @request.AmountOfTourists</p>
+                                        <p>Duration: @request.Duration</p>
+                                        <div class = "customerwishes">
+                                            <p>Customer`s wishes: @request.CustomerWishes</p>
+                                        </div>
+                                        <p>Created: @request.Created</p>
+                                        <div class="linkontour">
+                                        Tour: <a asp-controller="Tour" asp-action="Index" asp-route-id="@request.TourId">@request.TourName</a>    
+                                        </div>
+                                    </div>
+                                    <div class = "col-6">
+                                    </div>
                                 </div>
                                 </div>
                             </div>

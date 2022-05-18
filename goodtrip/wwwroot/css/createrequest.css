@@ -6,14 +6,13 @@
 }
 .crcont {
     margin: auto;
-    margin-top: 15%;
+    margin-top: 3%;
     width: 25%;
     font-size: 24px;
-    border: 2px solid black;
+    border: 1px solid rgba(154, 110, 246);
     border-radius: 20px;
     align-items: center;
     text-align: center;
-    background-color: rgba(154, 110, 246, 0.14);
 }
 .customerlastname {
     margin-bottom: 2%;
@@ -24,6 +23,29 @@
 .senbtn button {
     margin-top: 5%;
     margin-bottom: 5%;
+    border: 1px solid rgba(154, 110, 246);
     border-radius: 30px;
-    background-color: rgba(154, 110, 246, 0.5);
+    padding: 1%;
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: white;
+}
+.customername, .customerlastname, .customerphone, .amountofcustomers, .desiredduration, .customerwishes {
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 80%;
+}
+.crcont label {
+    margin-bottom: 2%;
+    text-align: center;
+    font-size: 20px;
+}
+.createrequesttitle p {
+    margin-bottom: 5%;
+    color: rgba(154, 110, 246);
+    margin-top: 5%;
+}
+.createrequesttitle {
+    border-bottom: 1px solid rgba(154, 110, 246);
 }

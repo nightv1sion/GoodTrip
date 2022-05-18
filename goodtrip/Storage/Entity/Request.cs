@@ -13,6 +13,10 @@ namespace goodtrip.Storage.Entity
         public string CustomerName { get; set; }
         public string CustomerLastName { get; set; }
         public string PhoneNumber { get; set; }
+        public bool? IsReviewed { get; set; }
+        public int AmountOfTourists { get; set; }
+        public int Duration { get; set; }
+        public string CustomerWishes { get; set; }
         public DateTime Created { get; set; }
     }
 }

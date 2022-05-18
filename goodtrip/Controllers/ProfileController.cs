@@ -137,5 +137,38 @@ namespace goodtrip.Controllers
             }
             return View(searchedRequests);
         }
+
+        [Authorize(Roles = "Operator")]
+        [Route("Profile/AcceptRequest/{requestId}")]
+        public IActionResult AcceptRequest(string requestId)
+        {
+            Guid guid = Guid.Parse(requestId);
+            _profileManager.AcceptRequest(guid);
+            return RedirectToAction("PrintRequests");
+        }
+        [Authorize(Roles = "Operator")]
+        [Route("Profile/RejectRequest/{requestId}")]
+        public IActionResult RejectRequest(string requestId)
+        {
+            Guid guid = Guid.Parse(requestId);
+            _profileManager.RejectRequest(guid);
+            return RedirectToAction("PrintRequests");
+        }
+
+        [Authorize(Roles = "Customer")]
+        public IActionResult CustomerRequests()
+        {
+            string username = HttpContext.User.Identity.Name;
+            List<RequestModel> searchedRequests;
+            if (username != null)
+            {
+                searchedRequests = _profileManager.CustomerRequests(username);
+            }
+            else
+            {
+                return View();
+            }
+            return View(searchedRequests);
+        }
     }
 }

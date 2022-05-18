@@ -1,0 +1,105 @@
+﻿@model List<RequestModel>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/profile.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=K2D&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<header>
+    <div class = "container-fluid">
+        <p class = "text-center CustomerProfile">Operator Profile</p>
+    </div>
+    <hr class="LineInHeader"align = "center">
+</header>
+<body>
+    <div class="container-fluid">
+        <div class = "row">
+            <div class="sidebar col-3 containter-fluid">
+                <div class="sidebarSquare">
+                    <div class="Documents">
+                        <a asp-action="CustomerChangeDocuments" class="text">Documents</a>
+                    </div>
+                    <div class="myrequests">
+                        <a style = "background-color: rgba(154,110,246,7%); color: #8643D6;" class="text" >My requests</a>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-6">
+                <div class = "titletable">
+                    <div class = "row">
+                    <div class = "col-4">
+                        <div class="titletabletour">
+                            <p>Tour</p>
+                        </div>
+                    </div>
+                    <div class = "col-4">
+                        <div class="titletablestatus">
+                            <p>Status</p>
+                        </div>
+                    </div>
+                    <div class = "col-4">
+                        <div class="titletablecreatingtime">
+                            <p>Time of creating</p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                    @{int i = 0;
+                @if (Model != null){
+                @foreach(var request in Model)
+                {
+                        <div class = "row">
+                            <div class = "col-4">
+                                <div class = "tourlink">
+                                    <a asp-controller = "Tour" asp-action="Index" asp-route-id="@request.TourId" class="text">@request.TourName</a>
+                                </div>
+                            </div>
+                            <div class = "col-4">
+                                <div class = "statusofrequest">
+                                @if(request.IsReviewed == null)
+                                {
+                                    <div class="notreviewed">
+                                        <p>Not reviewed</p>
+                                    </div>
+                                }
+                                else if(request.IsReviewed == true)
+                                {
+                                    <div class="accepted">
+                                        <p>Accepted</p>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="rejected">
+                                        <p>Rejected</p>
+                                    </div>
+                                }</div>
+                            </div>
+                            <div class = "col-4">
+                                <div class="createtimeofrequest">
+                                    <p>@request.Created</p>
+                                </div>
+                            </div>
+                        </div>
+                }
+                }else{
+                  <div class = "NoReq">
+                  <p>No acitve requests</p>
+                  </div>
+                }
+                }
+                </div>
+            <div class = "logoutbar col-3">
+                <div class = "LogoutButton">
+                    <a asp-controller="Account" asp-action="Logout" class="logoutlink"  style = "text-decoration: none; text-decoration-color: none; color: black; font-size: 16px;">LOG OUT</a> 
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</body>
+

@@ -1,18 +1,25 @@
 ﻿body {
     font-family: 'K2D', sans-serif;
 }
-/*a{
+a.text{
     text-decoration: none;
     text-decoration-color: none;
     color: black;
     font-size: 16px;
 }
 
-a:hover {
+
+a.text:hover {
     text-decoration: none;
     text-decoration-color: none;
     color: black;
-}*/
+}
+a.text:active, /* активная/посещенная ссылка */
+a.text:hover, /* при наведении */
+a.text {
+    text-decoration: none;
+    color: black;
+}
 .CustomerProfile {
     font-family: 'K2D', sans-serif;
     font-size: 48px;
@@ -196,4 +203,144 @@ header .container-fluid {
 }
 .requestaccordeon {
     margin-top: 2%;
+}
+.reviewTitle {
+    text-align: center;
+    font-size: 24px;
+    border-top: 1px solid #8643D6;
+    border-bottom: 1px solid #8643D6;
+    margin-top: 5%;
+}
+.reviewTitle p {
+    margin: 0;
+}
+.rejected {
+    margin: auto;
+    margin-top: 3%;
+    padding: 1%;
+    border: 1px solid red;
+    color: red;
+    text-align: center;
+    border-radius: 10px;
+}
+.rejected p {
+    margin: 0;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.accepted {
+    margin: auto;
+    margin-top: 3%;
+    padding: 1%;
+    border: 1px solid green;
+    color: green;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.accepted p {
+    margin: 0;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.notreviewed {
+    margin: auto;
+    margin-top: 3%;
+    padding: 1%;
+    border: 1px solid grey;
+    color: grey;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.notreviewed p {
+    margin: 0;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.acceptbutton {
+    width: 50%;
+    margin: auto;
+    margin-top: 3%;
+    padding: 1%;
+    border: 1px solid green;
+    color: green;
+    text-align: center;
+    border-radius: 10px;
+}
+.acceptbutton a {
+    color: green;
+    margin: 0;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.rejectbutton {
+    width: 50%;
+    margin: auto;
+    margin-top: 3%;
+    padding: 1%;
+    border: 1px solid red;
+    color: red;
+    text-align: center;
+    border-radius: 10px;
+}
+.rejectbutton a {
+    color: red;
+    margin: 0;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.statusofrequest {
+    width: 70%;
+}
+.titletable {
+    margin-top: 2%;
+}
+.titletable p {
+    margin: auto;
+}
+.titletabletour {
+    margin: auto;
+    width: 10%;
+}
+.titletabletour p {
+    font-weight: bold;
+}
+.titletablestatus p {
+    font-weight: bold;
+}
+.titletablestatus {
+    width: 70%;
+    margin: auto;
+}
+.tourlink {
+    margin: auto;
+    width: 75%;
+    margin-top: 3%;
+    padding: 1%;
+    border: 1px solid purple;
+    color: red;
+    text-align: center;
+    border-radius: 10px;
+}
+.tourlink a {
+    color: purple
+}
+.titletablecreatingtime p {
+    font-weight: bold;
+}
+
+.createtimeofrequest p {
+    margin-top: 5%;
+}
+.Documents {
+    margin-top: 5%;
+}
+.myrequests {
+    margin-top: 10%;
+    margin-bottom: 5%;
+}
+.customerwishes {
+    word-break: break-all;
 }

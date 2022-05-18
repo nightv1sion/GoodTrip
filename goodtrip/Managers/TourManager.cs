@@ -87,6 +87,9 @@ namespace goodtrip.Managers
                 CustomerName = requestModel.CustomerName,
                 CustomerLastName = requestModel.CustomerLastName,
                 PhoneNumber = requestModel.PhoneNumber,
+                AmountOfTourists = requestModel.AmountOfTourists,
+                Duration = requestModel.Duration,
+                CustomerWishes = requestModel.CustomerWishes,
             };
 
             Tour choosedTour = await _context.Tours.FirstOrDefaultAsync(t => t.Id == Guid.Parse(requestModel.TourId));

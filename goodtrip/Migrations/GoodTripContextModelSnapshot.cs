@@ -166,6 +166,9 @@ namespace goodtrip.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int>("AmountOfTourists")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
@@ -179,6 +182,16 @@ namespace goodtrip.Migrations
 
                     b.Property<Guid>("CustomerProfileId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CustomerWishes")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Duration")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("IsReviewed")
+                        .HasColumnType("bit");
 
                     b.Property<Guid>("OperatorProfileId")
                         .HasColumnType("uniqueidentifier");

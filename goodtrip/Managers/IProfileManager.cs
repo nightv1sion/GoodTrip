@@ -11,5 +11,8 @@ namespace goodtrip.Managers
         List<Tour> AllTours(string username);
         void RemoveTour(string id);
         List<RequestModel> AllRequests(string username);
+        void AcceptRequest(Guid guid);
+        void RejectRequest(Guid guid);
+        List<RequestModel> CustomerRequests(string username);
     }
 }

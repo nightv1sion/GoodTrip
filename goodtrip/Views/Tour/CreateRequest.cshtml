@@ -17,21 +17,34 @@
 <body>
     <div class="crcont" >
             <form method = "post">
-                <p>Request for tour</p>
+                <div class="createrequesttitle">
+                    <p>Request for tour</p>
+                </div>
                 <div class = "customername">
                 <label asp-for="CustomerName">Your Name</label>
+                 <input asp-for="CustomerName" class="form-control"/>
                 </div>
-                 <input asp-for="CustomerName" style= "border-radius:30px;"/>
             <div class = "customerlastname">
             <label asp-for="CustomerLastName">Your Last Name</label>
+            <input asp-for="CustomerLastName" class="form-control">
             </div>
-            <input asp-for="CustomerLastName" style= "border-radius:30px;"/>
             <div class = "customerphone">
             <label asp-for="PhoneNumber">Your phone number</label>
+            <input asp-for="PhoneNumber" class="form-control"/>
             </div>
-            <input asp-for="PhoneNumber" style= "border-radius:30px;"/>
-
             <input asp-for="TourId" type="hidden" />
+            <div class = "amountofcustomers">
+                <label asp-for="AmountOfTourists">Amount of tourists</label>
+                <input asp-for="AmountOfTourists" class="form-control" />
+            </div>
+            <div class = "desiredduration">
+                <label asp-for="Duration">Desired duration</label>
+                <input asp-for="Duration" class="form-control" />
+                </div>
+            <div class = "customerwishes">
+                <label asp-for="CustomerWishes">Desired duration</label>
+                <textarea asp-for="CustomerWishes" class="form-control"></textarea>
+                </div>
             <div  class = "senbtn">
             <button type="submit">Send request</button></div>
             </form> 

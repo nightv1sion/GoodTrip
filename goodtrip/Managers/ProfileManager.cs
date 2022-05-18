@@ -164,11 +164,71 @@ namespace goodtrip.Managers
                     CustomerLastName = request.CustomerLastName,
                     PhoneNumber = request.PhoneNumber,
                     TourId = request.TourId.ToString(),
-                    TourName = _context.Tours.FirstOrDefault(t => t.Id == request.TourId)?.Name
+                    TourName = _context.Tours.FirstOrDefault(t => t.Id == request.TourId)?.Name,
+                    RequestId = request.Id.ToString(),
+                    IsReviewed = request.IsReviewed, 
+                    Created = request.Created,
+                    CustomerWishes = request.CustomerWishes,
+                    AmountOfTourists = request.AmountOfTourists,
+                    Duration = request.Duration
                 };
                 searchedRequests.Add(model);
             }
             return searchedRequests;
         }
+        
+        public void AcceptRequest(Guid guid)
+        {
+            //Guid guid = Guid.Parse(id);
+            Request request = _context.Requests.FirstOrDefault(r => r.Id == guid);
+            if (request != null)
+            {
+                request.IsReviewed = true;
+                _context.Requests.Update(request);
+                _context.SaveChanges();
+            }
+        } 
+        public void RejectRequest(Guid guid)
+        {
+            //Guid guid = Guid.Parse(id);
+            Request request = _context.Requests.FirstOrDefault(r => r.Id == guid);
+            if (request != null)
+            {
+                request.IsReviewed = false;
+                _context.Requests.Update(request);
+                _context.SaveChanges();
+            }
+        }
+        public List<RequestModel> CustomerRequests(string username)
+        {
+            User currentCustomer = _context.Users.Include(u => u.Profile).FirstOrDefault(u => u.UserName == username);
+            List<Request> requests;
+            if (currentCustomer!= null)
+            {
+                requests = _context.Requests.Where(r => r.CustomerProfileId == currentCustomer.Profile.UserProfileId).ToList();
+            }
+            else
+            {
+                return null;
+            }
+            List<RequestModel> searchedRequests = new List<RequestModel>();
+            foreach (var request in requests.OrderByDescending(r=>r.Created))
+            {
+                RequestModel model = new RequestModel()
+                {
+                    CustomerName = request.CustomerName,
+                    CustomerLastName = request.CustomerLastName,
+                    PhoneNumber = request.PhoneNumber,
+                    TourId = request.TourId.ToString(),
+                    TourName = _context.Tours.FirstOrDefault(t => t.Id == request.TourId)?.Name,
+                    RequestId = request.Id.ToString(),
+                    IsReviewed = request.IsReviewed,
+                    Created = request.Created
+                };
+                searchedRequests.Add(model);
+            }
+            return searchedRequests;
+        }
+
     }
 }
