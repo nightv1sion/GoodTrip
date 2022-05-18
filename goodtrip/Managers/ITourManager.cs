@@ -5,7 +5,7 @@ namespace goodtrip.Managers
 {
     public interface ITourManager
     {
-        Tour FindTour(string id);
+        Tour FindTour(Guid id);
         List<string> FindHotelPhotos(Tour tour);
         List<string> FindExcursionPhotos(Tour tour);
         string FindCommentName(string username);

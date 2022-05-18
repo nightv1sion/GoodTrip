@@ -1,7 +1,7 @@
 ﻿@model goodtrip.Models.TourInfoModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
-    Layout = null;
+    Layout = "_Layout";
 }
 <html>
     <head>
@@ -20,8 +20,9 @@
 <body>
 <div class = "container-fluid">
     <partial name = "_Tour" model = "@Model.Tour" />
-    <div class = "hotelheader">
-            <p>Comments</p>
+    <div class = "commentsspace">
+        <div class = "commenttitle">
+            <p>COMMENTS</p>
     </div>
         @if (Context.User.IsInRole("Customer"))
         {
@@ -39,7 +40,6 @@
                 </form>
             </div>
         }
-    </div>
     
     @if (Model.Tour.Review != null)
     {
@@ -65,6 +65,8 @@
     {
         <p style="font-size:24px;text-align:center;font-family:K2D;">No reviews yet. Be first!</p>
     }
+    </div>
+</div>
 
 
 
