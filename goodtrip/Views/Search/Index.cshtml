@@ -16,7 +16,7 @@
         <form method = "post" asp-controller="Search" asp-action="Index">
      <div class="container-fluid searchh">
             <div class = "row">
-                <div class = "col-3 leftinputs">
+                <div class = "col-2 leftinputs">
                         <div class="accordion accordion-flush" id="accordionFlushExample">
                             <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingOne">
@@ -31,7 +31,6 @@
                             <div class="col-6">
                                 <input asp-for="PriceStart" />
                             </div>
-
                             <div class="col-6 ">
                                 <input asp-for = "PriceEnd" id = "priceend" />
                             </div>
@@ -74,13 +73,14 @@
                                 </button>
                             </h2>
                             <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body"><div class = "starsofhotel">
+                                <div class="accordion-body">
                         <div class = "feeding">
                         <p>Free WI-FI</p>
+
                         <input asp-for ="IsWifi" type = "radio" value="true"/> Yes
                         <input asp-for ="IsWifi" type = "radio" value="false"/> No
                     </div>
-                    </div></div>
+                    </div>
                             </div>
                             </div>
                             <div class="accordion-item">
@@ -98,27 +98,61 @@
                     </div></div>
                             </div>
                             </div>
+                            <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingSix">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+                                Country
+                                </button>
+                            </h2>
+                            <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                        <div class = "duration">
+                        <p>Country</p>
+                        <input asp-for="Country" />
+                    </div>
+                    </div>
+                            </div>
+                            </div>
+
+                            <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingSeven">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven" aria-expanded="false" aria-controls="flush-collapseSeven">
+                                Excursion Language
+                                </button>
+                            </h2>
+                            <div id="flush-collapseSeven" class="accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                        <div class = "duration">
+                        <p>Language</p>
+                        <input asp-for="ExcursionLanguage" />
+                    </div>
+                    </div>
+                            </div>
+                            </div>
                         </div>
                 </div>
-                <div class = "col-9 searchresults">
+                <div class = "col-10 searchresults">
                     <div class = "row">
-                        <div class = "col-4">
+                        <div class = "col-3">
                             <div class = "city">
                                 <p>City</p>
                                 <input asp-for="Place" class="form-control" placeholder = "City" />
                             </div>
                         </div>
-                        <div class = "col-4">
+                        <div class = "col-3">
                             <div class = "datestart">
                                 <p>Date start</p>
                                     <input asp-for="DateOfStart" type = "date" class = "form-control"  placeholder = "Date of start" />
                             </div>
                         </div>
-                        <div class = "col-4">
+                        <div class = "col-3">
                             <div class = "dateend">
                                 <p>Date end</p>
                                 <input asp-for="DateOfEnd" type = "date" class = "form-control"  placeholder = "Date of end" />
                             </div>
+                        </div>
+                        <div class = "col-3">
+
                         </div>
                     </div>
                         <div class="btnsearchh">

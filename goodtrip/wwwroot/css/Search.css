@@ -1,14 +1,15 @@
 ﻿.tour {
-    margin: auto;
     background-color: #ffffff;
     font-family: K2D;
+    margin-left: 10%;
     border-radius: 20px;
-    width: 65%;
+    width: 55%;
     min-height: 50%;
     margin-bottom: 1%;
     border: 1.5px solid #E2D3FF;
 }
 .accordion{
+    width:100%;
     border: 1.5px solid #E2D3FF;
 }
 .SearchImage {
@@ -137,4 +138,12 @@ a.text {
 }
 .city {
     margin-top: 1%;
+
 }
+.leftinputs {
+    width: 25%;
+}
+.btnsearchh button{
+    margin-right: 25%;
+}
+

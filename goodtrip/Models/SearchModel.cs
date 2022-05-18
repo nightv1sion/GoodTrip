@@ -14,6 +14,8 @@ namespace goodtrip.Models
         public int? AmountOfStartOfHotel { get; set; }
         public bool? IsWifi { get; set; }
         public int? Duration { get; set; }
+        public string? Country { get; set; }
+        public string? ExcursionLanguage { get; set; }
         public List<TourModel> Tours { get; set; }
 
     }

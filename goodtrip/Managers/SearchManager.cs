@@ -37,6 +37,7 @@ namespace goodtrip.Managers
         {
             List<TourModel> searchedTours = new List<TourModel>();
             List<Tour> tours = _context.Tours.Include(t => t.Hotel).ToList();
+            
             if (searchModel.Place != null)
             {
                 tours = tours.Where(t => t.City == searchModel.Place).ToList();
@@ -74,6 +75,18 @@ namespace goodtrip.Managers
             if (searchModel.IsWifi != null)
             {
                 tours = tours.Where(t => t.Hotel.IsWifi == searchModel.IsWifi).ToList();
+            }
+            if(searchModel.Country != null)
+            {
+                tours = tours.Where(t => t.Country == searchModel.Country).ToList();
+            }
+            if(searchModel.ExcursionLanguage != null)
+            {
+                foreach(var tour in tours)
+                {
+                    tour.Excurtion = _context.Excurtions.Where(e => e.TourId == tour.Id).ToList();
+                }
+                tours = tours.Where(t => t.Excurtion[0].Language == searchModel.ExcursionLanguage).ToList();
             }
             foreach (var tour in tours)
             {

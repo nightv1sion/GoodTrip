@@ -1,5 +1,6 @@
 ﻿/*using goodtrip.Storage;
 using goodtrip.Storage.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace goodtrip
 {
@@ -7,20 +8,23 @@ namespace goodtrip
     {
         static public void SuperSeed(GoodTripContext _dbContext)
         {
-            SeedData(_dbContext);
-            SeedData1(_dbContext);
-            SeedData2(_dbContext);
-            SeedData3(_dbContext);
-            SeedData4(_dbContext);
-            SeedData5(_dbContext);
-            Seed(_dbContext);
-            Seed2(_dbContext);
-            Seed3(_dbContext);
-            Seed4(_dbContext);
-            Seed5(_dbContext);
+            UserOperatorProfile profile1 = _dbContext.UserOperatorProfiles.Include(p => p.User).FirstOrDefault(p => p.User.UserName == "superoperator");
+            UserOperatorProfile profile2 = _dbContext.UserOperatorProfiles.Include(p => p.User).FirstOrDefault(p => p.User.UserName == "superoperator2");
+            SeedData(_dbContext, profile2);
+            SeedData1(_dbContext, profile2);
+            SeedData2(_dbContext, profile2);
+            SeedData3(_dbContext, profile2);
+            SeedData4(_dbContext, profile2);
+            SeedData5(_dbContext, profile2);
+            Seed(_dbContext, profile1);
+            Seed2(_dbContext, profile1);
+            Seed3(_dbContext, profile1);
+            Seed4(_dbContext, profile1);
+            Seed5(_dbContext, profile1);
         }
-        static public void Seed(GoodTripContext _dbContext)
+        static public void Seed(GoodTripContext _dbContext, UserOperatorProfile profile)
         {
+
             Tour tour = new Tour()
             {
                 Id = Guid.NewGuid(),
@@ -30,7 +34,8 @@ namespace goodtrip
                 Description = "Make the most of your time in the city that never sleeps on a guided tour of NYC’s top attractions. Travel by both the Staten Island Ferry and bus as you swing by the 9/11 Memorial, Central Park, Rockefeller Center and more. Then hop aboard a luxury boat for a sightseeing cruise past the Statue of Liberty and Ellis Island, complete with stunning views of the world-famous skyline and Brooklyn Bridge.",
                 Duration = 7,
                 MaxTourists = 5,
-                TourOperator = "AmericanToursFE",
+                TourOperatorProfile = profile,
+                TourOperatorProfileId = profile.UserProfileId,
                 StartDate = new DateTime(2022, 05, 25),
                 EndDate = new DateTime(2022, 06, 20),
                 Price = 5000
@@ -51,7 +56,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id,
             };
-            FileStream file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\NewYorkHotel1.jpg", FileMode.Open);
+            FileStream file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\NewYorkHotel1.jpg", FileMode.Open);
             List<ImageHotel> hotelimages = new List<ImageHotel>();
             MemoryStream ms = new MemoryStream();
             file.CopyTo(ms);
@@ -59,14 +64,14 @@ namespace goodtrip
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\NewYorkHotel2.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\NewYorkHotel2.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\NewYorkHotel3.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\NewYorkHotel3.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
@@ -86,7 +91,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id
             };
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\NewYorkExcursion.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\NewYorkExcursion.jpg", FileMode.Open);
             List<ImageExcurtion> excurtionimages = new List<ImageExcurtion>();
             ms = new MemoryStream();
             file.CopyTo(ms);
@@ -101,7 +106,7 @@ namespace goodtrip
             _dbContext.Tours.Add(tour);
             _dbContext.SaveChanges();
         }
-        static public void Seed2(GoodTripContext _dbContext)
+        static public void Seed2(GoodTripContext _dbContext, UserOperatorProfile profile)
         {
             Tour tour = new Tour()
             {
@@ -112,7 +117,8 @@ namespace goodtrip
                 Description = "Chicago is located on the southwestern shore of Lake Michigan, the third most populous city in the United States after New York and Los Angeles, a major financial and transportation center. Perhaps Chicago is one of the most architecturally interesting cities in the United States.Unusual skyscrapers create a stunning panorama of the city, which looks especially exciting in the evening when the setting sun is reflected in the glass of high - rise buildings. A fascinating tour of the architectural capital of America: for you the most diverse architectural styles, stories about gangster times, the great fire and much more.",
                 Duration = 15,
                 MaxTourists = 7,
-                TourOperator = "AmericanToursFE",
+                TourOperatorProfile = profile,
+                TourOperatorProfileId = profile.UserProfileId,
                 StartDate = new DateTime(2022, 05, 31),
                 EndDate = new DateTime(2022, 08, 15),
                 Price = 3500
@@ -133,7 +139,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id,
             };
-            FileStream file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\ChicagoHotel1.jpg", FileMode.Open);
+            FileStream file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\ChicagoHotel1.jpg", FileMode.Open);
             List<ImageHotel> hotelimages = new List<ImageHotel>();
             MemoryStream ms = new MemoryStream();
             file.CopyTo(ms);
@@ -141,14 +147,14 @@ namespace goodtrip
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\ChicagoHotel2.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\ChicagoHotel2.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\ChicagoHotel3.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\ChicagoHotel3.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
@@ -181,7 +187,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id
             };
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\ChicagoExcursion.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\ChicagoExcursion.jpg", FileMode.Open);
             List<ImageExcurtion> excurtionimages = new List<ImageExcurtion>();
             ms = new MemoryStream();
             file.CopyTo(ms);
@@ -196,7 +202,7 @@ namespace goodtrip
             _dbContext.Tours.Add(tour);
             _dbContext.SaveChanges();
         }
-        static public void Seed4(GoodTripContext _dbContext)
+        static public void Seed4(GoodTripContext _dbContext, UserOperatorProfile profile)
         {
             Tour tour = new Tour()
             {
@@ -207,7 +213,8 @@ namespace goodtrip
                 Description = "Orlando, city, seat (1856) of Orange county, central Florida, U.S. It is situated in a region dotted by lakes, about 60 miles (95 km) northwest of Melbourne and 85 miles (135 km) northeast of Tampa. The city is the focus for one of the state's most populous metropolitan areas.",
                 Duration = 20,
                 MaxTourists = 11,
-                TourOperator = "AmericanToursFE",
+                TourOperatorProfile = profile,
+                TourOperatorProfileId = profile.UserProfileId,
                 StartDate = new DateTime(2022, 05, 17),
                 EndDate = new DateTime(2022, 06, 20),
                 Price = 4700
@@ -229,7 +236,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id,
             };
-            FileStream file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\OrlandoHotel1.jpg", FileMode.Open);
+            FileStream file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\OrlandoHotel1.jpg", FileMode.Open);
             List<ImageHotel> hotelimages = new List<ImageHotel>();
             MemoryStream ms = new MemoryStream();
             file.CopyTo(ms);
@@ -237,14 +244,14 @@ namespace goodtrip
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\OrlandoHotel2.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\OrlandoHotel2.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\OrlandoHotel3.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\OrlandoHotel3.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
@@ -264,7 +271,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id
             };
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\OrlandoExcursion.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\OrlandoExcursion.jpg", FileMode.Open);
             List<ImageExcurtion> excurtionimages = new List<ImageExcurtion>();
             ms = new MemoryStream();
             file.CopyTo(ms);
@@ -279,7 +286,7 @@ namespace goodtrip
             _dbContext.Tours.Add(tour);
             _dbContext.SaveChanges();
         }
-        static public void Seed3(GoodTripContext _dbContext)
+        static public void Seed3(GoodTripContext _dbContext, UserOperatorProfile profile)
         {
             Tour tour = new Tour()
             {
@@ -290,7 +297,8 @@ namespace goodtrip
                 Description = "Pennsylvania's largest city is known as the home of the Liberty Bell, Independence Hall and the Rocky statue. Philadelphia, a city in Pennsylvania whose name means City of Brotherly Love, was originally settled by Native American tribes, particularly the Lenape hunter gatherers, around 8000 B.C.",
                 Duration = 15,
                 MaxTourists = 11,
-                TourOperator = "AmericanToursFE",
+                TourOperatorProfile = profile,
+                TourOperatorProfileId = profile.UserProfileId,
                 StartDate = new DateTime(2022, 06, 02),
                 EndDate = new DateTime(2022, 07, 15),
                 Price = 7500
@@ -311,7 +319,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id,
             };
-            FileStream file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\PhiladelphiaHotel1.jpg", FileMode.Open);
+            FileStream file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\PhiladelphiaHotel1.jpg", FileMode.Open);
             List<ImageHotel> hotelimages = new List<ImageHotel>();
             MemoryStream ms = new MemoryStream();
             file.CopyTo(ms);
@@ -319,14 +327,14 @@ namespace goodtrip
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\PhiladelphiaHotel2.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\PhiladelphiaHotel2.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\PhiladelphiaHotel3.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\PhiladelphiaHotel3.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
@@ -346,7 +354,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id
             };
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\PhiladelphiaExcursion.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\PhiladelphiaExcursion.jpg", FileMode.Open);
             List<ImageExcurtion> excurtionimages = new List<ImageExcurtion>();
             ms = new MemoryStream();
             file.CopyTo(ms);
@@ -361,7 +369,7 @@ namespace goodtrip
             _dbContext.Tours.Add(tour);
             _dbContext.SaveChanges();
         }
-        static public void Seed5(GoodTripContext _dbContext)
+        static public void Seed5(GoodTripContext _dbContext, UserOperatorProfile profile)
         {
             Tour tour = new Tour()
             {
@@ -372,7 +380,8 @@ namespace goodtrip
                 Description = "San Francisco is famous for its Golden Gate Bridge, steep streets, Alcatraz, and – you got it, dude! – Full House. The thirteenth largest city in the United States also has some pretty interesting historical facts.",
                 Duration = 35,
                 MaxTourists = 18,
-                TourOperator = "AmericanToursFE",
+                TourOperatorProfile = profile,
+                TourOperatorProfileId = profile.UserProfileId,
                 StartDate = new DateTime(2022, 05, 25),
                 EndDate = new DateTime(2022, 06, 15),
                 Price = 8500
@@ -399,7 +408,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id,
             };
-            FileStream file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\SanFranciscoHotel1.jpg", FileMode.Open);
+            FileStream file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\SanFranciscoHotel1.jpg", FileMode.Open);
             List<ImageHotel> hotelimages = new List<ImageHotel>();
             MemoryStream ms = new MemoryStream();
             file.CopyTo(ms);
@@ -407,14 +416,14 @@ namespace goodtrip
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\SanFranciscoHotel2.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\SanFranciscoHotel2.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\SanFranciscoHotel3.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\SanFranciscoHotel3.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
@@ -434,7 +443,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id
             };
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\SanFranciscoExcursion.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\SanFranciscoExcursion.jpg", FileMode.Open);
             List<ImageExcurtion> excurtionimages = new List<ImageExcurtion>();
             ms = new MemoryStream();
             file.CopyTo(ms);
@@ -449,7 +458,7 @@ namespace goodtrip
             _dbContext.Tours.Add(tour);
             _dbContext.SaveChanges();
         }
-        public static void SeedData(GoodTripContext _dbContext)
+        public static void SeedData(GoodTripContext _dbContext, UserOperatorProfile profile)
         {
             Tour tour = new Tour()
             {
@@ -462,7 +471,8 @@ namespace goodtrip
                 StartDate = new DateTime(2022, 5, 18),
                 EndDate = new DateTime(2022, 5, 25),
                 MaxTourists = 5,
-                TourOperator = "TravelAroundTheUS",
+                TourOperatorProfile = profile,
+                TourOperatorProfileId = profile.UserProfileId,
                 Price = 1800
             };
             Hotel hotel = new Hotel()
@@ -481,7 +491,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id,
             };
-            FileStream file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\hotelLAX.jpg", FileMode.Open);
+            FileStream file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\hotelLAX.jpg", FileMode.Open);
             List<ImageHotel> hotelimages = new List<ImageHotel>();
             MemoryStream ms = new MemoryStream();
             file.CopyTo(ms);
@@ -489,14 +499,14 @@ namespace goodtrip
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\hotelLAX2.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\hotelLAX2.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\hotelLAX3.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\hotelLAX3.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
@@ -515,7 +525,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id
             };
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\los-angelesExcursion1.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\los-angelesExcursion1.jpg", FileMode.Open);
             List<ImageExcurtion> excurtionimages = new List<ImageExcurtion>();
             ms = new MemoryStream();
             file.CopyTo(ms);
@@ -530,7 +540,7 @@ namespace goodtrip
             _dbContext.Tours.Add(tour);
             _dbContext.SaveChanges();
         }
-        public static void SeedData1(GoodTripContext _dbContext)
+        public static void SeedData1(GoodTripContext _dbContext, UserOperatorProfile profile)
         {
             Tour tour = new Tour()
             {
@@ -543,7 +553,8 @@ namespace goodtrip
                 StartDate = new DateTime(2022, 5, 20),
                 EndDate = new DateTime(2022, 5, 26),
                 MaxTourists = 4,
-                TourOperator = "AmericanToursFE",
+                TourOperatorProfile = profile,
+                TourOperatorProfileId = profile.UserProfileId,
                 Price = 1000
             };
             Hotel hotel = new Hotel()
@@ -562,7 +573,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id,
             };
-            FileStream file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\SpringHill.jpg", FileMode.Open);
+            FileStream file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\SpringHill.jpg", FileMode.Open);
             List<ImageHotel> hotelimages = new List<ImageHotel>();
             MemoryStream ms = new MemoryStream();
             file.CopyTo(ms);
@@ -570,14 +581,14 @@ namespace goodtrip
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\SpringHill2.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\SpringHill2.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\SpringHill3.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\SpringHill3.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
@@ -597,7 +608,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id
             };
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\NigWat.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\NigWat.jpg", FileMode.Open);
             List<ImageExcurtion> excurtionimages = new List<ImageExcurtion>();
             ms = new MemoryStream();
             file.CopyTo(ms);
@@ -612,7 +623,7 @@ namespace goodtrip
             _dbContext.Tours.Add(tour);
             _dbContext.SaveChanges();
         }
-        public static void SeedData2(GoodTripContext _dbContext)
+        public static void SeedData2(GoodTripContext _dbContext, UserOperatorProfile profile)
         {
             Tour tour = new Tour()
             {
@@ -625,7 +636,8 @@ namespace goodtrip
                 StartDate = new DateTime(2022, 5, 28),
                 EndDate = new DateTime(2022, 6, 02),
                 MaxTourists = 3,
-                TourOperator = "AmericanToursFE",
+                TourOperatorProfile = profile,
+                TourOperatorProfileId = profile.UserProfileId,
                 Price = 2900
             };
             Hotel hotel = new Hotel()
@@ -644,7 +656,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id,
             };
-            FileStream file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\Harra.jpg", FileMode.Open);
+            FileStream file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\Harra.jpg", FileMode.Open);
             List<ImageHotel> hotelimages = new List<ImageHotel>();
             MemoryStream ms = new MemoryStream();
             file.CopyTo(ms);
@@ -652,14 +664,14 @@ namespace goodtrip
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\Harra2.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\Harra2.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\Harra3.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\Harra3.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
@@ -679,7 +691,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id
             };
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\EVex.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\EVex.jpg", FileMode.Open);
             List<ImageExcurtion> excurtionimages = new List<ImageExcurtion>();
             ms = new MemoryStream();
             file.CopyTo(ms);
@@ -700,7 +712,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id
             };
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\GCex.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\GCex.jpg", FileMode.Open);
             List<ImageExcurtion> excurtionimages2 = new List<ImageExcurtion>();
             ms = new MemoryStream();
             file.CopyTo(ms);
@@ -716,7 +728,7 @@ namespace goodtrip
             _dbContext.Tours.Add(tour);
             _dbContext.SaveChanges();
         }
-        public static void SeedData3(GoodTripContext _dbContext)
+        public static void SeedData3(GoodTripContext _dbContext, UserOperatorProfile profile)
         {
             Tour tour = new Tour()
             {
@@ -729,7 +741,8 @@ namespace goodtrip
                 StartDate = new DateTime(2022, 5, 31),
                 EndDate = new DateTime(2022, 6, 07),
                 MaxTourists = 8,
-                TourOperator = "SandAndWater",
+                TourOperatorProfile = profile,
+                TourOperatorProfileId = profile.UserProfileId,
                 Price = 3400
             };
             Hotel hotel = new Hotel()
@@ -748,7 +761,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id,
             };
-            FileStream file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\Trump.jpg", FileMode.Open);
+            FileStream file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\Trump.jpg", FileMode.Open);
             List<ImageHotel> hotelimages = new List<ImageHotel>();
             MemoryStream ms = new MemoryStream();
             file.CopyTo(ms);
@@ -756,14 +769,14 @@ namespace goodtrip
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\Trump2.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\Trump2.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\Trump3.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\Trump3.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
@@ -783,7 +796,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id
             };
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\Msea.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\Msea.jpg", FileMode.Open);
             List<ImageExcurtion> excurtionimages = new List<ImageExcurtion>();
             ms = new MemoryStream();
             file.CopyTo(ms);
@@ -804,7 +817,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id
             };
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\JIex.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\JIex.jpg", FileMode.Open);
             List<ImageExcurtion> excurtionimages2 = new List<ImageExcurtion>();
             ms = new MemoryStream();
             file.CopyTo(ms);
@@ -820,7 +833,7 @@ namespace goodtrip
             _dbContext.Tours.Add(tour);
             _dbContext.SaveChanges();
         }
-        public static void SeedData4(GoodTripContext _dbContext)
+        public static void SeedData4(GoodTripContext _dbContext, UserOperatorProfile profile)
         {
             Tour tour = new Tour()
             {
@@ -833,7 +846,8 @@ namespace goodtrip
                 StartDate = new DateTime(2022, 6, 01),
                 EndDate = new DateTime(2022, 6, 06),
                 MaxTourists = 4,
-                TourOperator = "SandAndWater",
+                TourOperatorProfile = profile,
+                TourOperatorProfileId = profile.UserProfileId,
                 Price = 7600
             };
             Hotel hotel = new Hotel()
@@ -852,7 +866,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id,
             };
-            FileStream file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\Wai.jpg", FileMode.Open);
+            FileStream file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\Wai.jpg", FileMode.Open);
             List<ImageHotel> hotelimages = new List<ImageHotel>();
             MemoryStream ms = new MemoryStream();
             file.CopyTo(ms);
@@ -860,14 +874,14 @@ namespace goodtrip
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\Wai2.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\Wai2.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\Wai3.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\Wai3.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
@@ -887,7 +901,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id
             };
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\OHex.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\OHex.jpg", FileMode.Open);
             List<ImageExcurtion> excurtionimages = new List<ImageExcurtion>();
             ms = new MemoryStream();
             file.CopyTo(ms);
@@ -908,7 +922,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id
             };
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\PHex.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\PHex.jpg", FileMode.Open);
             List<ImageExcurtion> excurtionimages2 = new List<ImageExcurtion>();
             ms = new MemoryStream();
             file.CopyTo(ms);
@@ -924,7 +938,7 @@ namespace goodtrip
             _dbContext.Tours.Add(tour);
             _dbContext.SaveChanges();
         }
-        public static void SeedData5(GoodTripContext _dbContext)
+        public static void SeedData5(GoodTripContext _dbContext, UserOperatorProfile profile)
         {
             Tour tour = new Tour()
             {
@@ -937,7 +951,8 @@ namespace goodtrip
                 StartDate = new DateTime(2022, 6, 03),
                 EndDate = new DateTime(2022, 6, 10),
                 MaxTourists = 8,
-                TourOperator = "TravelAroundTheUS",
+                TourOperatorProfile = profile,
+                TourOperatorProfileId = profile.UserProfileId,
                 Price = 4300
             };
             Hotel hotel = new Hotel()
@@ -956,7 +971,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id,
             };
-            FileStream file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\Alex.jpg", FileMode.Open);
+            FileStream file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\Alex.jpg", FileMode.Open);
             List<ImageHotel> hotelimages = new List<ImageHotel>();
             MemoryStream ms = new MemoryStream();
             file.CopyTo(ms);
@@ -964,14 +979,14 @@ namespace goodtrip
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\Alex2.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\Alex2.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
                 new ImageHotel() { Id = Guid.NewGuid(), ImageTitle = file.Name, ImageData = ms.ToArray(), Hotel = hotel, HotelId = hotel.Id }
             );
             file.Close(); file.Dispose(); ms.Close(); ms.Dispose();
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\Alex3.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\Alex3.jpg", FileMode.Open);
             ms = new MemoryStream();
             file.CopyTo(ms);
             hotelimages.Add(
@@ -991,7 +1006,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id
             };
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\ANex.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\ANex.jpg", FileMode.Open);
             List<ImageExcurtion> excurtionimages = new List<ImageExcurtion>();
             ms = new MemoryStream();
             file.CopyTo(ms);
@@ -1012,7 +1027,7 @@ namespace goodtrip
                 Tour = tour,
                 TourId = tour.Id
             };
-            file = new FileStream("C:\\Users\\Saimon\\goodtrip\\goodtrip\\Storage\\Images\\DENex.jpg", FileMode.Open);
+            file = new FileStream("C:\\Users\\Данила\\Desktop\\GT\\goodtrip\\goodtrip\\Storage\\Images\\DENex.jpg", FileMode.Open);
             List<ImageExcurtion> excurtionimages2 = new List<ImageExcurtion>();
             ms = new MemoryStream();
             file.CopyTo(ms);
