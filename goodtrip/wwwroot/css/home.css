@@ -72,7 +72,7 @@
 .PopularDirections {
     font-family: 'K2D';
     font-style: normal;
-    margin-top: 5%;
+    margin-top: 10%;
 }
 .pdtext{
     text-align:center;
@@ -99,10 +99,4 @@
 
     text-align: center;
     width: 1000%;
-}
-a.text:active, /* активная/посещенная ссылка */
-a.text:hover, /* при наведении */
-a.text {
-    text-decoration: none;
-    color: black;
 }
