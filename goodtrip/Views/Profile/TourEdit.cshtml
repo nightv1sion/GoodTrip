@@ -16,7 +16,7 @@
 </head>
 
 <form method="post" enctype="multipart/form-data">
-    <div class="validation">@ViewBag.SuperError</div>
+    <input asp-for="Id" type="hidden" />
     <center>
     <div class = "border p-3 mt-4" style="border-radius:20px;">
         <div class ="row pb-2 title">
@@ -173,7 +173,7 @@
         </div>
         </div>
         <div class = "buttoncreate">
-            <button type = "submit" class ="btn-primary" style="width:150px">Create</button>
+            <button type = "submit" class ="btn-primary" style="width:150px;border-radius:20px;margin-top:5%;">Edit</button>
         </div>
         </div>
         </center>

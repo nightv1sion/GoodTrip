@@ -139,7 +139,6 @@ namespace goodtrip.Controllers
         }
 
         [Authorize(Roles = "Operator")]
-<<<<<<< HEAD
         [Route("Profile/AcceptRequest/{requestId}")]
         public IActionResult AcceptRequest(string requestId)
         {
@@ -170,14 +169,15 @@ namespace goodtrip.Controllers
                 return View();
             }
             return View(searchedRequests);
-=======
-        [ActionName("TourEdit")]
+        }
+
+        [Authorize(Roles = "Operator")]
         [HttpGet]
-        [Route("Profile/TourEdit/{id}")]
-        public IActionResult TourEdit(string id)
+        [Route("Profile/TourEdit/{id:guid}")]
+        public IActionResult TourEdit(Guid id)
         {
-                    Guid guid = Guid.Parse(id);
-                    EditTourModel tour = _profileManager.TourEdit(guid);
+
+                    EditTourModel tour = _profileManager.TourEdit(id);
                     return View(tour);
         }
 
@@ -185,11 +185,12 @@ namespace goodtrip.Controllers
         [ActionName("TourEdit")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult TourEdit(Tour tour)
+        public IActionResult TourEditPost(EditTourModel tour)
         {
-            _profileManager.EditTour(tour);
-            return RedirectToAction("Index");
->>>>>>> 3e359e2c26272f09c662932fc14b1ae1887906ad
+            var files = Request.Form.Files;
+            string username = HttpContext.User.Identity.Name;
+            _profileManager.EditTour(tour,files);
+            return RedirectToAction("PrintTours");
         }
     }
 }
