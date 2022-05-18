@@ -19,12 +19,14 @@
 }
 
 .best_offers_cont {
-    margin-top:8%;
-    padding-bottom:2%;
-    position:center;
-    width: 100%;
+    margin: auto;
+    margin-top: 2%;
+    padding-bottom: 2%;
+    position: center;
+    width: 70%;
     height: 80%;
-    background: rgba(154, 110, 246, 0.14);
+    border: 1px solid #9A6EF6;
+    border-radius: 10px;
     box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.14);
     border-radius: 30px;
 }
@@ -43,7 +45,7 @@
     margin: -220px 0px 0px 440px;
     width: 450px;
     height: 275px;
-    border: 6px solid #9A6EF6;
+    border: 3px solid #9A6EF6;
     border-radius: 5px;
 }
 .mid_image img {
@@ -54,6 +56,7 @@
     margin: -250px 20px 50px 925px;
     width: 360px;
     height: 210px;
+
 }
     .right_image img {
         width: 100%;
@@ -62,7 +65,7 @@
 .text_bo {
     font-family: 'K2D';
     font-style: normal;
-    font-weight: 400;
+    font-weight:100;
     font-size: 96px;
     line-height: 125px;
     text-align: center;
@@ -72,7 +75,7 @@
 .PopularDirections {
     font-family: 'K2D';
     font-style: normal;
-    margin-top: 5%;
+    margin-top: 2%;
 }
 .pdtext{
     text-align:center;
@@ -83,7 +86,7 @@
     text-align: center;
     border: 1px solid #8E7DF3;
     border-radius: 15px;
-    width: 80%;
+    width: 105%;
 }
 .dirimage img{
     margin-top:10%;
@@ -98,11 +101,5 @@
     margin-top:30%;
 
     text-align: center;
-    width: 1000%;
-}
-a.text:active, /* активная/посещенная ссылка */
-a.text:hover, /* при наведении */
-a.text {
-    text-decoration: none;
-    color: black;
+    width: 600%;
 }
