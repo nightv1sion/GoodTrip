@@ -43,7 +43,8 @@
             <div class="col-3">
                 <div class="dircont">
                     <div class="row">
-                        <div class="col-2">
+                        <a asp-controller="Search" asp-action="Index" asp-route-city = "Paris" class = "text">
+                            <div class="col-2">
                             <div class="dirimage">
                             <img src ="~/Images/France.svg" />
                             </div>
@@ -53,13 +54,14 @@
                                 <p>Paris</p>
                             </div>
                         </div>
+                        </a>
                     </div>
                 </div>
             </div>
               <div class="col-3">
                 <div class="dircont">
                     <div class="row">
-                        <div class="col-2">
+                        <a asp-controller="Search" asp-action="Index" asp-route-city="Sochi" class="text"><div class="col-2">
                             <div class="dirimage">
                             <img src ="~/Images/Russia.svg" />
                             </div>
@@ -69,12 +71,14 @@
                                 <p>Sochi</p>
                             </div>
                         </div>
+                        </a>
                     </div>
                 </div>
             </div>
                         <div class="col-3">
                 <div class="dircont">
-                    <div class="row">
+                    <a asp-controller = "Search" asp-action="Index" asp-route-city="Madrid" class = "text">
+                        <div class="row">
                         <div class="col-2">
                             <div class="dirimage">
                             <img src ="~/Images/Spain.svg" />
@@ -86,11 +90,13 @@
                             </div>
                         </div>
                     </div>
+                    </a>
                 </div>
             </div>
                         <div class="col-3">
                 <div class="dircont">
-                    <div class="row">
+                    <a asp-controller = "Search" asp-action="Index" asp-route-city="New-York" class="text">
+                        <div class="row">
                         <div class="col-2">
                             <div class="dirimage">
                             <img src ="~/Images/USA.svg" />
@@ -101,7 +107,8 @@
                                 <p>New-York</p>
                             </div>
                         </div>
-                    </div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>

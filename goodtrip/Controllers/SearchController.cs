@@ -14,6 +14,18 @@ namespace goodtrip.Controllers
         {
             _searchManager = searchManager;
         }
+
+        [HttpGet]
+        [Route("Search/Index/{city}")]
+        public IActionResult Index(string city)
+        {
+            SearchModel searchModel = new SearchModel()
+            {
+                Place = city
+            };
+            return IndexPost(searchModel);
+        }
+
         [HttpGet]
         public IActionResult Index(SearchModel searchModel)
         {

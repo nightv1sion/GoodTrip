@@ -100,3 +100,9 @@
     text-align: center;
     width: 1000%;
 }
+a.text:active, /* активная/посещенная ссылка */
+a.text:hover, /* при наведении */
+a.text {
+    text-decoration: none;
+    color: black;
+}
