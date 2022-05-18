@@ -2,6 +2,7 @@
 using goodtrip.Storage;
 using goodtrip.Storage.Entity;
 using goodtrip.Storage.Enums;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace goodtrip.Managers
@@ -176,7 +177,7 @@ namespace goodtrip.Managers
             }
             return searchedRequests;
         }
-
+        
         public EditTourModel TourEdit(Guid guid)
         {
             if (guid != null)
@@ -219,10 +220,42 @@ namespace goodtrip.Managers
             }
             else return null;
         }
-        public void EditTour(Tour tour)
+        public void EditTour(EditTourModel tour, IFormFileCollection files)
         {
-            _context.Tours.Update(tour);
-            _context.SaveChangesAsync();
+            Tour tur = _context.Tours.FirstOrDefault(t => t.Id == tour.Id);
+            Hotel hotel = _context.Hotels.FirstOrDefault(t => t.TourId == tour.Id);
+            Excurtion excursion = _context.Excurtions.FirstOrDefault(t => t.TourId == tour.Id);
+
+            tur.Id = tour.Id;
+            tur.Name = tour.TourName;
+            tur.City = tour.TourCity;
+            tur.StartDate = tour.StartDate;
+            tur.EndDate = tour.EndDate;
+            tur.Country = tour.TourCountry;
+            tur.Description = tour.TourDescription;
+            tur.MaxTourists = tour.TourMaxTourists;
+            tur.Price = tour.TourPrice;
+            tur.Duration = tour.TourDuration;
+
+            hotel.Name = tour.HotelName;
+            hotel.Description = tour.HotelDescription;
+            hotel.Mark = tour.HotelMark;
+            hotel.Country = tour.HotelCountry;
+            hotel.City = tour.HotelCity;
+            hotel.Address = tour.HotelAddress;
+            hotel.Rooms = tour.HotelRooms;
+            hotel.FreeRooms = tour.HotelFreeRooms;
+            hotel.IsWifi = tour.HotelIsWifi;
+            hotel.Feeding = tour.HotelFeeding;
+
+            excursion.Duration = tour.ExcursionDuration;
+            excursion.Place = tour.ExcursionPlace;
+            excursion.MaxAmountOfVisitors = tour.ExcursionMaxAmountOfVisitors;
+            excursion.Language = tour.ExcursionLanguage;
+            excursion.Name = tour.ExcursionName;
+            excursion.Description = tour.ExcursionDescription;
+            _context.Tours.Update(tur);
+            _context.SaveChanges();
         }
     public void AcceptRequest(Guid guid)
         {

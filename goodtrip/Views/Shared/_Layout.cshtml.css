@@ -33,12 +33,10 @@ button.accept-policy {
 .footer {
     position: absolute;
     bottom: 0;
-    width: 100%;
     white-space: nowrap;
-    line-height: 60px;
 }
 
-header .container-lay {
+.container-lay {
     background-color: rgba(154,110,246,50%);
 }
 
@@ -46,21 +44,18 @@ header .container-lay {
     width: 70%;
     margin: 3%;
 }
-
 .search {
     text-align: center;
-    padding-left:0.8%;
-    width: 6%;
-    padding-right: 5.5%;
+    width: 50%;
     margin: auto;
-    margin-top: 2.3%;
-    margin-right:-4%;
-    padding-top: 0.2%;
-    padding-bottom:0.2%;
+    margin-top: 15%;
     background-color: rgba(154, 110, 246, 0.35);
     border: 1px solid #8643D6;
+    margin-left: 400%;
     border-radius: 5px;
     font-size: 24px;
+    padding-top: 1%;
+    padding-bottom: 1%;
 }
 
 .profilee {
@@ -68,8 +63,7 @@ header .container-lay {
     width: 50%;
     margin: auto;
     margin-top: 15%;
-    margin-left: 25.5%;
-    padding: 0 3%;
+    margin-left: 350%;
     background-color: rgba(154, 110, 246, 0.35);
     border: 1px solid #8643D6;
     border-radius: 5px;

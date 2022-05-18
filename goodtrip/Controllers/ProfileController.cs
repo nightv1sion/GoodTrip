@@ -137,23 +137,7 @@ namespace goodtrip.Controllers
             }
             return View(searchedRequests);
         }
-        [Authorize(Roles = "Operator")]
-        [HttpGet]
-        public IActionResult EditTour(string id)
-        {
-            Guid guid = Guid.Parse(id);
-            EditTourModel tour = _profileManager.TourEdit(guid);
-            return View(tour);
-        }
 
-        [Authorize(Roles = "Operator")]
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult EditTour(Tour tour)
-        {
-            _profileManager.EditTour(tour);
-            return RedirectToAction("Index");
-        }
         [Authorize(Roles = "Operator")]
         [Route("Profile/AcceptRequest/{requestId}")]
         public IActionResult AcceptRequest(string requestId)
@@ -185,6 +169,28 @@ namespace goodtrip.Controllers
                 return View();
             }
             return View(searchedRequests);
+        }
+
+        [Authorize(Roles = "Operator")]
+        [HttpGet]
+        [Route("Profile/TourEdit/{id:guid}")]
+        public IActionResult TourEdit(Guid id)
+        {
+
+                    EditTourModel tour = _profileManager.TourEdit(id);
+                    return View(tour);
+        }
+
+        [Authorize(Roles = "Operator")]
+        [ActionName("TourEdit")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult TourEditPost(EditTourModel tour)
+        {
+            var files = Request.Form.Files;
+            string username = HttpContext.User.Identity.Name;
+            _profileManager.EditTour(tour,files);
+            return RedirectToAction("PrintTours");
         }
     }
 }
