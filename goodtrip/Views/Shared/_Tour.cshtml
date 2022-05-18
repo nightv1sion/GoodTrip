@@ -1,215 +1,87 @@
 ﻿@model goodtrip.Storage.Entity.Tour
-<div class = "entiretour">
-<div class = "tour">
-        <div class = "hotelheader">
-            <p>Tour Info</p>
-        </div>
-        <div class = "row">
-        <div class = "col-3">
-        <div class = "row">
-            <div class = "grid">
-        @foreach(var photo in ViewBag.HotelPhotos)
-        {
-            <img src = "@photo" />
-        }
-        </div>
-        </div>
-        </div>
-        <div class = "tourinfo col-8">
-            <div class = "nameoftour">
-                <p>@Model.Name</p>
+
+<div class = "container-fluid">
+    <div class="entiretour">
+        <div class = "tour">
+            <div class ="tourtitle">
+            <p>@Model.Name Tour</p>
             </div>
-            <div class = "cityoftour">
-                <p>@Model.City, @Model.Country</p>
+            <div class="tourplace">
+                <p>@(Model.City), @(Model.Country)</p>
             </div>
             <div class = "tourdescription">
                 <p>@Model.Description</p>
             </div>
-            <div class = "duration">
-                <p>@Model.Duration Days</p>
+            <div class= "touractiveperiod">
+                <p><strong>Active period:</strong>@Model.StartDate.ToShortDateString() - @Model.EndDate.ToShortDateString()</p>
             </div>
-            <div class = "scaledate">
-                <div class = "row">
-                    <div class = "col-4">
-                        <img src = "~/images/calendar.svg">
-                    </div>
-                    <div class = "col-8 dates">
-                        <p>FROM @Model.StartDate.Date.ToShortDateString() To @Model.EndDate.Date.ToShortDateString()</p>
-                    </div>
-                </div>
+            <div class="tourmaxamount">
+                <p><strong>Maximum amount of persons:</strong> @Model.MaxTourists persons</p>
             </div>
-            <div class = "persons">
-                     <div class = "row">
-                         <div class = "col-4">
-                        <img src = "~/images/person.svg" />
-                    </div>
-                    <div class = "col-8">
-                        <p>@Model.MaxTourists Persons</p>
-                    </div>
-                     </div>
+        </div>
+        <div class = "hotel">
+            <div class = "hoteltitle">
+                <p>@Model.Hotel.Name Hotel</p>
             </div>
-            <div class="row">
-                <div class = "col-6 price">
-                        <p>@Model.Price $</p>
-                </div>
-                <div class = "col-6 apply">
-                    @if(Context.User.IsInRole("Customer")){
-                            <a asp-controller = "Tour" asp-action="CreateRequest" asp-route-id="@Model.Id.ToString()" class="text">Apply</a>
-                    }
-                    else
+            <div class = "hotelstars">
+                <p>@Model.Hotel.Mark STARS HOTEL</p>
+            </div>
+            <div class = "hotelimages">
+                <div class = "grid">
+                    @foreach(var photo in ViewBag.HotelPhotos)
                     {
-                        <a>You need to have a customer account to apply tour</a>
+                        <img src = "@photo" />
                     }
                 </div>
             </div>
+            
+            <div class = "hoteladdress">
+                <p>@Model.Hotel.Country, @Model.Hotel.City, @Model.Hotel.Address </p>
             </div>
-            <div class = "col-1">
-                <div class = "buttonback">
-                <a asp-controller="Search" class="text">
-                    <img src = "/images/back.svg" />
-                    <p>To search <br /> results</p>
-                </a>
-            </div>
-            </div>
-        </div>
-        </div>
-        
-        <div class = "hotelinfo">
-            <div class = "hotelheader">
-            <p>Hotel Info</p>
-            </div>
-            <div class="hotelname">
-                <p>@Model.Hotel.Name</p>
-            </div>
-            <div class ="hoteldescription">
+            <div class = "hoteldescription">
                 <p>@Model.Hotel.Description</p>
             </div>
-            <div class = "row">
-                <div class = "col-6 ">
-                    <div class = "hoteladdress">
-                        <p>@Model.Hotel.Address</p>
-                    </div>
-                    <div class = "hotelstars">
-                        <div class = "row">
-                            <div class = "col-1">
-                                <img src = "~/images/stars.svg">
-                            </div>
-                            <div class = "col-11">
-                                <p>@Model.Hotel.Mark Stars</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class = "col-6 hotelmicroinfo">
-                    @if (Model.Hotel.IsWifi)
-                    {
-                        <div class = "row">
-                        <div class = "col-1 wifi">
-                        <img src = "~/images/wifi.svg">
-                        </div>
-                        <div class = "col-11 hotelwifi">
-                        <p>Free Wifi</p>                        
-                        </div>
-                        </div>
-                    }
-                    @if (Model.Hotel.Feeding)
-                    {
-                        <div class = "row">
-                        <div class = "col-1 hotelmealimg">
-                        <img src = "~/images/meal.svg">
-                        </div>
-                        <div class = "col-11 hotelmeal">
-                        <p>Meals included</p>                        
-                        </div>
-                        </div>
-                    }
-                    <div class = "row">
-                        <div class = "col-1 hotelfreeroomsimg">
-                        <img src = "~/images/freerooms.svg">
-                        </div>
-                        <div class = "col-11 hotelfreerooms">
-                        <p>@Model.Hotel.FreeRooms Free Rooms</p>
-                        </div>
-                    </div>
-                    
-                </div>
-
+            <div class="hoteladdings">
+                @if(Model.Hotel.IsWifi == true)
+                {
+                    <p>FREE WIFI</p>
+                }
+                @if(Model.Hotel.Feeding == true){
+                    <p>MEALS INCLUDED</p>
+                }
+                <p>@Model.Hotel.FreeRooms FREE ROOMS</p>
             </div>
         </div>
-        
         @{
             int counter = 0;
             var excursionphotos = ViewBag.ExcurtionPhotos;
         @foreach(var excursion in Model.Excurtion){
-            
-            <div class = "excursioninfo">
-            <div class = "hotelheader">
-            <p>Excursion Info</p>
-        </div>
-            <div class = "row">
-                <div class = "col-3">
-                    <div class = "grid">
-                        @if(counter < excursionphotos.Count){
+            <div class = "excursion">
+                <div class = "excursiontitle">
+                    <p>@excursion.Name Excursion</p>
+                </div>
+            <div class = "grid">
+                <div class = "row">
+                    <div class = "col-5">
+                        <div class = "excursionimage">
+                            @if(counter < excursionphotos.Count){
                             <img src ="@excursionphotos[counter]">
                             counter++;
-                        }
+                            }
+                        </div>
                     </div>
-                </div>
-                <div class = "col-9">
-                    <div class = "excursionname">
-                        <p>@excursion.Name</p>
-                    </div>
-                    <div class = "excursiondescription">
-                        <p>@excursion.Description</p>
-                    </div>
-                    <div class = "excursionmicroinfo">
-                        <div class = "row">
-                            <div class = "col-4">
-                                <div class = "excursionduration">
-                                    <div class = "row">
-                                    <div class = "col-2 hoursimg">
-                                        <img src = "~/images/hours.svg">
-                                    </div>
-                                    <div class = "col-10 hours">
-                                        <p>@excursion.Duration Hours</p>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class = "col-4">
-                            <div class = "excursionlanguage">
-                            <div class = "row">
-                                <div class = "col-2 languageimg">
-                                <img src = "~/images/language.svg">
-                                </div>
-                                <div class = "col-10 language">
-                                <p>@excursion.Language</p>
-                                </div>
-                            </div>
-                                </div>
-                            </div>
-                            <div class = "col-4">
-                            <div class = "excursionpersons">
-                                 <div class = "row">
-                                 <div class = "col-3 personimg">
-                                <img src = "~/images/person.svg">
-                                </div>
-                                <div class = "col-9 person">
-                                <p>@excursion.MaxAmountOfVisitors Persons</p>
-                                </div>
-                                </div>
-                                </div>
-                            </div>
+                    <div class = "col-7">
+                        <div class = "excursiondescription">
+                            <p>@excursion.Description</p>
+                        </div>
+                        <div class="excursionduration">
+                            <p><b>Duration:</b> @excursion.Duration hours</p>
                         </div>
                         <div class = "excursionplace">
-                            <div class = "row">
-                                <div class = "col-1">
-                                    <img src = "~/images/place.svg">
-                                </div>
-                                <div class = "col-11">
-                                    <p>@excursion.Place</p>
-                                </div>
-                            </div>
+                            <p><b>Place:</b> @excursion.Place </p>
+                        </div>
+                        <div class = "excursionamountoftourists">
+                            <p><b>Amount of tourists: </b>@excursion.MaxAmountOfVisitors </p>
                         </div>
                     </div>
                 </div>
@@ -217,4 +89,30 @@
         </div>
                 }
         }
+
+        <div class = "priceandsendrequest">
+            <div class="row">
+                <div class = "col-6">
+                    <div class = "Price">
+                        <p>@Model.Price $</p>
+                    </div>
+                </div>
+                <div class = "col-6">
+                    @if(Context.User.IsInRole("Customer")){
+                        <div class = "sendrequest">
+                            <a asp-action="CreateRequest" asp-route-id="@Model.Id.ToString()" class = "text" >Send Request</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class = "accessdenied">
+                        <p>You can`t to send request and comment because you are not a customer!</p>
+                        </div>
+                    }
+                    
+                </div>
+            </div>
         </div>
+    </div>
+</div>
+    

@@ -16,8 +16,8 @@ namespace goodtrip.Controllers
             _tourManager = tourManager;
         }
 
-        [Route("Tour/Index/{id}")]
-        public IActionResult Index(string id)
+        [Route("Tour/Index/{id:guid}")]
+        public IActionResult Index(Guid id)
         {
             Tour tour = _tourManager.FindTour(id);
             ViewBag.HotelPhotos = _tourManager.FindHotelPhotos(tour);
@@ -48,13 +48,14 @@ namespace goodtrip.Controllers
         }
 
         [Authorize(Roles = "Customer")]
-        [Route("Tour/CreateRequest/{id}")]
+        [Route("Tour/CreateRequest/{id:guid}")]
         [HttpGet]
-        public async Task<IActionResult> CreateRequest(string id)
+        public async Task<IActionResult> CreateRequest(Guid id)
         {
+            string _id = id.ToString();
             RequestModel requestModel = new RequestModel()
             {
-                TourId = id
+                TourId = _id
             };
             string username = HttpContext.User.Identity.Name;
             UserCustomerProfile profile = null;

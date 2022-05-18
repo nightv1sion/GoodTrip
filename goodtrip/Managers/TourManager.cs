@@ -12,9 +12,8 @@ namespace goodtrip.Managers
         {
             _context = context;
         }
-        public Tour FindTour(string id)
+        public Tour FindTour(Guid guid)
         {
-            Guid guid = new Guid(id);
             Tour tour = _context.Tours.Include(t => t.Excurtion).Include(t => t.Hotel).Include(t => t.Review).ToList<Tour>().FirstOrDefault(t => t.Id == guid);
             if (tour != null)
             {

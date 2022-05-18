@@ -150,7 +150,7 @@ namespace goodtrip.Managers
             List<Request> requests;
             if (currentOperator != null)
             {
-                requests = _context.Requests.Where(r => r.OperatorProfileId == currentOperator.Profile.UserProfileId).ToList();
+                requests = _context.Requests.Where(r => r.OperatorProfileId == currentOperator.Profile.UserProfileId).OrderByDescending(r => r.Created).ToList();
             }
             else
             {
