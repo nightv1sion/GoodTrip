@@ -68,3 +68,35 @@
     text-align: center;
     color: #8E7DF3;
 }
+
+.PopularDirections {
+    font-family: 'K2D';
+    font-style: normal;
+    margin-top: 5%;
+}
+.pdtext{
+    text-align:center;
+    font-size:30px;
+    margin-bottom:2%;
+}
+.dircont {
+    text-align: center;
+    border: 1px solid #8E7DF3;
+    border-radius: 15px;
+    width: 80%;
+}
+.dirimage img{
+    margin-top:10%;
+    margin-bottom:10%;
+    margin-left:50%;
+    width:50px;
+    height:40px;
+    border-radius:20px;
+}
+.dirtext {
+    font-size:24px;
+    margin-top:30%;
+
+    text-align: center;
+    width: 1000%;
+}
