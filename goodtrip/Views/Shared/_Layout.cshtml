@@ -21,16 +21,13 @@
                         <a asp-controller="Home" asp-action="Index"> <img src = "/images/goodtripLogo.svg" style="max-width: 50%"/></a>
                     </div>
                 </div>
+                <div class = "col-6"></div> 
                      <div class="col-2">
                           <div class = "search">
                          <a asp-controller="Search" asp-action="Index" style = "text-decoration: none; text-decoration-color: none; color: black; font-size: 24px;">SEARCH</a>
                      </div>
                  </div>
-                 <div class="col-2">
-                          <div class = "abcont">
-                         <a asp-controller="Home" asp-action="AboutCont" style = "text-decoration: none; text-decoration-color: none; color: black; font-size: 24px;">ABOUT&CONTACTS</a>
-                     </div>
-                 </div>
+                 
                 <div class="col-2">
                     <div class="profilee">
                         @if(Context.User.Identity.IsAuthenticated)
@@ -187,13 +184,27 @@
   </div>
   <div class="content">
     <div>
-      <div><b>Eldew</b><a href="#">Secuce</a><a href="#">Drupand</a><a href="#">Oceash</a><a href="#">Ugefe</a><a href="#">Babed</a></div>
-      <div><b>Spotha</b><a href="#">Miskasa</a><a href="#">Agithe</a><a href="#">Scesha</a><a href="#">Lulle</a></div>
-      <div><b>Chashakib</b><a href="#">Chogauw</a><a href="#">Phachuled</a><a href="#">Tiebeft</a><a href="#">Ocid</a><a href="#">Izom</a><a href="#">Ort</a></div>
-      <div><b>Athod</b><a href="#">Pamuz</a><a href="#">Vapert</a><a href="#">Neesk</a><a href="#">Omemanen</a></div>
+      <div class = "row projectdescript">
+          <div class="descriptproject">
+              <p>
+                goodtrip is a platform that allows tour operators to post their tours and tourists buy these tours
+              </p>
+              </div>
+              <div class = "creators">
+                <p>Creators: Danila Uprivanov and Semen Komissarov</p>
+              </div>
+              <div class = "creatorslinks">
+              <p>@@nightv1sion and @@Saa1m0n </p>
+              </div>
+              <div class="oopproject">
+                 <p>OOP PROJECT</p>
+              </div>
+              
+          
+      </div>
     </div>
     <div><a class="image" href="https://codepen.io/z-" target="_blank" style="background-image: url(&quot;https://s3-us-west-2.amazonaws.com/s.cdpn.io/199011/happy.svg&quot;)"></a>
-      <p>©2019 Not Really</p>
+      <p>©2022 goodtrip</p>
     </div>
   </div>
 </div>

@@ -23,12 +23,35 @@
     margin-top: 2%;
     padding-bottom: 2%;
     position: center;
-    width: 70%;
+    width: 75%;
     height: 80%;
     border: 1px solid #9A6EF6;
     border-radius: 10px;
-    box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.14);
+   
     border-radius: 30px;
+}
+
+.leftimage , .rightimage{
+    margin-top: 5%;
+    width: 85%;
+    height: 85%;
+}
+.leftimage {
+    margin-left: 15%;
+}
+.leftimage img, .rightimage img {
+    width: 100%;
+    height: auto;
+}
+.midimage {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    margin: auto;
+}
+.midimage img {
+    width: 100%;
+    height: auto;
 }
 
 .left_image {
@@ -65,12 +88,13 @@
 .text_bo {
     font-family: 'K2D';
     font-style: normal;
-    font-weight:100;
+    font-weight: 100;
     font-size: 96px;
     line-height: 125px;
     text-align: center;
     color: #8E7DF3;
 }
+
 
 .PopularDirections {
     font-family: 'K2D';

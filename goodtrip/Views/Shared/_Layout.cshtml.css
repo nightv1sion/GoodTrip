@@ -46,7 +46,6 @@ button.accept-policy {
     margin-top: 15%;
     background-color: rgba(154, 110, 246, 0.35);
     border: 1px solid #8643D6;
-    margin-left: 310%;
     border-radius: 5px;
     font-size: 24px;
     padding-top: 1%;
@@ -73,7 +72,6 @@ button.accept-policy {
     background-color: rgba(154, 110, 246, 0.35);
     border: 1px solid #8643D6;
     border-radius: 5px;
-    margin-left: 250%;
     font-size: 24px;
     padding-top: 1%;
     padding-bottom: 1%;
@@ -94,4 +92,10 @@ button.accept-policy {
     border: 1px solid #8643D6;
     border-radius: 5px;
     font-size: 24px;*/
+}
+
+.descriptproject p {
+}
+.projectdescript div {
+    margin-bottom: 1%;
 }
