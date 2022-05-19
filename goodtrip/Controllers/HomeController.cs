@@ -18,8 +18,6 @@ namespace goodtrip.Controllers
         {
             _logger = logger;
             _signInManager = signInManager;
-            //SeedDataClass.SuperSeed(_dbContext);
-
         }
         public IActionResult Index()
         {

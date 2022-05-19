@@ -48,7 +48,7 @@ namespace goodtrip.Managers
             }
             if (searchModel.DateOfEnd != null)
             {
-                tours = tours.Where(t => t.EndDate >= searchModel.DateOfEnd).ToList();
+                tours = tours.Where(t => t.StartDate <= searchModel.DateOfEnd).ToList();
             }
             if (searchModel.PriceEnd != null)
             {
