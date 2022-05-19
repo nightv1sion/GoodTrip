@@ -40,7 +40,7 @@ namespace goodtrip.Managers
             
             if (searchModel.Place != null)
             {
-                tours = tours.Where(t => t.City == searchModel.Place).ToList();
+                tours = tours.Where(t => t.City.ToLower() == searchModel.Place.ToLower()).ToList();
             }
             if (searchModel.DateOfStart != null)
             {
@@ -78,7 +78,7 @@ namespace goodtrip.Managers
             }
             if(searchModel.Country != null)
             {
-                tours = tours.Where(t => t.Country == searchModel.Country).ToList();
+                tours = tours.Where(t => t.Country.ToLower() == searchModel.Country.ToLower()).ToList();
             }
             if(searchModel.ExcursionLanguage != null)
             {
@@ -86,7 +86,7 @@ namespace goodtrip.Managers
                 {
                     tour.Excurtion = _context.Excurtions.Where(e => e.TourId == tour.Id).ToList();
                 }
-                tours = tours.Where(t => t.Excurtion[0].Language == searchModel.ExcursionLanguage).ToList();
+                tours = tours.Where(t => t.Excurtion[0].Language.ToLower() == searchModel.ExcursionLanguage.ToLower()).ToList();
             }
             foreach (var tour in tours)
             {
