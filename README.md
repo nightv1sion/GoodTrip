@@ -7,3 +7,10 @@
 **ER-diagram for a database:**
 ![image](https://user-images.githubusercontent.com/92179208/169150496-79128102-82ed-413a-8c58-7836f40f946f.png)
 
+# To run the project you need
+- pull this project to your local repository
+- open command line in project folder
+- write `dotnet ef migrations add "MigrationName"` and `dotnet ef database update`
+- download sql script with database dump https://drive.google.com/file/d/1mr435Qck0Zrgv5ZICd5fuK-vDBJj3UAm/
+- open SQL Server Management Studio and create a query to GoodTripDatabase with this sql script and run it
+- run the project and enjoy!
