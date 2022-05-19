@@ -41,9 +41,8 @@ button.accept-policy {
 }
 .search {
     text-align: center;
-    width: 50%;
     margin: auto;
-    margin-top: 15%;
+    margin-top: 35%;
     background-color: rgba(154, 110, 246, 0.35);
     border: 1px solid #8643D6;
     border-radius: 5px;
@@ -56,7 +55,7 @@ button.accept-policy {
     width: 90%;
     margin: auto;
     margin-left: 260%;
-    margin-top: 15%;
+    margin-top: 35%;
     background-color: rgba(154, 110, 246, 0.35);
     border: 1px solid #8643D6;
     border-radius: 5px;
@@ -66,9 +65,8 @@ button.accept-policy {
 }
 .profilee {
     text-align: center;
-    width: 50%;
     margin: auto;
-    margin-top: 15%;
+    margin-top: 35%;
     background-color: rgba(154, 110, 246, 0.35);
     border: 1px solid #8643D6;
     border-radius: 5px;
