@@ -11,6 +11,6 @@
 - pull this project to your local repository
 - open command line in project folder
 - write `dotnet ef migrations add "MigrationName"` and `dotnet ef database update`
-- download sql script with database dump https://drive.google.com/file/d/1mr435Qck0Zrgv5ZICd5fuK-vDBJj3UAm/
+- download sql script with database dump https://drive.google.com/file/d/1rm1-i3t21VsOOWG-5h77SG9usiCY9oFk/
 - open SQL Server Management Studio and create a query to GoodTripDatabase with this sql script and run it
 - run the project and enjoy!
