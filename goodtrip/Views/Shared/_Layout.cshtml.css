@@ -7,6 +7,14 @@ for details on configuring this project to bundle and minify static web assets. 
     border-color: #1861ac;
 }
 
+p {
+    display: block;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
     color: #fff;
     background-color: #1b6ec2;
@@ -96,4 +104,17 @@ button.accept-policy {
 }
 .projectdescript div {
     margin-bottom: 1%;
+}
+
+.goodtriptext{
+    width: 50%;
+    margin: auto;
+}
+.goodtriptext p{
+    text-align: center;
+    font-size: 64px;
+    font-family: K2D, sans-serif;
+    color: white;
+    margin-top: 0% !important;
+    margin-bottom: 0% !important;
 }

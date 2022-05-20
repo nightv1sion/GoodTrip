@@ -352,3 +352,12 @@ header .container-fluid {
 .customerwishes {
     word-break: break-all;
 }
+.NoReq {
+    width: 50%;
+    margin: auto;
+    margin-top: 5%;
+}
+.NoReq p{
+    text-align: center;
+    font-size: 24px;
+}

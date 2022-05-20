@@ -37,7 +37,7 @@
             </div>
             <div class = "col-6">
                     @{int i = 0;
-                @if (Model != null){
+                @if (Model != null && Model.Count != 0){
                 @foreach(var request in Model.Where(r => r.IsReviewed == null))
                 {
                         i++;
@@ -169,9 +169,10 @@
                           </div>
                         </div>
                 }
-                }else{
+                }
+                else{
                   <div class = "NoReq">
-                  <p>No acitve requests</p>
+                    <p>No active requests</p>
                   </div>
                 }
                 }

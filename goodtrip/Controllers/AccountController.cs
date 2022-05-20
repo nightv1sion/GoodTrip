@@ -22,12 +22,10 @@ namespace goodtrip.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
-            //SeedData();
         }
         [HttpGet]
         public async Task<IActionResult> Register()
         {
-            //await SeedData();
             return View();
         }
         [HttpPost]
@@ -93,17 +91,6 @@ namespace goodtrip.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
-        private async Task SeedData()
-        {
-            string[] rolenames = { "Admin", "Operator", "Customer" };
-            foreach (var rolename in rolenames)
-            {
-                var roleExist = await _roleManager.RoleExistsAsync(rolename);
-                if (!roleExist)
-                {
-                    var roleResult = await _roleManager.CreateAsync(new UserRole(rolename));
-                }
-            }
-        }
+        
     }
 }

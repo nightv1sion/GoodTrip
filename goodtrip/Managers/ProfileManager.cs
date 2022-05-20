@@ -16,6 +16,8 @@ namespace goodtrip.Managers
         }
         public DocumentsModel DocumentsInfo(string username)
         {
+            
+            
             User user = username != null ? _context.Users.Include(user => user.Profile).FirstOrDefault(u => u.UserName == username) : null;
             DocumentsModel profile = new DocumentsModel();
             if (user != null)

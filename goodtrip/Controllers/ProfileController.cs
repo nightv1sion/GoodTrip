@@ -37,6 +37,7 @@ namespace goodtrip.Controllers
         [HttpGet]
         public async Task<IActionResult> CustomerChangeDocuments()
         {
+
             string username = HttpContext.User.Identity.Name;
             DocumentsModel profile;
             if (username != null)
