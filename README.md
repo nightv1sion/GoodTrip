@@ -2,7 +2,7 @@
 http://nightv1sion-001-site1.ctempurl.com
 
 To test the project you can go to the link above, but I recommend to follow instruction at the end of description.
-
+#
 
 **goodtrip is a platform that allows:**
 - Tour operators to post their tours
