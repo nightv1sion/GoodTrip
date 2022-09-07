@@ -1,6 +1,8 @@
 # ASP.NET CORE 6 MVC Application is a project on the subject "OOP" 
 http://nightv1sion-001-site1.ctempurl.com
 
+Technologies: ASP.NET Core 6 MVC, EntityFramework Core 6, MS SQL Server, Identity, Cookie Authentication, some JavaScript for visual
+
 To test the project you can go to the link above, but I recommend to follow instruction at the end of description.
 #
 
