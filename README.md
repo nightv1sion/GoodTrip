@@ -10,6 +10,11 @@ To test the project you can go to the link above, but I recommend to follow inst
 
 # How work with this application
 - click on login button or search button (non-authorized users can look for toors but can't order and comment)
+
+For a quick overview you can use: 
+'operatorEngland@1' username and 'operatorEngland@1' password (tour operator account);
+
+'customer' username and 'Qwerty123$' password (customer account)
 - sign up, then sign in (if you choose customer type of account you'll be able to order, operator - you'll be able to create your own tours)
 - now you can go to profile (customers can fill personal info and check sended requests to operators, operators can create tours, fill in personal info, created tours and check incoming requests)
 - after authorization customer can order and comment tours, operator can create tours and receive requests
