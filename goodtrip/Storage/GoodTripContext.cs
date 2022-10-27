@@ -8,7 +8,9 @@ namespace goodtrip.Storage
 {
     public class GoodTripContext : IdentityDbContext<User, UserRole, Guid>
     {
-        public DbSet<User> Users { get; set; }
+        public GoodTripContext(DbContextOptions<GoodTripContext> options) : base(options)
+        {
+        }
         public DbSet<UserOperatorProfile> UserOperatorProfiles { get; set; }
         public DbSet<UserCustomerProfile> UserCustomerProfiles { get; set; }
         public DbSet<Tour> Tours { get; set; }
@@ -18,15 +20,10 @@ namespace goodtrip.Storage
         public DbSet<Excurtion> Excurtions { get; set; }
 
         public DbSet<Review> Reviews { get; set; }
-
         public DbSet<ImageExcurtion> ImagesExcurtion { get; set; }
         public DbSet<ImageHotel> ImagesHotel { get; set; }
         public DbSet<Request> Requests { get; set; }
-
-        public GoodTripContext(DbContextOptions<GoodTripContext> options) : base(options)
-        {
-            
-        }
+        
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -34,8 +31,6 @@ namespace goodtrip.Storage
                 .HasOne(u => u.Profile)
                 .WithOne(p => p.User)
                 .HasForeignKey<UserProfile>(p => p.UserId);
-
-            
         }
     }
 }

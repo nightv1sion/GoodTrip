@@ -1,3 +1,4 @@
+using goodtrip;
 using goodtrip.Managers;
 using goodtrip.Storage;
 using goodtrip.Storage.Entity;
@@ -25,7 +26,6 @@ builder.Services.AddScoped<ISearchManager, SearchManager>();
 builder.Services.AddScoped<ITourManager, TourManager>();
 var app = builder.Build();
 
-
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -44,5 +44,18 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+using(var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<GoodTripContext>();
+    if (context.Database.GetPendingMigrations().Any())
+    {
+        context.Database.Migrate();
+    }
+    context.Seed();
+}
+
+
 
 app.Run();
