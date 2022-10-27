@@ -15,15 +15,6 @@ Using Docker:
 - run 'docker-compose up --build'
 - go to 'https://localhost:443'
 
-or
-
-- pull this project to your local repository
-- open command line in project folder
-- write `dotnet ef migrations add "MigrationName"` and `dotnet ef database update`
-- download sql script with database dump https://drive.google.com/file/d/1rm1-i3t21VsOOWG-5h77SG9usiCY9oFk/
-- open SQL Server Management Studio and create a query to GoodTripDatabase with this sql script and run it
-- go to 'https://localhost:443'
-
 # How work with the application
 - click on login button or search button (non-authorized users can look for toors but can't order and comment)
 
