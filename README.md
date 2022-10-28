@@ -19,7 +19,7 @@ Using Docker:
          dotnet dev-certs https -ep ./goodtrip/conf.d/https/goodtrip.pfx -p Goodtrip123!
          
          dotnet dev-certs https --trust
-- run and build docker-compose
+- build and run docker-compose
           
          docker-compose up --build
 - go to 'https://localhost:443'
