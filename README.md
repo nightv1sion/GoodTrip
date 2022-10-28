@@ -12,7 +12,16 @@ ASP.NET Core 6 MVC, EntityFramework Core 6, MS SQL Server, Identity, Cookie Auth
 Using Docker:
 - pull this project to your local repository
 - open terminal in project folder
-- run 'docker-compose up --build'
+- create a https certificate
+         
+         dotnet dev-certs https --clean
+         
+         dotnet dev-certs https -ep ./goodtrip/conf.d/https/goodtrip.pfx -p Goodtrip123!
+         
+         dotnet dev-certs https --trust
+- run and build docker-compose
+          
+         docker-compose up --build
 - go to 'https://localhost:443'
 
 # How work with the application
