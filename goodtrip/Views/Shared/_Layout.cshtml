@@ -13,42 +13,43 @@
     <link href="https://fonts.googleapis.com/css2?family=K2D&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="_Layout.cshtml.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-    <header>
-        <div class="container-lay">
-            <div class="row" style="width:100%;">
-                <div class = "col-2">
-                    <div class="logo">
-
-                        <a asp-controller="Home" asp-action="Index"> <img src = "/images/goodtripLogo.svg" style="max-width: 50%"/></a>
-                    </div>
-                </div>
-                <div class = "col-8">
-                    <div class = "goodtriptext">
-                        <p>goodtrip</p>
-                    </div>
-                </div> 
-                     <div class="col-1">
-                          <div class = "search">
-                         <a asp-controller="Search" asp-action="Index" style = "text-decoration: none; text-decoration-color: none; color: black; font-size: 24px;">SEARCH</a>
-                     </div>
-                 </div>
-                 
-                <div class="col-1">
-                    <div class="profilee">
-                        @if(Context.User.Identity.IsAuthenticated)
-                        {
-                            <a asp-controller="Profile" asp-action="Index" class = "profilebutton" style = "text-decoration: none; text-decoration-color: none; color: black; font-size: 24px;">PROFILE</a>
-                        }
-                        else{
-                            <a asp-controller="Account" asp-action="Login" class = "profilebutton" style = "text-decoration: none; text-decoration-color: none; color: black; font-size: 24px;">LOGIN</a>
-                        }
-                    </div>
-                </div> 
-            </div>
-        </div>
-    </header>
+    
 </head>
 <body>
+        <header>
+            <div class="container-lay" style="background-color: rgba(154,110,246,50%)">
+                <div class="row" style="width:100%;">
+                    <div class = "col-2">
+                        <div class="logo">
+
+                            <a asp-controller="Home" asp-action="Index"> <img src = "/images/goodtripLogo.svg" style="max-width: 50%"/></a>
+                        </div>
+                    </div>
+                    <div class = "col-8">
+                        <div class = "goodtriptext" style="font-size:64px;color:white;">
+                            <p>goodtrip</p>
+                        </div>
+                    </div> 
+                         <div class="col-1">
+                              <div class = "search">
+                             <a asp-controller="Search" asp-action="Index" style = "text-decoration: none; text-decoration-color: none; color: black; font-size: 24px;">SEARCH</a>
+                         </div>
+                     </div>
+                 
+                    <div class="col-1">
+                        <div class="profilee">
+                            @if(Context.User.Identity.IsAuthenticated)
+                            {
+                                <a asp-controller="Profile" asp-action="Index" class = "profilebutton" style = "text-decoration: none; text-decoration-color: none; color: black; font-size: 24px;">PROFILE</a>
+                            }
+                            else{
+                                <a asp-controller="Account" asp-action="Login" class = "profilebutton" style = "text-decoration: none; text-decoration-color: none; color: black; font-size: 24px;">LOGIN</a>
+                            }
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </header>
         <div class="container-fluid">
         <main role="main" class="pb-3">
             @RenderBody()
