@@ -70,7 +70,7 @@ namespace goodtrip.Controllers
                 var result = await _signInManager.PasswordSignInAsync(loginUser.Login, loginUser.Password, loginUser.RememberMe, false);
                 if (result.Succeeded)
                 {
-                    if (!string.IsNullOrEmpty(loginUser.ReturnUrl) && Url.IsLocalUrl(loginUser.ReturnUrl))
+                    if (!string.IsNullOrEmpty(loginUser.ReturnUrl))
                     {
                         return Redirect(loginUser.ReturnUrl);
                     }
