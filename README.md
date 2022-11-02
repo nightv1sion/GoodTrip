@@ -2,7 +2,7 @@
 
 # Technologies
 
-ASP.NET Core 6 MVC, EntityFramework Core 6, MS SQL Server, Identity, Cookie Authentication, some JavaScript for visual, Docker
+ASP.NET Core 6 MVC, EntityFramework Core 6, MS SQL Server, Identity, Cookie Authentication, some JavaScript for visual, Docker, Unit Tests
 #
 **goodtrip is a platform that allows:**
 - Tour operators to post their tours
